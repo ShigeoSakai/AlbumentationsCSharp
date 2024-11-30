@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0734317-D451-4B0E-ACDF-A1EDBDCD0304}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FilterBase</RootNamespace>
+    <AssemblyName>FilterBase</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseFilterControl.Designer.cs">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\BorderTypes.cs" />
+    <Compile Include="Enums\EnumComboClass.cs" />
+    <Compile Include="Enums\InterpolationFlags.cs" />
+    <Compile Include="FilterAttributes.cs" />
+    <Compile Include="IComboBox.cs" />
+    <Compile Include="Parts\PartsConst.cs" />
+    <Compile Include="Parts\PartsFunc.cs" />
+    <Compile Include="Parts\CheckBoxParts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Parts\CheckBoxParts.Designer.cs">
+      <DependentUpon>CheckBoxParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\ColorSelectorParts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\ColorSelectorParts.Designer.cs">
+      <DependentUpon>ColorSelectorParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\ComboBoxParts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Parts\ComboBoxParts.Designer.cs">
+      <DependentUpon>ComboBoxParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\ComboBoxWithLabelParts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\ComboBoxWithLabelParts.Designer.cs">
+      <DependentUpon>ComboBoxWithLabelParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\CustomColorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parts\CustomColorDialog.Designer.cs">
+      <DependentUpon>CustomColorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputKernelSize.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputKernelSize.Designer.cs">
+      <DependentUpon>InputKernelSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputMaxMin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputMaxMin.Designer.cs">
+      <DependentUpon>InputMaxMin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputTrackBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputTrackBar.Designer.cs">
+      <DependentUpon>InputTrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputTuple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputTuple.Designer.cs">
+      <DependentUpon>InputTuple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputValue.Designer.cs">
+      <DependentUpon>InputValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputValueUpDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputValueUpDown.Designer.cs">
+      <DependentUpon>InputValueUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\InputValueWithType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputValueWithType.Designer.cs">
+      <DependentUpon>InputValueWithType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Parts\ParameterChangeEventHandler.cs" />
+    <Compile Include="Parts\IParts.cs" />
+    <Compile Include="Parts\PartsBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\PartsBase.Designer.cs">
+      <DependentUpon>PartsBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PluginManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VersionInfo.cs" />
+    <EmbeddedResource Include="BaseFilterControl.resx">
+      <DependentUpon>BaseFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\CheckBoxParts.resx">
+      <DependentUpon>CheckBoxParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\ColorSelectorParts.resx">
+      <DependentUpon>ColorSelectorParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\ComboBoxParts.resx">
+      <DependentUpon>ComboBoxParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\ComboBoxWithLabelParts.resx">
+      <DependentUpon>ComboBoxWithLabelParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\CustomColorDialog.resx">
+      <DependentUpon>CustomColorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputKernelSize.resx">
+      <DependentUpon>InputKernelSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputMaxMin.resx">
+      <DependentUpon>InputMaxMin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputTrackBar.resx">
+      <DependentUpon>InputTrackBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputTuple.resx">
+      <DependentUpon>InputTuple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputValue.resx">
+      <DependentUpon>InputValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputValueUpDown.resx">
+      <DependentUpon>InputValueUpDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputValueWithType.resx">
+      <DependentUpon>InputValueWithType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\PartsBase.resx">
+      <DependentUpon>PartsBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parts\image\Color.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Parts\image\Gray.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SSTools\SSTools\SSTools.csproj">
+      <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
+      <Name>SSTools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

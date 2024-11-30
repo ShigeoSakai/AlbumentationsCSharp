@@ -1,0 +1,3 @@
+[submodule "SSTools"]
+	path = SSTools
+	url = https://github.com/ShigeoSakai/SSTools

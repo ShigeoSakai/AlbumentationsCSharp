@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3D21A4C-FB4B-4466-A481-FB01023ED11E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Filter.BasicTransform</RootNamespace>
+    <AssemblyName>Filter.BasicTransform</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChannelShuffle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChannelShuffle.Designer.cs">
+      <DependentUpon>ChannelShuffle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChromaticAberration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChromaticAberration.Designer.cs">
+      <DependentUpon>ChromaticAberration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CLAHE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CLAHE.Designer.cs">
+      <DependentUpon>CLAHE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorJitter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorJitter.Designer.cs">
+      <DependentUpon>ColorJitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Emboss.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Emboss.Designer.cs">
+      <DependentUpon>Emboss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FancyPCA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FancyPCA.Designer.cs">
+      <DependentUpon>FancyPCA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GaussNoise.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GaussNoise.Designer.cs">
+      <DependentUpon>GaussNoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HueSaturationValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HueSaturationValue.Designer.cs">
+      <DependentUpon>HueSaturationValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageCompression.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImageCompression.Designer.cs">
+      <DependentUpon>ImageCompression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvertImg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InvertImg.Designer.cs">
+      <DependentUpon>InvertImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ISONoise.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ISONoise.Designer.cs">
+      <DependentUpon>ISONoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultiplicativeNoise.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MultiplicativeNoise.Designer.cs">
+      <DependentUpon>MultiplicativeNoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanckianJitter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlanckianJitter.Designer.cs">
+      <DependentUpon>PlanckianJitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomBrightnessContrast.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomBrightnessContrast.Designer.cs">
+      <DependentUpon>RandomBrightnessContrast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomFog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomFog.Designer.cs">
+      <DependentUpon>RandomFog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomGridShuffle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomGridShuffle.Designer.cs">
+      <DependentUpon>RandomGridShuffle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomRain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomRain.Designer.cs">
+      <DependentUpon>RandomRain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomSnow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomSnow.Designer.cs">
+      <DependentUpon>RandomSnow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RandomToneCurve.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomToneCurve.Designer.cs">
+      <DependentUpon>RandomToneCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RGBShift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RGBShift.Designer.cs">
+      <DependentUpon>RGBShift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RingingOvershoot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RingingOvershoot.Designer.cs">
+      <DependentUpon>RingingOvershoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sharpen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Sharpen.Designer.cs">
+      <DependentUpon>Sharpen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Solarize.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Solarize.Designer.cs">
+      <DependentUpon>Solarize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Superpixels.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Superpixels.Designer.cs">
+      <DependentUpon>Superpixels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToGray.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToGray.Designer.cs">
+      <DependentUpon>ToGray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToSepia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToSepia.Designer.cs">
+      <DependentUpon>ToSepia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnsharpMask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnsharpMask.Designer.cs">
+      <DependentUpon>UnsharpMask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ChannelShuffle.resx">
+      <DependentUpon>ChannelShuffle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChromaticAberration.resx">
+      <DependentUpon>ChromaticAberration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CLAHE.resx">
+      <DependentUpon>CLAHE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorJitter.resx">
+      <DependentUpon>ColorJitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Emboss.resx">
+      <DependentUpon>Emboss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FancyPCA.resx">
+      <DependentUpon>FancyPCA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GaussNoise.resx">
+      <DependentUpon>GaussNoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HueSaturationValue.resx">
+      <DependentUpon>HueSaturationValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageCompression.resx">
+      <DependentUpon>ImageCompression.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvertImg.resx">
+      <DependentUpon>InvertImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ISONoise.resx">
+      <DependentUpon>ISONoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiplicativeNoise.resx">
+      <DependentUpon>MultiplicativeNoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanckianJitter.resx">
+      <DependentUpon>PlanckianJitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomBrightnessContrast.resx">
+      <DependentUpon>RandomBrightnessContrast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomFog.resx">
+      <DependentUpon>RandomFog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomGridShuffle.resx">
+      <DependentUpon>RandomGridShuffle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomRain.resx">
+      <DependentUpon>RandomRain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomSnow.resx">
+      <DependentUpon>RandomSnow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomToneCurve.resx">
+      <DependentUpon>RandomToneCurve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RGBShift.resx">
+      <DependentUpon>RGBShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RingingOvershoot.resx">
+      <DependentUpon>RingingOvershoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sharpen.resx">
+      <DependentUpon>Sharpen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Solarize.resx">
+      <DependentUpon>Solarize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Superpixels.resx">
+      <DependentUpon>Superpixels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToGray.resx">
+      <DependentUpon>ToGray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToSepia.resx">
+      <DependentUpon>ToSepia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnsharpMask.resx">
+      <DependentUpon>UnsharpMask.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SSTools\SSTools\SSTools.csproj">
+      <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
+      <Name>SSTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilterBase\FilterBase.csproj">
+      <Project>{f0734317-d451-4b0e-acdf-a1edbdcd0304}</Project>
+      <Name>FilterBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(SolutionDir)$(OutDir)plugins  
+copy/y $(TargetDir)$(TargetName).*  $(SolutionDir)$(OutDir)plugins</PostBuildEvent>
+  </PropertyGroup>
+</Project>

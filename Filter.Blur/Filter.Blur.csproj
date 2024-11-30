@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48C835DF-CD60-47C1-B7F2-30558CEC470D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Filter.Blur</RootNamespace>
+    <AssemblyName>Filter.Blur</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvancedBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdvancedBlur.Designer.cs">
+      <DependentUpon>AdvancedBlur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Blur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Blur.Designer.cs">
+      <DependentUpon>Blur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Defocus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Defocus.Designer.cs">
+      <DependentUpon>Defocus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GaussianBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GaussianBlur.Designer.cs">
+      <DependentUpon>GaussianBlur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlassBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GlassBlur.Designer.cs">
+      <DependentUpon>GlassBlur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MedianBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MedianBlur.Designer.cs">
+      <DependentUpon>MedianBlur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MotionBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MotionBlur.Designer.cs">
+      <DependentUpon>MotionBlur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZoomBlur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZoomBlur.Designer.cs">
+      <DependentUpon>ZoomBlur.cs</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdvancedBlur.resx">
+      <DependentUpon>AdvancedBlur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Blur.resx">
+      <DependentUpon>Blur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Defocus.resx">
+      <DependentUpon>Defocus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GaussianBlur.resx">
+      <DependentUpon>GaussianBlur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GlassBlur.resx">
+      <DependentUpon>GlassBlur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedianBlur.resx">
+      <DependentUpon>MedianBlur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotionBlur.resx">
+      <DependentUpon>MotionBlur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZoomBlur.resx">
+      <DependentUpon>ZoomBlur.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SSTools\SSTools\SSTools.csproj">
+      <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
+      <Name>SSTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FilterBase\FilterBase.csproj">
+      <Project>{f0734317-d451-4b0e-acdf-a1edbdcd0304}</Project>
+      <Name>FilterBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(SolutionDir)$(OutDir)plugins  
+copy/y $(TargetDir)$(TargetName).*  $(SolutionDir)$(OutDir)plugins</PostBuildEvent>
+  </PropertyGroup>
+</Project>
