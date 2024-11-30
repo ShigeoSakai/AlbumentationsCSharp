@@ -199,7 +199,7 @@
     <None Include="Parts\image\Gray.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SSTools\SSTools\SSTools.csproj">
+    <ProjectReference Include="..\SSTools\SSTools\SSTools.csproj">
       <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
       <Name>SSTools</Name>
     </ProjectReference>

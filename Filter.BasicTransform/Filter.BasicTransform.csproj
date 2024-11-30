@@ -291,13 +291,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SSTools\SSTools\SSTools.csproj">
-      <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
-      <Name>SSTools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FilterBase\FilterBase.csproj">
       <Project>{f0734317-d451-4b0e-acdf-a1edbdcd0304}</Project>
       <Name>FilterBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSTools\SSTools\SSTools.csproj">
+      <Project>{370d2226-e815-4c11-95ac-0fedbbf8964c}</Project>
+      <Name>SSTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

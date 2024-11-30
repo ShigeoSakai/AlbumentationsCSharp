@@ -56,12 +56,22 @@ namespace AlbumentationsCSharp
         public PythonSetting()
         {
             // Anacondaがインストールされているかチェック
-            string conda_path = CmdExecutor.InstantlyExecute("where conda");
-            if (string.IsNullOrEmpty(conda_path) == false)
+            string candidate_conda_path = CmdExecutor.InstantlyExecute("where conda");
+            if (string.IsNullOrEmpty(candidate_conda_path) == false)
             {
-                if (conda_path.EndsWith(Environment.NewLine))
-                    conda_path = conda_path.Substring(0, conda_path.Length - Environment.NewLine.Length);
-                AnacondaPath = conda_path.Substring(0, conda_path.Length - "\\conda.bat".Length);
+                string[] conda_paths = candidate_conda_path.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                if (conda_paths.Length > 0)
+                {
+                    foreach (string conda_path in conda_paths)
+                    {
+                        string conda_bat = Path.GetFileName(conda_path);
+                        if (conda_bat.ToLower() == "conda.bat")
+                        {
+                            AnacondaPath = conda_path.Substring(0, conda_path.Length - "\\conda.bat".Length);
+                            break;
+                        }
+                    }
+                }
             }
             // Pythonのパス
             string python_path = CmdExecutor.InstantlyExecute("where python");

@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filter.DropOut", "Filter.Dr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filter.Geometric", "Filter.Geometric\Filter.Geometric.csproj", "{2E11B1B7-C00E-4CF3-A63A-3D6F91C61761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSTools", "..\SSTools\SSTools\SSTools.csproj", "{370D2226-E815-4C11-95AC-0FEDBBF8964C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSTools", "SSTools\SSTools\SSTools.csproj", "{370D2226-E815-4C11-95AC-0FEDBBF8964C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
