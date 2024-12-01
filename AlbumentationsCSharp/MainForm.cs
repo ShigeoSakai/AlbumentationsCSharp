@@ -1,6 +1,7 @@
 ﻿using FilterBase;
 using SSTools.Shape;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -70,6 +71,10 @@ namespace AlbumentationsCSharp
         /// BBox
         /// </summary>
         private BoundingBox BoundingBox = null;
+        /// <summary>
+        /// KeyPoint
+        /// </summary>
+        private KeyPoints KeyPoints = null;
 
         /// <summary>
         /// コンストラクタ
@@ -92,6 +97,9 @@ namespace AlbumentationsCSharp
 
             // BBoxのコンボボックス作成
             BBoxFormatClass.MakeComboBox(CbBBoxType,BBoxFormat.COCO);
+
+            // KeyPointsのコンボボックス作成
+            KeyPoints.KeyPointsTypeDef.MakeComboBox(CbKeyPointType,KeyPoints.KeyPointsFileConverters,KeyPoints.KeyPointType.COCO);
 
             // ダイアログを表示
             InitPythonExec(AppConfig.PythonSetting, true);
@@ -591,7 +599,6 @@ namespace AlbumentationsCSharp
                 // BBOXを設定
                 SetOrigBBox();
             }
-
         }
         /// <summary>
         /// BBox編集
@@ -649,7 +656,7 @@ namespace AlbumentationsCSharp
                 int height = (OrigImage != null) ? OrigImage.Height : MaskImage.Height;
 
                 // 図形をクリア
-                PbOrigImage.ClearShape();
+                ClearOrigBBox();
                 List<BoundingBox.BBoxShape> rects = BoundingBox.GetShapes(width, height);
                 if ((rects != null) && (rects.Count > 0))
                 {
@@ -670,6 +677,11 @@ namespace AlbumentationsCSharp
                 }
             }
         }
+        private void ClearOrigBBox()
+        {
+            PbOrigImage.RemovePattern(@"bbox_\d+");
+        }
+
         /// <summary>
         /// BBOXのチェックが変更になった
         /// </summary>
@@ -683,6 +695,100 @@ namespace AlbumentationsCSharp
                 shape.Visible = CbShowBBox.Checked;
             }
             PbOrigImage.Refresh();
+        }
+        /// <summary>
+        /// キーポイントファイルを開く
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtKeyPointOpen_Click(object sender, EventArgs e)
+        {
+            if ((TbKeyPoint.Text.Trim().Length > 0) &&
+                (File.Exists(TbKeyPoint.Text)))
+            {
+                if (KeyPoints != null)
+                    KeyPoints = null;
+
+                // 読み込みフォーマット
+                KeyPoints.KeyPointType format = KeyPoints.KeyPointsTypeDef.GetItemType(CbKeyPointType, KeyPoints.KeyPointType.COCO); ;
+                // BBoxファイルを読み込む
+                KeyPoints = new KeyPoints(format, TbKeyPoint.Text);
+                // 編集ボタンの有効無効
+                BtNewKeyPoint.Enabled = (KeyPoints.Data.Count > 0);
+                // KeyPointsを設定
+                SetOrigKeyPoints();
+            }
+
+        }
+        private void ClearOrigKeyPoints()
+        {
+            PbOrigImage.RemovePattern(@"kpt_\d+");
+        }
+
+        /// <summary>
+        /// 元画像にKeyPointを設定
+        /// </summary>
+        private void SetOrigKeyPoints()
+        {
+            if ((KeyPoints != null) && ((OrigImage != null) || (MaskImage != null)))
+            {
+                // 画像の幅と高さ
+                int width = (OrigImage != null) ? OrigImage.Width : MaskImage.Width;
+                int height = (OrigImage != null) ? OrigImage.Height : MaskImage.Height;
+
+                // 図形をクリア
+                ClearOrigKeyPoints();
+                List<KeyPoints.KeyPointShape> pts = KeyPoints.GetShape();
+                if ((pts != null) && (pts.Count > 0))
+                {
+                    int color_index = 0;
+                    for (int i = 0; i < pts.Count; i++)
+                    {
+                        PointShape shape = new PointShape(string.Format("kpt_{0}", i))
+                        {
+                            Text = pts[i].Name,
+                            Point = pts[i].Point,
+                            Color = CMap.Get(color_index),
+                            ShowLable = (string.IsNullOrEmpty(pts[i].Name) == false),
+                            LabelFill = true,
+                            MarkerType = BaseShape.MARKER_TYPE.CROSS,
+                            LineWidth = 2.0F
+                        };
+                        PbOrigImage.AddShape(shape);
+                        color_index = (color_index + 64) & 0x0FF;
+                    }
+                    PbOrigImage.Refresh();
+                }
+            }
+        }
+        /// <summary>
+        /// キーポイント表示切替
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowKeyPoints_CheckedChanged(object sender, EventArgs e)
+        {
+            // 元画像側
+            foreach (BaseShape shape in PbOrigImage.EnumerableShapes(@"kpt_\d+"))
+            {
+                shape.Visible = CbShowKeyPoints.Checked;
+            }
+            PbOrigImage.Refresh();
+        }
+        /// <summary>
+        /// キーポイントラベル表示切替
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowKeyPointLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            // 元画像側
+            foreach (BaseShape shape in PbOrigImage.EnumerableShapes(@"kpt_\d+"))
+            {
+                shape.ShowLable = CbShowKeyPointLabel.Checked;
+            }
+            PbOrigImage.Refresh();
+
         }
     }
 }

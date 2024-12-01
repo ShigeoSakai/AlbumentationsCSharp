@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PbResultImage = new SSTools.ZoomPictureBox();
             this.PanelFile = new System.Windows.Forms.Panel();
+            this.CbKeyPointType = new System.Windows.Forms.ComboBox();
             this.BtNewKeyPoint = new System.Windows.Forms.Button();
             this.BtNewBox = new System.Windows.Forms.Button();
             this.BtKeyPointEdit = new System.Windows.Forms.Button();
@@ -73,6 +74,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.PanelExec = new System.Windows.Forms.Panel();
             this.TBLMain = new System.Windows.Forms.TableLayoutPanel();
+            this.CbShowKeyPoints = new System.Windows.Forms.CheckBox();
+            this.CbShowKeyPointLabel = new System.Windows.Forms.CheckBox();
             this.MenuStripMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbOrigImage)).BeginInit();
@@ -375,6 +378,9 @@
             // 
             this.PanelFile.AutoSize = true;
             this.TBLMain.SetColumnSpan(this.PanelFile, 4);
+            this.PanelFile.Controls.Add(this.CbShowKeyPointLabel);
+            this.PanelFile.Controls.Add(this.CbShowKeyPoints);
+            this.PanelFile.Controls.Add(this.CbKeyPointType);
             this.PanelFile.Controls.Add(this.BtNewKeyPoint);
             this.PanelFile.Controls.Add(this.BtNewBox);
             this.PanelFile.Controls.Add(this.BtKeyPointEdit);
@@ -404,6 +410,14 @@
             this.PanelFile.Name = "PanelFile";
             this.PanelFile.Size = new System.Drawing.Size(933, 133);
             this.PanelFile.TabIndex = 0;
+            // 
+            // CbKeyPointType
+            // 
+            this.CbKeyPointType.FormattingEnabled = true;
+            this.CbKeyPointType.Location = new System.Drawing.Point(94, 81);
+            this.CbKeyPointType.Name = "CbKeyPointType";
+            this.CbKeyPointType.Size = new System.Drawing.Size(113, 20);
+            this.CbKeyPointType.TabIndex = 23;
             // 
             // BtNewKeyPoint
             // 
@@ -441,13 +455,13 @@
             this.BtKeyPointOpen.TabIndex = 19;
             this.BtKeyPointOpen.Text = "開く";
             this.BtKeyPointOpen.UseVisualStyleBackColor = true;
+            this.BtKeyPointOpen.Click += new System.EventHandler(this.BtKeyPointOpen_Click);
             // 
             // BtKeyPointSelect
             // 
             this.BtKeyPointSelect.AutoSize = true;
-            this.BtKeyPointSelect.Filter = "画像ファイル|*.bmp;*.png;*.jpg;*.jpeg;*.tif;*.tiff;*.gif;*.svg;*.webp|ビットマップファイル|*.bmp|" +
-    "PNGファイル|*.png|JPEGファイル|*.jpg;*.jpeg|TIFFファイル|*.tif;*.tiff|GIFファイル|*.gif|SVGファイル|" +
-    "*.svg|WebPファイル|*.webp|全てのファイル|*.*";
+            this.BtKeyPointSelect.Filter = "テキストファイル|*.txt;*.csv;*.log;*.ini|プレーンテキストファイル|*.txt|CSVファイル|*.csv|ログファイル|*.log|IN" +
+    "Iファイル|*.ini|全てのファイル|*.*";
             this.BtKeyPointSelect.LinkControl = this.TbKeyPoint;
             this.BtKeyPointSelect.Location = new System.Drawing.Point(680, 79);
             this.BtKeyPointSelect.Name = "BtKeyPointSelect";
@@ -463,9 +477,9 @@
             // 
             // TbKeyPoint
             // 
-            this.TbKeyPoint.Location = new System.Drawing.Point(94, 81);
+            this.TbKeyPoint.Location = new System.Drawing.Point(213, 81);
             this.TbKeyPoint.Name = "TbKeyPoint";
-            this.TbKeyPoint.Size = new System.Drawing.Size(580, 19);
+            this.TbKeyPoint.Size = new System.Drawing.Size(461, 19);
             this.TbKeyPoint.TabIndex = 17;
             // 
             // label4
@@ -589,6 +603,34 @@
             this.TBLMain.Size = new System.Drawing.Size(933, 559);
             this.TBLMain.TabIndex = 2;
             // 
+            // CbShowKeyPoints
+            // 
+            this.CbShowKeyPoints.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowKeyPoints.Checked = true;
+            this.CbShowKeyPoints.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowKeyPoints.Location = new System.Drawing.Point(198, 107);
+            this.CbShowKeyPoints.Name = "CbShowKeyPoints";
+            this.CbShowKeyPoints.Size = new System.Drawing.Size(82, 23);
+            this.CbShowKeyPoints.TabIndex = 24;
+            this.CbShowKeyPoints.Text = "KP表示";
+            this.CbShowKeyPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowKeyPoints.UseVisualStyleBackColor = true;
+            this.CbShowKeyPoints.CheckedChanged += new System.EventHandler(this.CbShowKeyPoints_CheckedChanged);
+            // 
+            // CbShowKeyPointLabel
+            // 
+            this.CbShowKeyPointLabel.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowKeyPointLabel.Checked = true;
+            this.CbShowKeyPointLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowKeyPointLabel.Location = new System.Drawing.Point(286, 107);
+            this.CbShowKeyPointLabel.Name = "CbShowKeyPointLabel";
+            this.CbShowKeyPointLabel.Size = new System.Drawing.Size(82, 23);
+            this.CbShowKeyPointLabel.TabIndex = 25;
+            this.CbShowKeyPointLabel.Text = "KPラベル表示";
+            this.CbShowKeyPointLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowKeyPointLabel.UseVisualStyleBackColor = true;
+            this.CbShowKeyPointLabel.CheckedChanged += new System.EventHandler(this.CbShowKeyPointLabel_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -659,6 +701,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtNewKeyPoint;
         private System.Windows.Forms.Button BtNewBox;
+        private System.Windows.Forms.ComboBox CbKeyPointType;
+        private System.Windows.Forms.CheckBox CbShowKeyPointLabel;
+        private System.Windows.Forms.CheckBox CbShowKeyPoints;
     }
 }
 

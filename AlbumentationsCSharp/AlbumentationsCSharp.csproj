@@ -58,6 +58,7 @@
     <Compile Include="BBoxFormat.cs" />
     <Compile Include="BoundingBox.cs" />
     <Compile Include="CmdExecutor.cs" />
+    <Compile Include="KeyPoints.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
