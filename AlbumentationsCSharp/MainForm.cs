@@ -1,4 +1,5 @@
 ﻿using FilterBase;
+using SSTools;
 using SSTools.Shape;
 using System;
 using System.CodeDom;
@@ -790,5 +791,22 @@ namespace AlbumentationsCSharp
             PbOrigImage.Refresh();
 
         }
-    }
+        /// <summary>
+        /// 画像をクリップボードにコピー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		private void ToolStripMenuItemImageCopy_Click(object sender, EventArgs e)
+		{
+            if (sender is ToolStripMenuItem menu)
+            {
+                ContextMenuStrip root = menu.GetCurrentParent() as ContextMenuStrip;
+                if ((root.SourceControl != null) &&
+                    (root.SourceControl is ZoomPictureBox pictBox))
+                {
+                    pictBox.ToClipBoard();
+                }
+            }
+		}
+	}
 }
