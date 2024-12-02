@@ -11,15 +11,23 @@ namespace AlbumentationsCSharp
 {
     public enum BBoxFormat
     {
-        [Description("Pascal VOCC")]
+        [Description("Pascal VOC"),EnumCommandName("pascal_voc")]
         PASCAL_VOC,
-        [Description("Albumentations")]
+        [Description("Albumentations"), EnumCommandName("albumentations")]
         Albumentations,
-        [Description("Coco")]
+        [Description("Coco"), EnumCommandName("coco")]
         COCO,
-        [Description("YoLo")]
+        [Description("YoLo"), EnumCommandName("yolo")]
         YOLO,
     }
+    [System.AttributeUsage(AttributeTargets.Field)]
+    public class EnumCommandNameAttribute : Attribute
+    {
+        public string Command { get; private set; }
+        public EnumCommandNameAttribute(string command) => Command = command;
+    }
+
+
 
     public class BBoxFormatClass
     {
@@ -46,7 +54,8 @@ namespace AlbumentationsCSharp
             int select_index = -1;
             foreach(BBoxFormat fmt in Enum.GetValues(typeof(BBoxFormat)))
             {
-                DescriptionAttribute attr = fmt.GetType().GetCustomAttribute<DescriptionAttribute>();
+                FieldInfo fieldInfo = fmt.GetType().GetField(fmt.ToString());          
+                DescriptionAttribute attr = (DescriptionAttribute)Attribute.GetCustomAttribute(fieldInfo,typeof(DescriptionAttribute));
                 comboBox.Items.Add(new BBoxFormatClass(fmt.ToString(), (attr != null) ? attr.Description : fmt.ToString(), fmt));
                 if (fmt == default_value)
                     select_index = index;

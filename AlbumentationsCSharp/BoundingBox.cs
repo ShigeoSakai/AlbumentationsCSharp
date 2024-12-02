@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -284,6 +285,19 @@ namespace AlbumentationsCSharp
                 return "[" + result + "]";
             return "";
         }
+
+        public string GetFormat()
+        {
+            FieldInfo fieldInfo = Format.GetType().GetField(Format.ToString());
+            EnumCommandNameAttribute attr = (EnumCommandNameAttribute)Attribute.GetCustomAttribute(fieldInfo,typeof(EnumCommandNameAttribute));
+            if (attr != null)
+                return attr.Command;
+            else
+                return Format.ToString();
+        }
+
+
+
         public void Convert(BBoxFormat newFormat,int width,int height)
         {
             foreach (BoundingBoxDetail item in BBoxes)

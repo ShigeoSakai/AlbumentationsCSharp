@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static FilterBase.BaseFilterControl;
+using static SSTools.WndMsgAnalysis;
 
 namespace AlbumentationsCSharp
 {
@@ -27,6 +28,11 @@ namespace AlbumentationsCSharp
         /// Albumentationsのバージョン
         /// </summary>
         private VersionInfo AlbumentationsVersion;
+
+        /// <summary>
+        /// Albumentationsの別名
+        /// </summary>
+        private const string AlbumentationsName = "A";
 
         /// <summary>
         /// 待ちダイアログ
@@ -60,15 +66,6 @@ namespace AlbumentationsCSharp
         /// </summary>
         private Bitmap MaskImage = null;
         /// <summary>
-        /// 画像フィルタ文字列
-        /// </summary>
-        private const string ImgFilter = "画像ファイル|*.bmp;*.png;*.jpg;*.jpeg;*.tif;*.tiff|" +
-            "ビットマップファイル|*.bmp|" +
-            "PNGファイル|*.png|" +
-            "JPEGファイル|*.jpg;*.jpeg|" +
-            "TIFFファイル|*.tif;*.tiff|" +
-            "全てのファイル|*.*";
-        /// <summary>
         /// BBox
         /// </summary>
         private BoundingBox BoundingBox = null;
@@ -89,6 +86,8 @@ namespace AlbumentationsCSharp
 
             // BBox編集ボタン無効 
             BtBBoxEdit.Enabled = false;
+            // KeyPoint編集ボタン無効
+            BtKeyPointEdit.Enabled = false;
 
             // プラグインマネージャ初期化
             PluginManager.LoadPlugins(Path.Combine(Directory.GetCurrentDirectory(), "plugins"));
@@ -354,6 +353,14 @@ namespace AlbumentationsCSharp
 
         #region [画像関連]
         /// <summary>
+        /// 画像ファイル拡張子
+        /// </summary>
+        private string[] ImageExtensions = new string[]
+        {
+            ".jpg",".jpeg",".bmp",".png",".tif",".tiff"
+        };
+
+        /// <summary>
         /// 画像ファイルを開く
         /// </summary>
         /// <param name="sender"></param>
@@ -394,6 +401,38 @@ namespace AlbumentationsCSharp
                         MaskImage.Dispose();
                         MaskFilePath = string.Empty;
                     }
+
+                    // マスク画像他の自動読み込み
+                    string dir = Path.GetDirectoryName(ImageFilePath);
+                    string fname = Path.GetFileNameWithoutExtension(ImageFilePath);
+                    
+                    // マスク画像
+                    foreach (string mask_name in Directory.EnumerateFiles(dir, fname + "_mask.*"))
+                    {
+                        string ext = Path.GetExtension(mask_name);
+                        if (ImageExtensions.Contains(ext))
+                        {
+                            TbMaskImage.Text = mask_name;
+                            // マスク画像を開く
+                            BtMaskImageOpen_Click(this, new EventArgs());
+                            break;
+                        }
+                    }
+                    // BBOX
+                    if (File.Exists(Path.Combine(dir, fname + "_bbox.csv")))
+                    {
+                        TbBBoxFile.Text = Path.Combine(dir, fname + "_bbox.csv");
+                        // BBOXを開く
+                        BtBBoxFileOpen_Click(this, new EventArgs());
+                    }
+                    // Keypoints
+                    if (File.Exists(Path.Combine(dir, fname + "_keypoints.csv")))
+                    {
+                        TbKeyPoint.Text = Path.Combine(dir, fname + "_keypoints.csv");
+                        // Keypointファイルを開く
+                        BtKeyPointOpen_Click(this, new EventArgs());
+                    }
+
                 }
             }
         }
@@ -439,8 +478,6 @@ namespace AlbumentationsCSharp
         {
             // 画像の描画
             PbOrigImage.MaskShow = CbShowMask.Checked;
-            // 結果画像
-            PbResultImage.MaskShow = CbShowMask.Checked;
         }
         #endregion [画像関連]
 
@@ -488,7 +525,26 @@ namespace AlbumentationsCSharp
                     if (string.IsNullOrEmpty(alb_cmd) == false)
                     {
                         // Composeを追加する
-                        alb_cmd = string.Format("{0}.Compose([{1}])", "A", alb_cmd);
+                        alb_cmd = string.Format("{0}.Compose([{1}]", AlbumentationsName, alb_cmd);
+                        if (BoundingBox != null)
+                        {   // bbox_paramsを追加
+                            alb_cmd += string.Format(",bbox_params={0}.BboxParams(format='{1}'",
+                                AlbumentationsName, BoundingBox.GetFormat());
+                            string lbox = BoundingBox.GetClassName();
+                            if (string.IsNullOrEmpty(lbox) == false)
+                                alb_cmd += ", label_fields=['bbox_label']";
+                            alb_cmd += ")";
+                        }
+                        if (KeyPoints != null)
+                        {   // keypoint_paramsを追加
+                            alb_cmd += string.Format(",keypoint_params={0}.KeypointParams(format='{1}'",
+                                AlbumentationsName, KeyPoints.GetFormat());
+                            string lkp = KeyPoints.GetLabels();
+                            if (string.IsNullOrEmpty(lkp) == false)
+                                alb_cmd += ", label_fields=['keypoints_label']";
+                            alb_cmd += ")";
+                        }
+                        alb_cmd += ")";
 
                         // コマンドを発行
                         CmdExec.ExecCommand("", ">");  // 空行を送信
@@ -540,20 +596,29 @@ namespace AlbumentationsCSharp
                 Invoke((MethodInvoker)delegate { ExecCallback(sender, cmd, recvCmd, isOK); });
                 return;
             }
+            // TRコマンドの応答
             if ((isOK) && (cmd.StartsWith("TR:")))
-            {
+            {   // 結果がOK
+                int width = 640;
+                int height = 480;
+
+                // 図形をクリア
+                PbResultImage.ClearShape();
+
                 if (File.Exists("result.bmp"))
-                {
+                {   // 結果画像ファイルがある
                     Bitmap bmp = null;
                     using (FileStream fs = new FileStream("result.bmp", FileMode.Open, FileAccess.Read))
                         bmp = new Bitmap(fs);
                     if (bmp != null)
                     {
                         PbResultImage.Image = bmp;
+                        width = bmp.Width;
+                        height = bmp.Height;
                     }
                 }
                 if (File.Exists("mask.bmp"))
-                {
+                {   // 結果マスクファイルがある
                     Bitmap mask_bmp = null;
                     using (FileStream fs = new FileStream("mask.bmp", FileMode.Open, FileAccess.Read))
                         mask_bmp = new Bitmap(fs);
@@ -561,6 +626,62 @@ namespace AlbumentationsCSharp
                     {
                         PbResultImage.MaskImage = mask_bmp;
                     }
+                }
+                if (File.Exists("bbox.csv"))
+                {   // BBoxファイルがある
+                    BoundingBox resultBBox = new BoundingBox(BoundingBox.Format, "bbox.csv");
+                    if (resultBBox != null)
+                    {
+                        List<BoundingBox.BBoxShape> rects =  resultBBox.GetShapes(width,height);
+                        if ((rects != null) && (rects.Count > 0))
+                        {
+                            int color_index = 0;
+                            for (int i = 0; i < rects.Count; i++)
+                            {
+                                RectangleShape shape = new RectangleShape(string.Format("bbox_{0}", i), rects[i].Rectangle)
+                                {
+                                    Text = rects[i].Name,
+                                    Color = CMap.Get(color_index),
+                                    ShowLable = true,
+                                    LabelFill = true,
+                                };
+                                PbResultImage.AddShape(shape);
+                                color_index = (color_index + 64) & 0x0FF;
+                            }
+                            PbResultImage.Refresh();
+                        }
+                    }
+                    resultBBox = null;
+
+                }
+                if (File.Exists("keypoints.csv"))
+                {   // キーポイントファイルがある
+                    KeyPoints  resultKeyPoints = new KeyPoints("keypoints.csv");
+                    if (resultKeyPoints != null)
+                    {
+                        List<KeyPoints.KeyPointShape> pts = resultKeyPoints.GetShapes();
+                        if ((pts != null) && (pts.Count > 0))
+                        {
+                            int color_index = 0;
+                            for (int i = 0; i < pts.Count; i++)
+                            {
+                                PointShape shape = new PointShape(string.Format("kpt_{0}", i))
+                                {
+                                    Text = pts[i].Name,
+                                    Point = pts[i].Point,
+                                    Color = CMap.Get(color_index),
+                                    ShowLable = (string.IsNullOrEmpty(pts[i].Name) == false),
+                                    LabelFill = true,
+                                    MarkerType = BaseShape.MARKER_TYPE.CROSS,
+                                    LineWidth = 2.0F
+                                };
+                                PbResultImage.AddShape(shape);
+                                color_index = (color_index + 64) & 0x0FF;
+                            }
+                            PbResultImage.Refresh();
+                        }
+                    }
+                    resultKeyPoints = null;
                 }
 
             }
@@ -597,6 +718,8 @@ namespace AlbumentationsCSharp
                 BoundingBox = new BoundingBox(format, TbBBoxFile.Text);
                 // 編集ボタンの有効無効
                 BtBBoxEdit.Enabled = (BoundingBox.BBoxes.Count > 0);
+                // BBOXを送信
+                SendBBox();
                 // BBOXを設定
                 SetOrigBBox();
             }
@@ -615,6 +738,8 @@ namespace AlbumentationsCSharp
                 {
                     // BBOXをコピー
                     BoundingBox = new BoundingBox(form.BoundingBox);
+                    // BBOXを送信
+                    SendBBox();
                     // BBOXを設定
                     SetOrigBBox();
                 }
@@ -634,12 +759,42 @@ namespace AlbumentationsCSharp
             {
                 // BBOXをコピー
                 BoundingBox = new BoundingBox(form.BoundingBox);
+                // BBOXを送信
+                SendBBox();
                 // BBOXを設定
                 SetOrigBBox();
             }
             form.Dispose();
             form = null;
         }
+        /// <summary>
+        /// BBOXを送信
+        /// </summary>
+        private void SendBBox()
+        {
+            if (BoundingBox != null)
+            {
+                string bbox = BoundingBox.GetBoundingBox();
+                string bbox_label = BoundingBox.GetClassName();
+                if (string.IsNullOrEmpty(bbox) == false)
+                {
+                    // コマンドを発行
+                    CmdExec.ExecCommand("", ">");  // 空行を送信
+                    CmdExec.ExecCommand("BBOX:" + bbox, ">");
+                    CmdExec.ExecCommand("BBOX!", ">");
+
+                    if (string.IsNullOrEmpty(bbox_label) == false)
+                    {
+                        // コマンドを発行
+                        CmdExec.ExecCommand("", ">");  // 空行を送信
+                        CmdExec.ExecCommand("LBOX:" + bbox_label, ">");
+                        CmdExec.ExecCommand("LBOX!", ">");
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
         /// カラーマップ
         /// </summary>
@@ -716,11 +871,16 @@ namespace AlbumentationsCSharp
                 KeyPoints = new KeyPoints(format, TbKeyPoint.Text);
                 // 編集ボタンの有効無効
                 BtNewKeyPoint.Enabled = (KeyPoints.Data.Count > 0);
+                // KeyPointを送信
+                SendKeyPoints();
                 // KeyPointsを設定
                 SetOrigKeyPoints();
             }
 
         }
+        /// <summary>
+        /// KeyPoint図形を削除
+        /// </summary>
         private void ClearOrigKeyPoints()
         {
             PbOrigImage.RemovePattern(@"kpt_\d+");
@@ -739,7 +899,7 @@ namespace AlbumentationsCSharp
 
                 // 図形をクリア
                 ClearOrigKeyPoints();
-                List<KeyPoints.KeyPointShape> pts = KeyPoints.GetShape();
+                List<KeyPoints.KeyPointShape> pts = KeyPoints.GetShapes();
                 if ((pts != null) && (pts.Count > 0))
                 {
                     int color_index = 0;
@@ -759,6 +919,32 @@ namespace AlbumentationsCSharp
                         color_index = (color_index + 64) & 0x0FF;
                     }
                     PbOrigImage.Refresh();
+                }
+            }
+        }
+        /// <summary>
+        /// KeyPointsを送信
+        /// </summary>
+        private void SendKeyPoints()
+        {
+            if (KeyPoints != null)
+            {
+                string keypoints = KeyPoints.GetKeyPoints();
+                string keypoints_label = KeyPoints.GetLabels();
+                if (string.IsNullOrEmpty(keypoints) == false)
+                {
+                    // コマンドを発行
+                    CmdExec.ExecCommand("", ">");  // 空行を送信
+                    CmdExec.ExecCommand("KP:" + keypoints, ">");
+                    CmdExec.ExecCommand("KP!", ">");
+
+                    if (string.IsNullOrEmpty(keypoints_label) == false)
+                    {
+                        // コマンドを発行
+                        CmdExec.ExecCommand("", ">");  // 空行を送信
+                        CmdExec.ExecCommand("LKP:" + keypoints_label, ">");
+                        CmdExec.ExecCommand("LKP!", ">");
+                    }
                 }
             }
         }
@@ -808,5 +994,59 @@ namespace AlbumentationsCSharp
                 }
             }
 		}
-	}
+        /// <summary>
+        /// 結果画像のマスク表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowResultMask_CheckedChanged(object sender, EventArgs e)
+        {
+            // 結果画像
+            PbResultImage.MaskShow = CbShowResultMask.Checked;
+        }
+        /// <summary>
+        /// 結果画像のBBOX表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowResultBBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // 結果画像側
+            foreach (BaseShape shape in PbResultImage.EnumerableShapes(@"bbox_\d+"))
+            {
+                shape.Visible = CbShowResultBBox.Checked;
+            }
+            PbResultImage.Refresh();
+
+        }
+        /// <summary>
+        /// 結果画像のキーポイント表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowResultKeyPoints_CheckedChanged(object sender, EventArgs e)
+        {
+            // 結果画像側
+            foreach (BaseShape shape in PbResultImage.EnumerableShapes(@"kpt_\d+"))
+            {
+                shape.Visible = CbShowResultKeyPoints.Checked;
+            }
+            PbResultImage.Refresh();
+
+        }
+        /// <summary>
+        /// 結果画像のキーポイントラベル表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbResultShowKeyPointsLabel_CheckedChanged(object sender, EventArgs e)
+        {
+            // 結果画像側
+            foreach (BaseShape shape in PbResultImage.EnumerableShapes(@"kpt_\d+"))
+            {
+                shape.ShowLable = CbResultShowKeyPointsLabel.Checked;
+            }
+            PbResultImage.Refresh();
+        }
+    }
 }
