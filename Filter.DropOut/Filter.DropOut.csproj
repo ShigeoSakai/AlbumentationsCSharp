@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,12 +49,21 @@
     <Compile Include="ChannelDropout.Designer.cs">
       <DependentUpon>ChannelDropout.cs</DependentUpon>
     </Compile>
+    <Compile Include="CoarseDropout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoarseDropout.Designer.cs">
+      <DependentUpon>CoarseDropout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChannelDropout.resx">
       <DependentUpon>ChannelDropout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoarseDropout.resx">
+      <DependentUpon>CoarseDropout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

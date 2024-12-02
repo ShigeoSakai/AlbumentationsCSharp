@@ -455,6 +455,8 @@ namespace AlbumentationsCSharp
                 {
                     // 解像度を96DPIにする
                     bmp.SetResolution(96.0F, 96.0F);
+                    // 透過設定
+                    bmp.MakeTransparent(Color.Black);
                     MaskImage = bmp;
                     // マスク画像の設定
                     PbOrigImage.MaskImage = MaskImage;
@@ -625,6 +627,8 @@ namespace AlbumentationsCSharp
                         mask_bmp = new Bitmap(fs);
                     if (mask_bmp != null)
                     {
+                        //透過設定
+                        mask_bmp.MakeTransparent(Color.Black);
                         PbResultImage.MaskImage = mask_bmp;
                     }
                 }
@@ -1049,6 +1053,24 @@ namespace AlbumentationsCSharp
                 shape.ShowLable = CbResultShowKeyPointsLabel.Checked;
             }
             PbResultImage.Refresh();
+        }
+        /// <summary>
+        /// 画像のチェック変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowImage_CheckedChanged(object sender, EventArgs e)
+        {
+            PbOrigImage.ShowImage = CbShowImage.Checked;
+        }
+        /// <summary>
+        /// 結果画像のチェック変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbShowResultImage_CheckedChanged(object sender, EventArgs e)
+        {
+            PbResultImage.ShowImage = CbShowResultImage.Checked;
         }
     }
 }

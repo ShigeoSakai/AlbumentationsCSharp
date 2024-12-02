@@ -59,8 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PbResultImage = new SSTools.ZoomPictureBox();
             this.PanelFile = new System.Windows.Forms.Panel();
-            this.CbShowKeyPointLabel = new System.Windows.Forms.CheckBox();
-            this.CbShowKeyPoints = new System.Windows.Forms.CheckBox();
             this.CbKeyPointType = new System.Windows.Forms.ComboBox();
             this.BtNewKeyPoint = new System.Windows.Forms.Button();
             this.BtNewBox = new System.Windows.Forms.Button();
@@ -69,21 +67,25 @@
             this.BtKeyPointSelect = new SSTools.FileSelectButton();
             this.TbKeyPoint = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.CbShowBBox = new System.Windows.Forms.CheckBox();
             this.BtBBoxEdit = new System.Windows.Forms.Button();
             this.CbBBoxType = new System.Windows.Forms.ComboBox();
             this.BtBBoxFileOpen = new System.Windows.Forms.Button();
             this.BtBBoxFileSelect = new SSTools.FileSelectButton();
             this.TbBBoxFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.CbShowKeyPointLabel = new System.Windows.Forms.CheckBox();
+            this.CbShowKeyPoints = new System.Windows.Forms.CheckBox();
+            this.CbShowBBox = new System.Windows.Forms.CheckBox();
             this.PanelExec = new System.Windows.Forms.Panel();
             this.TBLMain = new System.Windows.Forms.TableLayoutPanel();
-            this.PanelOrigControl = new System.Windows.Forms.Panel();
             this.PanelResultControl = new System.Windows.Forms.Panel();
             this.CbResultShowKeyPointsLabel = new System.Windows.Forms.CheckBox();
             this.CbShowResultMask = new System.Windows.Forms.CheckBox();
             this.CbShowResultKeyPoints = new System.Windows.Forms.CheckBox();
             this.CbShowResultBBox = new System.Windows.Forms.CheckBox();
+            this.PanelOrigControl = new System.Windows.Forms.Panel();
+            this.CbShowImage = new System.Windows.Forms.CheckBox();
+            this.CbShowResultImage = new System.Windows.Forms.CheckBox();
             this.MenuStripMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbOrigImage)).BeginInit();
@@ -92,8 +94,8 @@
             this.PanelFile.SuspendLayout();
             this.PanelExec.SuspendLayout();
             this.TBLMain.SuspendLayout();
-            this.PanelOrigControl.SuspendLayout();
             this.PanelResultControl.SuspendLayout();
+            this.PanelOrigControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainToolTip
@@ -157,7 +159,7 @@
             this.ToolStripMenuItemHelp});
             this.MenuStripMain.Location = new System.Drawing.Point(0, 0);
             this.MenuStripMain.Name = "MenuStripMain";
-            this.MenuStripMain.Size = new System.Drawing.Size(933, 24);
+            this.MenuStripMain.Size = new System.Drawing.Size(1072, 24);
             this.MenuStripMain.TabIndex = 3;
             this.MenuStripMain.Text = "menuStrip1";
             // 
@@ -165,11 +167,11 @@
             // 
             this.PanelParam.AutoScroll = true;
             this.PanelParam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelParam.Location = new System.Drawing.Point(329, 160);
+            this.PanelParam.Location = new System.Drawing.Point(398, 160);
             this.PanelParam.Margin = new System.Windows.Forms.Padding(0);
             this.PanelParam.Name = "PanelParam";
             this.PanelParam.Size = new System.Drawing.Size(145, 319);
-            this.PanelParam.TabIndex = 6;
+            this.PanelParam.TabIndex = 1;
             // 
             // CbCategory
             // 
@@ -178,7 +180,7 @@
             this.CbCategory.Location = new System.Drawing.Point(3, 6);
             this.CbCategory.Name = "CbCategory";
             this.CbCategory.Size = new System.Drawing.Size(133, 20);
-            this.CbCategory.TabIndex = 4;
+            this.CbCategory.TabIndex = 0;
             this.CbCategory.SelectedIndexChanged += new System.EventHandler(this.CbCategory_SelectedIndexChanged);
             // 
             // CbAlbumentations
@@ -188,7 +190,7 @@
             this.CbAlbumentations.Location = new System.Drawing.Point(4, 32);
             this.CbAlbumentations.Name = "CbAlbumentations";
             this.CbAlbumentations.Size = new System.Drawing.Size(132, 20);
-            this.CbAlbumentations.TabIndex = 3;
+            this.CbAlbumentations.TabIndex = 1;
             this.CbAlbumentations.SelectedIndexChanged += new System.EventHandler(this.CbAlbumentations_SelectedIndexChanged);
             // 
             // panel1
@@ -197,7 +199,7 @@
             this.panel1.Controls.Add(this.CbCategory);
             this.panel1.Controls.Add(this.CbAlbumentations);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(329, 105);
+            this.panel1.Location = new System.Drawing.Point(398, 105);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.TBLMain.SetRowSpan(this.panel1, 2);
@@ -211,7 +213,7 @@
             this.CbImmediate.Location = new System.Drawing.Point(5, 3);
             this.CbImmediate.Name = "CbImmediate";
             this.CbImmediate.Size = new System.Drawing.Size(120, 24);
-            this.CbImmediate.TabIndex = 2;
+            this.CbImmediate.TabIndex = 0;
             this.CbImmediate.Text = "変更になったら実行";
             this.CbImmediate.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +235,7 @@
             this.TBLMain.SetRowSpan(this.PbOrigImage, 3);
             this.PbOrigImage.ShapeShow = true;
             this.PbOrigImage.ShowImage = true;
-            this.PbOrigImage.Size = new System.Drawing.Size(329, 413);
+            this.PbOrigImage.Size = new System.Drawing.Size(398, 413);
             this.PbOrigImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbOrigImage.TabIndex = 1;
             this.PbOrigImage.TabStop = false;
@@ -259,7 +261,7 @@
             this.BtAddList.Location = new System.Drawing.Point(27, 54);
             this.BtAddList.Name = "BtAddList";
             this.BtAddList.Size = new System.Drawing.Size(75, 23);
-            this.BtAddList.TabIndex = 1;
+            this.BtAddList.TabIndex = 2;
             this.BtAddList.Text = "リスト追加";
             this.BtAddList.UseVisualStyleBackColor = true;
             // 
@@ -268,7 +270,7 @@
             this.BtExec.Location = new System.Drawing.Point(27, 29);
             this.BtExec.Name = "BtExec";
             this.BtExec.Size = new System.Drawing.Size(75, 23);
-            this.BtExec.TabIndex = 0;
+            this.BtExec.TabIndex = 1;
             this.BtExec.Text = "適用";
             this.BtExec.UseVisualStyleBackColor = true;
             this.BtExec.Click += new System.EventHandler(this.BtExec_Click);
@@ -278,10 +280,11 @@
             this.CbShowMask.Appearance = System.Windows.Forms.Appearance.Button;
             this.CbShowMask.Checked = true;
             this.CbShowMask.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowMask.Location = new System.Drawing.Point(3, 3);
+            this.CbShowMask.Location = new System.Drawing.Point(72, 3);
+            this.CbShowMask.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.CbShowMask.Name = "CbShowMask";
-            this.CbShowMask.Size = new System.Drawing.Size(71, 35);
-            this.CbShowMask.TabIndex = 8;
+            this.CbShowMask.Size = new System.Drawing.Size(66, 35);
+            this.CbShowMask.TabIndex = 1;
             this.CbShowMask.Text = "マスク";
             this.CbShowMask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CbShowMask.UseVisualStyleBackColor = true;
@@ -292,7 +295,7 @@
             this.BtMaskImageOpen.Location = new System.Drawing.Point(828, 33);
             this.BtMaskImageOpen.Name = "BtMaskImageOpen";
             this.BtMaskImageOpen.Size = new System.Drawing.Size(66, 23);
-            this.BtMaskImageOpen.TabIndex = 7;
+            this.BtMaskImageOpen.TabIndex = 5;
             this.BtMaskImageOpen.Text = "開く";
             this.BtMaskImageOpen.UseVisualStyleBackColor = true;
             this.BtMaskImageOpen.Click += new System.EventHandler(this.BtMaskImageOpen_Click);
@@ -311,7 +314,7 @@
             this.BtMaskImageSelect.ShowHelp = false;
             this.BtMaskImageSelect.Size = new System.Drawing.Size(32, 23);
             this.BtMaskImageSelect.SupportMultiDottedExtensions = false;
-            this.BtMaskImageSelect.TabIndex = 6;
+            this.BtMaskImageSelect.TabIndex = 4;
             this.BtMaskImageSelect.Text = "...";
             this.BtMaskImageSelect.UserCustomDialog = true;
             this.BtMaskImageSelect.UseVisualStyleBackColor = true;
@@ -321,7 +324,7 @@
             this.TbMaskImage.Location = new System.Drawing.Point(94, 35);
             this.TbMaskImage.Name = "TbMaskImage";
             this.TbMaskImage.Size = new System.Drawing.Size(690, 19);
-            this.TbMaskImage.TabIndex = 5;
+            this.TbMaskImage.TabIndex = 3;
             // 
             // label2
             // 
@@ -337,7 +340,7 @@
             this.BtImageOpen.Location = new System.Drawing.Point(828, 9);
             this.BtImageOpen.Name = "BtImageOpen";
             this.BtImageOpen.Size = new System.Drawing.Size(66, 23);
-            this.BtImageOpen.TabIndex = 3;
+            this.BtImageOpen.TabIndex = 2;
             this.BtImageOpen.Text = "開く";
             this.BtImageOpen.UseVisualStyleBackColor = true;
             this.BtImageOpen.Click += new System.EventHandler(this.BtImageOpen_Click);
@@ -356,7 +359,7 @@
             this.BtImageFileSelect.ShowHelp = false;
             this.BtImageFileSelect.Size = new System.Drawing.Size(32, 23);
             this.BtImageFileSelect.SupportMultiDottedExtensions = false;
-            this.BtImageFileSelect.TabIndex = 2;
+            this.BtImageFileSelect.TabIndex = 1;
             this.BtImageFileSelect.Text = "...";
             this.BtImageFileSelect.UserCustomDialog = true;
             this.BtImageFileSelect.UseVisualStyleBackColor = true;
@@ -366,7 +369,7 @@
             this.TbImageFile.Location = new System.Drawing.Point(94, 11);
             this.TbImageFile.Name = "TbImageFile";
             this.TbImageFile.Size = new System.Drawing.Size(690, 19);
-            this.TbImageFile.TabIndex = 1;
+            this.TbImageFile.TabIndex = 0;
             // 
             // label1
             // 
@@ -385,7 +388,7 @@
             this.PbResultImage.ContextMenuStrip = this.PictBoxMenuStrip;
             this.PbResultImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PbResultImage.Image = null;
-            this.PbResultImage.Location = new System.Drawing.Point(474, 146);
+            this.PbResultImage.Location = new System.Drawing.Point(543, 146);
             this.PbResultImage.Margin = new System.Windows.Forms.Padding(0);
             this.PbResultImage.MaskAlfa = 0.5F;
             this.PbResultImage.MaskImage = null;
@@ -395,7 +398,7 @@
             this.TBLMain.SetRowSpan(this.PbResultImage, 3);
             this.PbResultImage.ShapeShow = true;
             this.PbResultImage.ShowImage = true;
-            this.PbResultImage.Size = new System.Drawing.Size(329, 413);
+            this.PbResultImage.Size = new System.Drawing.Size(398, 413);
             this.PbResultImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbResultImage.TabIndex = 2;
             this.PbResultImage.TabStop = false;
@@ -432,36 +435,8 @@
             this.PanelFile.Location = new System.Drawing.Point(0, 0);
             this.PanelFile.Margin = new System.Windows.Forms.Padding(0);
             this.PanelFile.Name = "PanelFile";
-            this.PanelFile.Size = new System.Drawing.Size(933, 105);
+            this.PanelFile.Size = new System.Drawing.Size(1072, 105);
             this.PanelFile.TabIndex = 0;
-            // 
-            // CbShowKeyPointLabel
-            // 
-            this.CbShowKeyPointLabel.Appearance = System.Windows.Forms.Appearance.Button;
-            this.CbShowKeyPointLabel.Checked = true;
-            this.CbShowKeyPointLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowKeyPointLabel.Location = new System.Drawing.Point(234, 3);
-            this.CbShowKeyPointLabel.Name = "CbShowKeyPointLabel";
-            this.CbShowKeyPointLabel.Size = new System.Drawing.Size(71, 35);
-            this.CbShowKeyPointLabel.TabIndex = 25;
-            this.CbShowKeyPointLabel.Text = "KeyPoint\r\nラベル";
-            this.CbShowKeyPointLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CbShowKeyPointLabel.UseVisualStyleBackColor = true;
-            this.CbShowKeyPointLabel.CheckedChanged += new System.EventHandler(this.CbShowKeyPointLabel_CheckedChanged);
-            // 
-            // CbShowKeyPoints
-            // 
-            this.CbShowKeyPoints.Appearance = System.Windows.Forms.Appearance.Button;
-            this.CbShowKeyPoints.Checked = true;
-            this.CbShowKeyPoints.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowKeyPoints.Location = new System.Drawing.Point(157, 3);
-            this.CbShowKeyPoints.Name = "CbShowKeyPoints";
-            this.CbShowKeyPoints.Size = new System.Drawing.Size(71, 35);
-            this.CbShowKeyPoints.TabIndex = 24;
-            this.CbShowKeyPoints.Text = "KeyPoint";
-            this.CbShowKeyPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CbShowKeyPoints.UseVisualStyleBackColor = true;
-            this.CbShowKeyPoints.CheckedChanged += new System.EventHandler(this.CbShowKeyPoints_CheckedChanged);
             // 
             // CbKeyPointType
             // 
@@ -469,14 +444,14 @@
             this.CbKeyPointType.Location = new System.Drawing.Point(94, 81);
             this.CbKeyPointType.Name = "CbKeyPointType";
             this.CbKeyPointType.Size = new System.Drawing.Size(113, 20);
-            this.CbKeyPointType.TabIndex = 23;
+            this.CbKeyPointType.TabIndex = 12;
             // 
             // BtNewKeyPoint
             // 
             this.BtNewKeyPoint.Location = new System.Drawing.Point(857, 79);
             this.BtNewKeyPoint.Name = "BtNewKeyPoint";
             this.BtNewKeyPoint.Size = new System.Drawing.Size(64, 23);
-            this.BtNewKeyPoint.TabIndex = 22;
+            this.BtNewKeyPoint.TabIndex = 17;
             this.BtNewKeyPoint.Text = "新規";
             this.BtNewKeyPoint.UseVisualStyleBackColor = true;
             // 
@@ -485,7 +460,7 @@
             this.BtNewBox.Location = new System.Drawing.Point(857, 56);
             this.BtNewBox.Name = "BtNewBox";
             this.BtNewBox.Size = new System.Drawing.Size(64, 23);
-            this.BtNewBox.TabIndex = 21;
+            this.BtNewBox.TabIndex = 11;
             this.BtNewBox.Text = "新規";
             this.BtNewBox.UseVisualStyleBackColor = true;
             this.BtNewBox.Click += new System.EventHandler(this.BtNewBox_Click);
@@ -495,7 +470,7 @@
             this.BtKeyPointEdit.Location = new System.Drawing.Point(790, 79);
             this.BtKeyPointEdit.Name = "BtKeyPointEdit";
             this.BtKeyPointEdit.Size = new System.Drawing.Size(64, 23);
-            this.BtKeyPointEdit.TabIndex = 20;
+            this.BtKeyPointEdit.TabIndex = 16;
             this.BtKeyPointEdit.Text = "編集";
             this.BtKeyPointEdit.UseVisualStyleBackColor = true;
             // 
@@ -504,7 +479,7 @@
             this.BtKeyPointOpen.Location = new System.Drawing.Point(718, 79);
             this.BtKeyPointOpen.Name = "BtKeyPointOpen";
             this.BtKeyPointOpen.Size = new System.Drawing.Size(66, 23);
-            this.BtKeyPointOpen.TabIndex = 19;
+            this.BtKeyPointOpen.TabIndex = 15;
             this.BtKeyPointOpen.Text = "開く";
             this.BtKeyPointOpen.UseVisualStyleBackColor = true;
             this.BtKeyPointOpen.Click += new System.EventHandler(this.BtKeyPointOpen_Click);
@@ -522,7 +497,7 @@
             this.BtKeyPointSelect.ShowHelp = false;
             this.BtKeyPointSelect.Size = new System.Drawing.Size(32, 23);
             this.BtKeyPointSelect.SupportMultiDottedExtensions = false;
-            this.BtKeyPointSelect.TabIndex = 18;
+            this.BtKeyPointSelect.TabIndex = 14;
             this.BtKeyPointSelect.Text = "...";
             this.BtKeyPointSelect.UserCustomDialog = true;
             this.BtKeyPointSelect.UseVisualStyleBackColor = true;
@@ -532,7 +507,7 @@
             this.TbKeyPoint.Location = new System.Drawing.Point(213, 81);
             this.TbKeyPoint.Name = "TbKeyPoint";
             this.TbKeyPoint.Size = new System.Drawing.Size(461, 19);
-            this.TbKeyPoint.TabIndex = 17;
+            this.TbKeyPoint.TabIndex = 13;
             // 
             // label4
             // 
@@ -543,26 +518,12 @@
             this.label4.Text = "KeyPoint:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CbShowBBox
-            // 
-            this.CbShowBBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.CbShowBBox.Checked = true;
-            this.CbShowBBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowBBox.Location = new System.Drawing.Point(80, 3);
-            this.CbShowBBox.Name = "CbShowBBox";
-            this.CbShowBBox.Size = new System.Drawing.Size(71, 35);
-            this.CbShowBBox.TabIndex = 15;
-            this.CbShowBBox.Text = "BBOX";
-            this.CbShowBBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CbShowBBox.UseVisualStyleBackColor = true;
-            this.CbShowBBox.CheckedChanged += new System.EventHandler(this.CbShowBBox_CheckedChanged);
-            // 
             // BtBBoxEdit
             // 
             this.BtBBoxEdit.Location = new System.Drawing.Point(790, 56);
             this.BtBBoxEdit.Name = "BtBBoxEdit";
             this.BtBBoxEdit.Size = new System.Drawing.Size(64, 23);
-            this.BtBBoxEdit.TabIndex = 14;
+            this.BtBBoxEdit.TabIndex = 10;
             this.BtBBoxEdit.Text = "編集";
             this.BtBBoxEdit.UseVisualStyleBackColor = true;
             this.BtBBoxEdit.Click += new System.EventHandler(this.BtBBoxEdit_Click);
@@ -573,14 +534,14 @@
             this.CbBBoxType.Location = new System.Drawing.Point(94, 58);
             this.CbBBoxType.Name = "CbBBoxType";
             this.CbBBoxType.Size = new System.Drawing.Size(113, 20);
-            this.CbBBoxType.TabIndex = 13;
+            this.CbBBoxType.TabIndex = 6;
             // 
             // BtBBoxFileOpen
             // 
             this.BtBBoxFileOpen.Location = new System.Drawing.Point(718, 56);
             this.BtBBoxFileOpen.Name = "BtBBoxFileOpen";
             this.BtBBoxFileOpen.Size = new System.Drawing.Size(66, 23);
-            this.BtBBoxFileOpen.TabIndex = 12;
+            this.BtBBoxFileOpen.TabIndex = 9;
             this.BtBBoxFileOpen.Text = "開く";
             this.BtBBoxFileOpen.UseVisualStyleBackColor = true;
             this.BtBBoxFileOpen.Click += new System.EventHandler(this.BtBBoxFileOpen_Click);
@@ -598,7 +559,7 @@
             this.BtBBoxFileSelect.ShowHelp = false;
             this.BtBBoxFileSelect.Size = new System.Drawing.Size(32, 23);
             this.BtBBoxFileSelect.SupportMultiDottedExtensions = false;
-            this.BtBBoxFileSelect.TabIndex = 11;
+            this.BtBBoxFileSelect.TabIndex = 8;
             this.BtBBoxFileSelect.Text = "...";
             this.BtBBoxFileSelect.UserCustomDialog = true;
             this.BtBBoxFileSelect.UseVisualStyleBackColor = true;
@@ -608,7 +569,7 @@
             this.TbBBoxFile.Location = new System.Drawing.Point(213, 58);
             this.TbBBoxFile.Name = "TbBBoxFile";
             this.TbBBoxFile.Size = new System.Drawing.Size(461, 19);
-            this.TbBBoxFile.TabIndex = 10;
+            this.TbBBoxFile.TabIndex = 7;
             // 
             // label3
             // 
@@ -619,13 +580,58 @@
             this.label3.Text = "BBox:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // CbShowKeyPointLabel
+            // 
+            this.CbShowKeyPointLabel.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowKeyPointLabel.Checked = true;
+            this.CbShowKeyPointLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowKeyPointLabel.Location = new System.Drawing.Point(276, 3);
+            this.CbShowKeyPointLabel.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowKeyPointLabel.Name = "CbShowKeyPointLabel";
+            this.CbShowKeyPointLabel.Size = new System.Drawing.Size(66, 35);
+            this.CbShowKeyPointLabel.TabIndex = 4;
+            this.CbShowKeyPointLabel.Text = "KeyPoint\r\nラベル";
+            this.CbShowKeyPointLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowKeyPointLabel.UseVisualStyleBackColor = true;
+            this.CbShowKeyPointLabel.CheckedChanged += new System.EventHandler(this.CbShowKeyPointLabel_CheckedChanged);
+            // 
+            // CbShowKeyPoints
+            // 
+            this.CbShowKeyPoints.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowKeyPoints.Checked = true;
+            this.CbShowKeyPoints.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowKeyPoints.Location = new System.Drawing.Point(208, 3);
+            this.CbShowKeyPoints.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowKeyPoints.Name = "CbShowKeyPoints";
+            this.CbShowKeyPoints.Size = new System.Drawing.Size(66, 35);
+            this.CbShowKeyPoints.TabIndex = 3;
+            this.CbShowKeyPoints.Text = "KeyPoint";
+            this.CbShowKeyPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowKeyPoints.UseVisualStyleBackColor = true;
+            this.CbShowKeyPoints.CheckedChanged += new System.EventHandler(this.CbShowKeyPoints_CheckedChanged);
+            // 
+            // CbShowBBox
+            // 
+            this.CbShowBBox.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowBBox.Checked = true;
+            this.CbShowBBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowBBox.Location = new System.Drawing.Point(140, 3);
+            this.CbShowBBox.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowBBox.Name = "CbShowBBox";
+            this.CbShowBBox.Size = new System.Drawing.Size(66, 35);
+            this.CbShowBBox.TabIndex = 2;
+            this.CbShowBBox.Text = "BBOX";
+            this.CbShowBBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowBBox.UseVisualStyleBackColor = true;
+            this.CbShowBBox.CheckedChanged += new System.EventHandler(this.CbShowBBox_CheckedChanged);
+            // 
             // PanelExec
             // 
             this.PanelExec.Controls.Add(this.CbImmediate);
             this.PanelExec.Controls.Add(this.BtAddList);
             this.PanelExec.Controls.Add(this.BtExec);
             this.PanelExec.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelExec.Location = new System.Drawing.Point(329, 479);
+            this.PanelExec.Location = new System.Drawing.Point(398, 479);
             this.PanelExec.Margin = new System.Windows.Forms.Padding(0);
             this.PanelExec.Name = "PanelExec";
             this.PanelExec.Size = new System.Drawing.Size(145, 80);
@@ -655,37 +661,23 @@
             this.TBLMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.TBLMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TBLMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.TBLMain.Size = new System.Drawing.Size(933, 559);
+            this.TBLMain.Size = new System.Drawing.Size(1072, 559);
             this.TBLMain.TabIndex = 2;
-            // 
-            // PanelOrigControl
-            // 
-            this.PanelOrigControl.AutoSize = true;
-            this.PanelOrigControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelOrigControl.Controls.Add(this.CbShowKeyPointLabel);
-            this.PanelOrigControl.Controls.Add(this.CbShowMask);
-            this.PanelOrigControl.Controls.Add(this.CbShowKeyPoints);
-            this.PanelOrigControl.Controls.Add(this.CbShowBBox);
-            this.PanelOrigControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelOrigControl.Location = new System.Drawing.Point(0, 105);
-            this.PanelOrigControl.Margin = new System.Windows.Forms.Padding(0);
-            this.PanelOrigControl.Name = "PanelOrigControl";
-            this.PanelOrigControl.Size = new System.Drawing.Size(329, 41);
-            this.PanelOrigControl.TabIndex = 7;
             // 
             // PanelResultControl
             // 
             this.PanelResultControl.AutoSize = true;
             this.PanelResultControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelResultControl.Controls.Add(this.CbShowResultImage);
             this.PanelResultControl.Controls.Add(this.CbResultShowKeyPointsLabel);
             this.PanelResultControl.Controls.Add(this.CbShowResultMask);
             this.PanelResultControl.Controls.Add(this.CbShowResultKeyPoints);
             this.PanelResultControl.Controls.Add(this.CbShowResultBBox);
             this.PanelResultControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelResultControl.Location = new System.Drawing.Point(474, 105);
+            this.PanelResultControl.Location = new System.Drawing.Point(543, 105);
             this.PanelResultControl.Margin = new System.Windows.Forms.Padding(0);
             this.PanelResultControl.Name = "PanelResultControl";
-            this.PanelResultControl.Size = new System.Drawing.Size(329, 41);
+            this.PanelResultControl.Size = new System.Drawing.Size(398, 41);
             this.PanelResultControl.TabIndex = 8;
             // 
             // CbResultShowKeyPointsLabel
@@ -693,10 +685,11 @@
             this.CbResultShowKeyPointsLabel.Appearance = System.Windows.Forms.Appearance.Button;
             this.CbResultShowKeyPointsLabel.Checked = true;
             this.CbResultShowKeyPointsLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbResultShowKeyPointsLabel.Location = new System.Drawing.Point(234, 3);
+            this.CbResultShowKeyPointsLabel.Location = new System.Drawing.Point(278, 3);
+            this.CbResultShowKeyPointsLabel.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.CbResultShowKeyPointsLabel.Name = "CbResultShowKeyPointsLabel";
-            this.CbResultShowKeyPointsLabel.Size = new System.Drawing.Size(71, 35);
-            this.CbResultShowKeyPointsLabel.TabIndex = 25;
+            this.CbResultShowKeyPointsLabel.Size = new System.Drawing.Size(66, 35);
+            this.CbResultShowKeyPointsLabel.TabIndex = 4;
             this.CbResultShowKeyPointsLabel.Text = "KeyPoint\r\nラベル";
             this.CbResultShowKeyPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CbResultShowKeyPointsLabel.UseVisualStyleBackColor = true;
@@ -707,10 +700,11 @@
             this.CbShowResultMask.Appearance = System.Windows.Forms.Appearance.Button;
             this.CbShowResultMask.Checked = true;
             this.CbShowResultMask.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowResultMask.Location = new System.Drawing.Point(3, 3);
+            this.CbShowResultMask.Location = new System.Drawing.Point(74, 3);
+            this.CbShowResultMask.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.CbShowResultMask.Name = "CbShowResultMask";
-            this.CbShowResultMask.Size = new System.Drawing.Size(71, 35);
-            this.CbShowResultMask.TabIndex = 8;
+            this.CbShowResultMask.Size = new System.Drawing.Size(66, 35);
+            this.CbShowResultMask.TabIndex = 1;
             this.CbShowResultMask.Text = "マスク";
             this.CbShowResultMask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CbShowResultMask.UseVisualStyleBackColor = true;
@@ -721,10 +715,11 @@
             this.CbShowResultKeyPoints.Appearance = System.Windows.Forms.Appearance.Button;
             this.CbShowResultKeyPoints.Checked = true;
             this.CbShowResultKeyPoints.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowResultKeyPoints.Location = new System.Drawing.Point(157, 3);
+            this.CbShowResultKeyPoints.Location = new System.Drawing.Point(210, 3);
+            this.CbShowResultKeyPoints.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.CbShowResultKeyPoints.Name = "CbShowResultKeyPoints";
-            this.CbShowResultKeyPoints.Size = new System.Drawing.Size(71, 35);
-            this.CbShowResultKeyPoints.TabIndex = 24;
+            this.CbShowResultKeyPoints.Size = new System.Drawing.Size(66, 35);
+            this.CbShowResultKeyPoints.TabIndex = 3;
             this.CbShowResultKeyPoints.Text = "KeyPoint";
             this.CbShowResultKeyPoints.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CbShowResultKeyPoints.UseVisualStyleBackColor = true;
@@ -735,20 +730,67 @@
             this.CbShowResultBBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.CbShowResultBBox.Checked = true;
             this.CbShowResultBBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowResultBBox.Location = new System.Drawing.Point(80, 3);
+            this.CbShowResultBBox.Location = new System.Drawing.Point(142, 3);
+            this.CbShowResultBBox.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
             this.CbShowResultBBox.Name = "CbShowResultBBox";
-            this.CbShowResultBBox.Size = new System.Drawing.Size(71, 35);
-            this.CbShowResultBBox.TabIndex = 15;
+            this.CbShowResultBBox.Size = new System.Drawing.Size(66, 35);
+            this.CbShowResultBBox.TabIndex = 2;
             this.CbShowResultBBox.Text = "BBOX";
             this.CbShowResultBBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CbShowResultBBox.UseVisualStyleBackColor = true;
             this.CbShowResultBBox.CheckedChanged += new System.EventHandler(this.CbShowResultBBox_CheckedChanged);
             // 
+            // PanelOrigControl
+            // 
+            this.PanelOrigControl.AutoSize = true;
+            this.PanelOrigControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelOrigControl.Controls.Add(this.CbShowImage);
+            this.PanelOrigControl.Controls.Add(this.CbShowKeyPointLabel);
+            this.PanelOrigControl.Controls.Add(this.CbShowMask);
+            this.PanelOrigControl.Controls.Add(this.CbShowKeyPoints);
+            this.PanelOrigControl.Controls.Add(this.CbShowBBox);
+            this.PanelOrigControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelOrigControl.Location = new System.Drawing.Point(0, 105);
+            this.PanelOrigControl.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelOrigControl.Name = "PanelOrigControl";
+            this.PanelOrigControl.Size = new System.Drawing.Size(398, 41);
+            this.PanelOrigControl.TabIndex = 7;
+            // 
+            // CbShowImage
+            // 
+            this.CbShowImage.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowImage.Checked = true;
+            this.CbShowImage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowImage.Location = new System.Drawing.Point(4, 3);
+            this.CbShowImage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowImage.Name = "CbShowImage";
+            this.CbShowImage.Size = new System.Drawing.Size(66, 35);
+            this.CbShowImage.TabIndex = 0;
+            this.CbShowImage.Text = "画像";
+            this.CbShowImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowImage.UseVisualStyleBackColor = true;
+            this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
+            // 
+            // CbShowResultImage
+            // 
+            this.CbShowResultImage.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowResultImage.Checked = true;
+            this.CbShowResultImage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowResultImage.Location = new System.Drawing.Point(6, 3);
+            this.CbShowResultImage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowResultImage.Name = "CbShowResultImage";
+            this.CbShowResultImage.Size = new System.Drawing.Size(66, 35);
+            this.CbShowResultImage.TabIndex = 0;
+            this.CbShowResultImage.Text = "画像";
+            this.CbShowResultImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowResultImage.UseVisualStyleBackColor = true;
+            this.CbShowResultImage.CheckedChanged += new System.EventHandler(this.CbShowResultImage_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 583);
+            this.ClientSize = new System.Drawing.Size(1072, 583);
             this.Controls.Add(this.TBLMain);
             this.Controls.Add(this.MenuStripMain);
             this.Name = "MainForm";
@@ -764,8 +806,8 @@
             this.PanelExec.ResumeLayout(false);
             this.TBLMain.ResumeLayout(false);
             this.TBLMain.PerformLayout();
-            this.PanelOrigControl.ResumeLayout(false);
             this.PanelResultControl.ResumeLayout(false);
+            this.PanelOrigControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -828,6 +870,8 @@
         private System.Windows.Forms.CheckBox CbShowResultMask;
         private System.Windows.Forms.CheckBox CbShowResultKeyPoints;
         private System.Windows.Forms.CheckBox CbShowResultBBox;
+        private System.Windows.Forms.CheckBox CbShowImage;
+        private System.Windows.Forms.CheckBox CbShowResultImage;
     }
 }
 

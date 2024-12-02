@@ -182,7 +182,7 @@ namespace FilterBase.Parts
         /// 最小値プロパティ
         /// </summary>
         [Category("値入力")]
-        public decimal? MinValue
+        public virtual decimal? MinValue
         {
             get => _minValue;
             set
@@ -213,7 +213,7 @@ namespace FilterBase.Parts
         /// 最大値プロパティ
         /// </summary>
         [Category("値入力")]
-        public decimal? MaxValue
+        public virtual decimal? MaxValue
         {
             get => _maxValue;
             set
@@ -248,8 +248,15 @@ namespace FilterBase.Parts
         {
             get
             {
-                _value = GetValueFromInput();
-                return PartsFunc.GetTuppleToString(_value,_valueType,_decimalPlace);
+                if (_isInit)
+                {   // 初期化中なので...
+                    return _init_Value;
+                }
+                else
+                {
+                    _value = GetValueFromInput();
+                    return PartsFunc.GetTuppleToString(_value, _valueType, _decimalPlace);
+                }
             }
             set
             {
@@ -312,7 +319,13 @@ namespace FilterBase.Parts
             if (_maxValue.HasValue)
             {
                 if (NUDTo.Value > _maxValue.Value)
+                {   
+                    // 先に最小値をチェック
+                    if (NUDTo.Minimum >  _maxValue.Value)
+                        NUDTo.Minimum = _maxValue.Value;
+                    // 値に設定
                     NUDTo.Value = _maxValue.Value;
+                }
                 NUDTo.Maximum = _maxValue.Value;
             }
             if (NUDFrom.Value > result.Item2)
@@ -322,7 +335,13 @@ namespace FilterBase.Parts
             if (_minValue.HasValue)
             {
                 if (NUDFrom.Value < _minValue.Value)
+                {
+                    // 先に最大値をチェック
+                    if (NUDFrom.Maximum <  _minValue.Value)
+                        NUDFrom.Maximum = _minValue.Value;
+                    // 値を設定
                     NUDFrom.Value = _minValue.Value;
+                }
                 NUDFrom.Minimum = _minValue.Value;
             }
             if (NUDTo.Value < result.Item1)

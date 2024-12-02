@@ -1,6 +1,6 @@
 ﻿namespace FilterBase.Parts
 {
-    partial class InputMaxMin
+    partial class InputMaxMinWithType
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -28,61 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NUDTo = new System.Windows.Forms.NumericUpDown();
-            this.NUDFrom = new System.Windows.Forms.NumericUpDown();
-            this.LbBar = new System.Windows.Forms.Label();
+            this.CbIntFloat = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NUDTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDFrom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // LbTitle
-            // 
-            this.LbTitle.Location = new System.Drawing.Point(1, 24);
-            // 
             // NUDTo
             // 
-            this.NUDTo.Location = new System.Drawing.Point(73, 40);
-            this.NUDTo.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.NUDTo.Name = "NUDTo";
-            this.NUDTo.Size = new System.Drawing.Size(50, 19);
-            this.NUDTo.TabIndex = 7;
-            this.NUDTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.NUDTo.ValueChanged += new System.EventHandler(this.NUDTo_ValueChanged);
+            this.NUDTo.Location = new System.Drawing.Point(72, 32);
             // 
             // NUDFrom
             // 
-            this.NUDFrom.Location = new System.Drawing.Point(0, 40);
-            this.NUDFrom.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.NUDFrom.Name = "NUDFrom";
-            this.NUDFrom.Size = new System.Drawing.Size(50, 19);
-            this.NUDFrom.TabIndex = 6;
-            this.NUDFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.NUDFrom.ValueChanged += new System.EventHandler(this.NUDFrom_ValueChanged);
+            this.NUDFrom.Location = new System.Drawing.Point(1, 32);
             // 
             // LbBar
             // 
-            this.LbBar.AutoSize = true;
-            this.LbBar.Location = new System.Drawing.Point(53, 42);
-            this.LbBar.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.LbBar.Name = "LbBar";
-            this.LbBar.Size = new System.Drawing.Size(17, 12);
-            this.LbBar.TabIndex = 8;
-            this.LbBar.Text = "～";
+            this.LbBar.Location = new System.Drawing.Point(53, 34);
             // 
-            // InputMaxMin
+            // LbTitle
+            // 
+            this.LbTitle.Location = new System.Drawing.Point(-1, 16);
+            // 
+            // CbValid
+            // 
+            this.CbValid.Location = new System.Drawing.Point(0, 3);
+            // 
+            // CbIntFloat
+            // 
+            this.CbIntFloat.AutoSize = true;
+            this.CbIntFloat.Checked = true;
+            this.CbIntFloat.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbIntFloat.Location = new System.Drawing.Point(72, 10);
+            this.CbIntFloat.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbIntFloat.Name = "CbIntFloat";
+            this.CbIntFloat.Size = new System.Drawing.Size(47, 16);
+            this.CbIntFloat.TabIndex = 12;
+            this.CbIntFloat.Text = "float";
+            this.CbIntFloat.UseVisualStyleBackColor = true;
+            this.CbIntFloat.CheckedChanged += new System.EventHandler(this.CbIntFloat_CheckedChanged);
+            // 
+            // InputMaxMinWithType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.Controls.Add(this.LbBar);
-            this.Controls.Add(this.NUDTo);
-            this.Controls.Add(this.NUDFrom);
-            this.Name = "InputMaxMin";
-            this.Size = new System.Drawing.Size(124, 62);
+            this.Controls.Add(this.CbIntFloat);
+            this.Name = "InputMaxMinWithType";
+            this.Size = new System.Drawing.Size(124, 54);
+            this.Controls.SetChildIndex(this.LbBar, 0);
             this.Controls.SetChildIndex(this.LbTitle, 0);
             this.Controls.SetChildIndex(this.NUDFrom, 0);
             this.Controls.SetChildIndex(this.NUDTo, 0);
-            this.Controls.SetChildIndex(this.LbBar, 0);
             this.Controls.SetChildIndex(this.CbValid, 0);
+            this.Controls.SetChildIndex(this.CbIntFloat, 0);
             ((System.ComponentModel.ISupportInitialize)(this.NUDTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUDFrom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -93,8 +90,6 @@
 
         #endregion
 
-        protected System.Windows.Forms.NumericUpDown NUDTo;
-        protected System.Windows.Forms.NumericUpDown NUDFrom;
-        protected System.Windows.Forms.Label LbBar;
+        private System.Windows.Forms.CheckBox CbIntFloat;
     }
 }

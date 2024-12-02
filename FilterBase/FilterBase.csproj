@@ -54,6 +54,12 @@
     <Compile Include="Enums\InterpolationFlags.cs" />
     <Compile Include="FilterAttributes.cs" />
     <Compile Include="IComboBox.cs" />
+    <Compile Include="Parts\InputMaxMinWithType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\InputMaxMinWithType.Designer.cs">
+      <DependentUpon>InputMaxMinWithType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parts\PartsConst.cs" />
     <Compile Include="Parts\PartsFunc.cs" />
     <Compile Include="Parts\CheckBoxParts.cs">
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Parts\InputMaxMin.resx">
       <DependentUpon>InputMaxMin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\InputMaxMinWithType.resx">
+      <DependentUpon>InputMaxMinWithType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Parts\InputTrackBar.resx">
       <DependentUpon>InputTrackBar.cs</DependentUpon>
