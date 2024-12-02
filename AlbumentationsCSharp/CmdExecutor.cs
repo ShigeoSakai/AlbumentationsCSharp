@@ -23,7 +23,7 @@ namespace AlbumentationsCSharp
         /// <param name="sender"></param>
         /// <param name="sendCmd"></param>
         /// <param name="isOK"></param>
-        public delegate void CommandComplete(object sender, string sendCmd,string recvText, bool isOK);
+        public delegate bool CommandComplete(object sender, string sendCmd,string recvText, bool isOK);
 
         /// <summary>
         /// コマンドエラー発生イベントハンドラ
@@ -337,17 +337,20 @@ namespace AlbumentationsCSharp
                     (e.Data.StartsWith(command.Response)))
                 {   // 応答が一致したので先頭を取り除く
                     Commands.TryDequeue(out COMMAND_AND_RESPONSE ok_cmd);
+                    bool cmd_resp_result = true;
                     // コールバックを呼び出す
                     if (ok_cmd.CompleteCallback != null)
                     {
-                        ok_cmd.CompleteCallback(this, ok_cmd.Command,e.Data, true);
+                        cmd_resp_result = ok_cmd.CompleteCallback(this, ok_cmd.Command,e.Data, true);
                     }
-
-                    Console.WriteLine("Next Command Send");
-                    // 次のコマンドを要求する
-                    if (Commands.IsEmpty == false)
-                        if (Commands.TryPeek(out COMMAND_AND_RESPONSE new_command))
-                            ExecCommands.Enqueue(new_command);
+                    if (cmd_resp_result)
+                    {
+                        Console.WriteLine("Next Command Send");
+                        // 次のコマンドを要求する
+                        if (Commands.IsEmpty == false)
+                            if (Commands.TryPeek(out COMMAND_AND_RESPONSE new_command))
+                                ExecCommands.Enqueue(new_command);
+                    }
                 }
             }
 

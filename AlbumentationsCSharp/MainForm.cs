@@ -268,12 +268,12 @@ namespace AlbumentationsCSharp
         /// <param name="sendCmd"></param>
         /// <param name="resp"></param>
         /// <param name="isOK"></param>
-        private void AlbumentationsVersionGet(object sender, string sendCmd, string resp, bool isOK)
+        private bool AlbumentationsVersionGet(object sender, string sendCmd, string resp, bool isOK)
         {
             if (InvokeRequired)
             {
-                Invoke((MethodInvoker)delegate { AlbumentationsVersionGet(sender, sendCmd, resp, isOK); });
-                return;
+                bool result = (bool)Invoke((Func<bool>)(()=> AlbumentationsVersionGet(sender, sendCmd, resp, isOK)));
+                return result;
             }
             AlbumentationsVersion = new VersionInfo(resp);
             BaseFilterControl ctrl = GetPanelFilterControl();
@@ -284,6 +284,7 @@ namespace AlbumentationsCSharp
             // 待ち表示ダイアログを閉じる
             if (WaitDialog != null)
                 WaitDialog.SetResult(true);
+            return true;
         }
 
 
@@ -589,12 +590,12 @@ namespace AlbumentationsCSharp
         /// <param name="cmd"></param>
         /// <param name="recvCmd"></param>
         /// <param name="isOK"></param>
-        private void ExecCallback(object sender, string cmd, string recvCmd, bool isOK)
+        private bool ExecCallback(object sender, string cmd, string recvCmd, bool isOK)
         {
             if (InvokeRequired)
             {
-                Invoke((MethodInvoker)delegate { ExecCallback(sender, cmd, recvCmd, isOK); });
-                return;
+                bool result = (bool)Invoke((Func<bool>)(()=> ExecCallback(sender, cmd, recvCmd, isOK)));
+                return result;
             }
             // TRコマンドの応答
             if ((isOK) && (cmd.StartsWith("TR:")))
@@ -685,6 +686,7 @@ namespace AlbumentationsCSharp
                 }
 
             }
+            return true;
         }
 
 
