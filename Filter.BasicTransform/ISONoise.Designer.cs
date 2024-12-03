@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FLPParts = new System.Windows.Forms.FlowLayoutPanel();
+            this.FLPParam = new System.Windows.Forms.FlowLayoutPanel();
             this.ParaColorShift = new FilterBase.Parts.InputMaxMin();
             this.ParaIntensity = new FilterBase.Parts.InputMaxMin();
-            this.FLPParts.SuspendLayout();
+            this.FLPParam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParaColorShift)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParaIntensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // FLPParts
+            // FLPParam
             // 
-            this.FLPParts.AutoSize = true;
-            this.FLPParts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.FLPParts.Controls.Add(this.ParaColorShift);
-            this.FLPParts.Controls.Add(this.ParaIntensity);
-            this.FLPParts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FLPParts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParts.Location = new System.Drawing.Point(0, 25);
-            this.FLPParts.Name = "FLPParts";
-            this.FLPParts.Size = new System.Drawing.Size(128, 96);
-            this.FLPParts.TabIndex = 5;
+            this.FLPParam.AutoSize = true;
+            this.FLPParam.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.FLPParam.Controls.Add(this.ParaColorShift);
+            this.FLPParam.Controls.Add(this.ParaIntensity);
+            this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Name = "FLPParam";
+            this.FLPParam.Size = new System.Drawing.Size(128, 90);
+            this.FLPParam.TabIndex = 5;
             // 
             // ParaColorShift
             // 
@@ -63,6 +63,7 @@
             0,
             0,
             131072});
+            this.ParaColorShift.InvalidValue = "";
             this.ParaColorShift.Location = new System.Drawing.Point(3, 3);
             this.ParaColorShift.MaxValue = new decimal(new int[] {
             1,
@@ -79,9 +80,11 @@
             this.ParaColorShift.MinVersion = null;
             this.ParaColorShift.Name = "ParaColorShift";
             this.ParaColorShift.Required = false;
-            this.ParaColorShift.Size = new System.Drawing.Size(124, 42);
+            this.ParaColorShift.Size = new System.Drawing.Size(124, 39);
             this.ParaColorShift.TabIndex = 0;
             this.ParaColorShift.Title = "カラーシフト";
+            this.ParaColorShift.UseLargeValue = false;
+            this.ParaColorShift.UseValid = false;
             this.ParaColorShift.Value = "(0.01,0.05)";
             this.ParaColorShift.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_FLOAT;
             this.ParaColorShift.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -98,7 +101,8 @@
             0,
             0,
             65536});
-            this.ParaIntensity.Location = new System.Drawing.Point(3, 51);
+            this.ParaIntensity.InvalidValue = "";
+            this.ParaIntensity.Location = new System.Drawing.Point(3, 48);
             this.ParaIntensity.MaxValue = null;
             this.ParaIntensity.MaxVersion = null;
             this.ParaIntensity.MinimumSize = new System.Drawing.Size(124, 21);
@@ -106,9 +110,11 @@
             this.ParaIntensity.MinVersion = null;
             this.ParaIntensity.Name = "ParaIntensity";
             this.ParaIntensity.Required = false;
-            this.ParaIntensity.Size = new System.Drawing.Size(124, 42);
+            this.ParaIntensity.Size = new System.Drawing.Size(124, 39);
             this.ParaIntensity.TabIndex = 1;
             this.ParaIntensity.Title = "強度";
+            this.ParaIntensity.UseLargeValue = false;
+            this.ParaIntensity.UseValid = false;
             this.ParaIntensity.Value = "(0.1,0.5)";
             this.ParaIntensity.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_FLOAT;
             this.ParaIntensity.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -119,13 +125,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.FLPParts);
+            this.Controls.Add(this.FLPParam);
             this.Name = "ISONoise";
-            this.Size = new System.Drawing.Size(128, 146);
+            this.Size = new System.Drawing.Size(128, 140);
             this.Target = FilterBase.BaseFilterControl.TRANSFORM_TARGET.IMAGE;
-            this.Controls.SetChildIndex(this.FLPParts, 0);
-            this.FLPParts.ResumeLayout(false);
-            this.FLPParts.PerformLayout();
+            this.Controls.SetChildIndex(this.FLPParam, 0);
+            this.FLPParam.ResumeLayout(false);
+            this.FLPParam.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParaColorShift)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParaIntensity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -136,7 +142,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel FLPParts;
+        private System.Windows.Forms.FlowLayoutPanel FLPParam;
         private FilterBase.Parts.InputMaxMin ParaColorShift;
         private FilterBase.Parts.InputMaxMin ParaIntensity;
     }

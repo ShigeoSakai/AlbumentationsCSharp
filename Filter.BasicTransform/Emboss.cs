@@ -54,6 +54,19 @@ namespace Filter.BasicTransform
             return null;
         }
         /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected override bool SetParameters(Dictionary<string, string> parameters)
+        {
+            bool result = SetParameters(FLPParam.Controls, parameters);
+            result |= base.SetParameters(parameters);
+            return result;
+        }
+
+        /// <summary>
         /// パラメータ変更イベント
         /// </summary>
         /// <param name="sender"></param>

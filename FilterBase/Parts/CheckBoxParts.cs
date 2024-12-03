@@ -446,5 +446,35 @@ namespace FilterBase.Parts
             if ((tip != null) && (string.IsNullOrEmpty(Description) == false))
                 tip.SetToolTip(this, Description);
         }
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public bool SetParameter(string text)
+        {
+            if (string.IsNullOrEmpty(text) == false)
+            {
+                string chk_value = text.Trim();
+                if (SetValue(ref _value, chk_value))
+                {
+                    if (this.ThreeState)
+                    {   // チェック状態変更
+                        this.CheckState = GetValue3State(_value);
+                    }
+                    else
+                    {   // チェック状態変更
+                        this.Checked = GetValueBool(_value);
+                    }
+                    return true; 
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 無効設定
+        /// </summary>
+        /// <returns></returns>
+        public bool SetInvalid() { return true; }
     }
 }

@@ -213,7 +213,7 @@ namespace FilterBase.Parts
         /// 値の設定
         /// </summary>
         /// <param name="value"></param>
-        private void SetValue(object value)
+        private bool SetValue(object value)
         {
             if (this.Items.Count > 0)
             {
@@ -226,17 +226,18 @@ namespace FilterBase.Parts
                             if ((cb_item.ArgumentValue != null) && (cb_item.ArgumentValue.Equals(value)))
                             {
                                 this.SelectedItem = item;
-                                return;
+                                return true;
                             }
                         }
                         if (item.Equals(value))
                         {
                             this.SelectedItem = item;
-                            return;
+                            return true;
                         }
                     }
                 }
             }
+            return false;
         }
 
         /// <summary>
@@ -440,5 +441,26 @@ namespace FilterBase.Parts
             if ((tip != null) && (string.IsNullOrEmpty(Description) == false))
                 tip.SetToolTip(this, Description);
         }
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool SetParameter(string text)
+        {
+            if (string.IsNullOrEmpty(text) == false)
+            {
+                string chk_value = text.Trim();
+                return SetValue(chk_value);
+            }
+            return false;
+        }
+        /// <summary>
+        /// 無効設定
+        /// </summary>
+        /// <returns></returns>
+        public bool SetInvalid() { return true; }
+
     }
 }

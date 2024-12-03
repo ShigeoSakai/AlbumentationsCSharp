@@ -369,5 +369,32 @@ namespace FilterBase.Parts
         {
 
         }
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public virtual bool SetParameter(string text)
+        {
+            if ((_useValid) && (string.IsNullOrEmpty(InvalidValue) == false) &&
+                (string.IsNullOrEmpty(text) == false) && (text.Trim() == InvalidValue))
+            {
+                CbValid.Checked = true;
+            }
+            return true;
+        }
+        /// <summary>
+        /// 無効設定
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool SetInvalid()
+        {
+            if (_useValid)
+            {   // 無効設定
+                CbValid.Checked = false;
+                return true;
+            }
+            return false;
+        }
     }
 }

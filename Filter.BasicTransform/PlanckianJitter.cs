@@ -186,6 +186,19 @@ namespace Filter.BasicTransform
             OnParameterChange(name, value);
         }
         /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected override bool SetParameters(Dictionary<string, string> parameters)
+        {
+            bool result = SetParameters(FLPParam.Controls, parameters);
+            result |= base.SetParameters(parameters);
+            return result;
+        }
+
+        /// <summary>
         /// モードが変更になった
         /// </summary>
         /// <param name="sender"></param>

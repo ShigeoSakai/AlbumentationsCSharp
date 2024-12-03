@@ -21,7 +21,7 @@ namespace AlbumentationsCSharp
         {
             [Description("XY座標"),EnumCommandName("xy")]
             XY,
-            [Description("XY座標+Visible(CoCo)"), EnumCommandName("xy")]
+            [Description("XY座標+V(CoCo)"), EnumCommandName("xy")]
             COCO,
             [Description("XY座標+角度"), EnumCommandName("xya")]
             XYA,

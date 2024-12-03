@@ -24,7 +24,7 @@ namespace Filter.Geometric
         protected override void SetVersion(VersionInfo version)
         {
             // バージョンの設定
-            SetVersion(version, FLPParts.Controls);
+            SetVersion(version, FLPParam.Controls);
         }
         /// <summary>
         /// パラメータのチェック
@@ -33,7 +33,7 @@ namespace Filter.Geometric
         /// <returns></returns>
         public override bool CheckParameter(out string err_msg)
         {
-            return CheckParameter(FLPParts.Controls, out err_msg);
+            return CheckParameter(FLPParam.Controls, out err_msg);
         }
 
         /// <summary>
@@ -43,9 +43,23 @@ namespace Filter.Geometric
         protected override string GetArguments(bool always_apply = false)
         {
             if (CheckParameter(out _))
-                return GetArguments(FLPParts.Controls,always_apply);
+                return GetArguments(FLPParam.Controls,always_apply);
             return null;
         }
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected override bool SetParameters(Dictionary<string, string> parameters)
+        {
+            bool result = SetParameters(FLPParam.Controls, parameters);
+            result |= base.SetParameters(parameters);
+            return result;
+        }
+
+
         /// <summary>
         /// パラメータ変更イベント
         /// </summary>

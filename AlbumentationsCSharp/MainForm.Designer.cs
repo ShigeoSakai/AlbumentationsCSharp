@@ -34,6 +34,9 @@
             this.ToolStripMenuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemPythonConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemPython = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemShowPythonCommand = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetFromPythonCommand = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,13 +82,13 @@
             this.PanelExec = new System.Windows.Forms.Panel();
             this.TBLMain = new System.Windows.Forms.TableLayoutPanel();
             this.PanelResultControl = new System.Windows.Forms.Panel();
+            this.CbShowResultImage = new System.Windows.Forms.CheckBox();
             this.CbResultShowKeyPointsLabel = new System.Windows.Forms.CheckBox();
             this.CbShowResultMask = new System.Windows.Forms.CheckBox();
             this.CbShowResultKeyPoints = new System.Windows.Forms.CheckBox();
             this.CbShowResultBBox = new System.Windows.Forms.CheckBox();
             this.PanelOrigControl = new System.Windows.Forms.Panel();
             this.CbShowImage = new System.Windows.Forms.CheckBox();
-            this.CbShowResultImage = new System.Windows.Forms.CheckBox();
             this.MenuStripMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbOrigImage)).BeginInit();
@@ -119,23 +122,44 @@
             // ToolStripMenuItemPythonConfig
             // 
             this.ToolStripMenuItemPythonConfig.Name = "ToolStripMenuItemPythonConfig";
-            this.ToolStripMenuItemPythonConfig.Size = new System.Drawing.Size(143, 22);
+            this.ToolStripMenuItemPythonConfig.Size = new System.Drawing.Size(151, 22);
             this.ToolStripMenuItemPythonConfig.Text = "設定を開く(&O)";
             this.ToolStripMenuItemPythonConfig.Click += new System.EventHandler(this.ToolStripMenuItemPythonConfig_Click);
             // 
             // ToolStripMenuItemPython
             // 
             this.ToolStripMenuItemPython.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemPythonConfig});
+            this.ToolStripMenuItemPythonConfig,
+            this.toolStripSeparator2,
+            this.ToolStripMenuItemShowPythonCommand,
+            this.ToolStripMenuItemSetFromPythonCommand});
             this.ToolStripMenuItemPython.Name = "ToolStripMenuItemPython";
             this.ToolStripMenuItemPython.Size = new System.Drawing.Size(72, 20);
             this.ToolStripMenuItemPython.Text = "Python(&P)";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
+            // 
+            // ToolStripMenuItemShowPythonCommand
+            // 
+            this.ToolStripMenuItemShowPythonCommand.Name = "ToolStripMenuItemShowPythonCommand";
+            this.ToolStripMenuItemShowPythonCommand.Size = new System.Drawing.Size(151, 22);
+            this.ToolStripMenuItemShowPythonCommand.Text = "コマンドを表示";
+            // 
+            // ToolStripMenuItemSetFromPythonCommand
+            // 
+            this.ToolStripMenuItemSetFromPythonCommand.Name = "ToolStripMenuItemSetFromPythonCommand";
+            this.ToolStripMenuItemSetFromPythonCommand.Size = new System.Drawing.Size(151, 22);
+            this.ToolStripMenuItemSetFromPythonCommand.Text = "コマンドから設定";
             // 
             // ToolStripMenuItemFileExit
             // 
             this.ToolStripMenuItemFileExit.Name = "ToolStripMenuItemFileExit";
             this.ToolStripMenuItemFileExit.Size = new System.Drawing.Size(113, 22);
             this.ToolStripMenuItemFileExit.Text = "終了(&X)";
+            this.ToolStripMenuItemFileExit.Click += new System.EventHandler(this.ToolStripMenuItemFileExit_Click);
             // 
             // toolStripSeparator1
             // 
@@ -316,6 +340,7 @@
             this.BtMaskImageSelect.SupportMultiDottedExtensions = false;
             this.BtMaskImageSelect.TabIndex = 4;
             this.BtMaskImageSelect.Text = "...";
+            this.BtMaskImageSelect.Title = "マスク画像を選択";
             this.BtMaskImageSelect.UserCustomDialog = true;
             this.BtMaskImageSelect.UseVisualStyleBackColor = true;
             // 
@@ -361,6 +386,7 @@
             this.BtImageFileSelect.SupportMultiDottedExtensions = false;
             this.BtImageFileSelect.TabIndex = 1;
             this.BtImageFileSelect.Text = "...";
+            this.BtImageFileSelect.Title = "画像ファイルを選択";
             this.BtImageFileSelect.UserCustomDialog = true;
             this.BtImageFileSelect.UseVisualStyleBackColor = true;
             // 
@@ -499,6 +525,7 @@
             this.BtKeyPointSelect.SupportMultiDottedExtensions = false;
             this.BtKeyPointSelect.TabIndex = 14;
             this.BtKeyPointSelect.Text = "...";
+            this.BtKeyPointSelect.Title = "KeyPointsファイルを選択";
             this.BtKeyPointSelect.UserCustomDialog = true;
             this.BtKeyPointSelect.UseVisualStyleBackColor = true;
             // 
@@ -561,6 +588,7 @@
             this.BtBBoxFileSelect.SupportMultiDottedExtensions = false;
             this.BtBBoxFileSelect.TabIndex = 8;
             this.BtBBoxFileSelect.Text = "...";
+            this.BtBBoxFileSelect.Title = "BBOXファイルを選択";
             this.BtBBoxFileSelect.UserCustomDialog = true;
             this.BtBBoxFileSelect.UseVisualStyleBackColor = true;
             // 
@@ -643,7 +671,7 @@
             this.TBLMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TBLMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.TBLMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TBLMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.TBLMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.TBLMain.Controls.Add(this.PanelResultControl, 2, 1);
             this.TBLMain.Controls.Add(this.PbResultImage, 2, 2);
             this.TBLMain.Controls.Add(this.PanelFile, 0, 0);
@@ -679,6 +707,21 @@
             this.PanelResultControl.Name = "PanelResultControl";
             this.PanelResultControl.Size = new System.Drawing.Size(398, 41);
             this.PanelResultControl.TabIndex = 8;
+            // 
+            // CbShowResultImage
+            // 
+            this.CbShowResultImage.Appearance = System.Windows.Forms.Appearance.Button;
+            this.CbShowResultImage.Checked = true;
+            this.CbShowResultImage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CbShowResultImage.Location = new System.Drawing.Point(6, 3);
+            this.CbShowResultImage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.CbShowResultImage.Name = "CbShowResultImage";
+            this.CbShowResultImage.Size = new System.Drawing.Size(66, 35);
+            this.CbShowResultImage.TabIndex = 0;
+            this.CbShowResultImage.Text = "画像";
+            this.CbShowResultImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CbShowResultImage.UseVisualStyleBackColor = true;
+            this.CbShowResultImage.CheckedChanged += new System.EventHandler(this.CbShowResultImage_CheckedChanged);
             // 
             // CbResultShowKeyPointsLabel
             // 
@@ -771,21 +814,6 @@
             this.CbShowImage.UseVisualStyleBackColor = true;
             this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
             // 
-            // CbShowResultImage
-            // 
-            this.CbShowResultImage.Appearance = System.Windows.Forms.Appearance.Button;
-            this.CbShowResultImage.Checked = true;
-            this.CbShowResultImage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CbShowResultImage.Location = new System.Drawing.Point(6, 3);
-            this.CbShowResultImage.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
-            this.CbShowResultImage.Name = "CbShowResultImage";
-            this.CbShowResultImage.Size = new System.Drawing.Size(66, 35);
-            this.CbShowResultImage.TabIndex = 0;
-            this.CbShowResultImage.Text = "画像";
-            this.CbShowResultImage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CbShowResultImage.UseVisualStyleBackColor = true;
-            this.CbShowResultImage.CheckedChanged += new System.EventHandler(this.CbShowResultImage_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -872,6 +900,9 @@
         private System.Windows.Forms.CheckBox CbShowResultBBox;
         private System.Windows.Forms.CheckBox CbShowImage;
         private System.Windows.Forms.CheckBox CbShowResultImage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemShowPythonCommand;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSetFromPythonCommand;
     }
 }
 

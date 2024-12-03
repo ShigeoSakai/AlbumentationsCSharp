@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FilterBase.Parts;
+using System.Text.RegularExpressions;
 
 namespace FilterBase
 {
@@ -111,6 +112,14 @@ namespace FilterBase
         {
             ParameterChange?.Invoke(this, name, value);
         }
+
+        /// <summary>
+        /// パラメータの正規表現
+        /// </summary>
+        private Regex ParameterMatchPattern = new Regex(
+            @"((\s*(.+?)\s*=\s*([^\(\[""\',]+|\([^=]+\)|\[.[^=]+\]|\"".+?\""|\'.+?\'))\s*,{0,1})", 
+            RegexOptions.Compiled);
+
 
         /// <summary>
         /// コンストラクタ
@@ -327,14 +336,17 @@ namespace FilterBase
         protected string GetArguments(ControlCollection controls, bool always_apply = false)
         {
             string result = string.Empty;
-            foreach (Control ctrl in controls)
+            if ((controls != null) && (controls.Count > 0))
             {
-                // 表示されている+有効のもののみ
-                if ((ctrl is IParts parts) && (ctrl.Visible) && (ctrl.Enabled))
+                foreach (Control ctrl in controls)
                 {
-                    string arg = parts.GetArgument();
-                    if (string.IsNullOrEmpty(arg) == false)
-                        result += ((result.Length > 0) ? "," : "") + parts.GetArgument();
+                    // 表示されている+有効のもののみ
+                    if ((ctrl is IParts parts) && (ctrl.Visible) && (ctrl.Enabled))
+                    {
+                        string arg = parts.GetArgument();
+                        if (string.IsNullOrEmpty(arg) == false)
+                            result += ((result.Length > 0) ? "," : "") + parts.GetArgument();
+                    }
                 }
             }
             if (always_apply)
@@ -388,6 +400,87 @@ namespace FilterBase
         {
             // Tool Tipを設定する
             SetToolTip();
+        }
+
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public bool SetParameterFromString(string text)
+        {
+            MatchCollection matches = ParameterMatchPattern.Matches(text);
+            if ((matches != null) && (matches.Count > 0))
+            {
+                Dictionary<string,string> parameters = new Dictionary<string, string>();
+                foreach (Match match in matches)
+                {
+                    if (match.Success)
+                    {
+                        if ((match.Groups.Count >= 5) &&
+                            (match.Groups[3].Success) &&
+                            (match.Groups[4].Success))
+                        {
+                            string name = match.Groups[3].Value;
+                            string value = match.Groups[4].Value;
+                            // 辞書に追加
+                            parameters.Add(name, value);
+                        }
+                    }
+                }
+                if (parameters.Count > 0)
+                {   // パラメータを設定
+                    return SetParameters(parameters);
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected virtual bool SetParameters(Dictionary<string, string> parameters)
+        {
+            if ((parameters != null) && 
+                (parameters.ContainsKey("p")) &&
+                (double.TryParse(parameters["p"], out double p)))
+            {
+                p *= 100;
+                int p_i = (int)p;
+                NUDProbability.Value = (decimal)p_i;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="controls"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        protected bool SetParameters(ControlCollection controls, Dictionary<string, string> parameters)
+        {
+            bool result = false;
+            if (parameters != null)
+            {
+                foreach (Control ctrl in controls)
+                {
+                    if (ctrl is IParts parts)
+                    {
+                        if (parameters.ContainsKey(parts.ArgumentName))
+                        {
+                            result |= parts.SetParameter(parameters[parts.ArgumentName]);
+                        }
+                        else
+                        {   // 無効設定
+                            result |= parts.SetInvalid();
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }

@@ -498,8 +498,8 @@ namespace AlbumentationsCSharp
             if ((ctrl.Require.HasFlag(TRANSFORM_TARGET.MASK)) && ((string.IsNullOrEmpty(MaskFilePath)) ||
                     (File.Exists(MaskFilePath) == false)))
                 result = false;
-            if (ctrl.Require.HasFlag(TRANSFORM_TARGET.BBOX)) result = false;
-            if (ctrl.Require.HasFlag(TRANSFORM_TARGET.KEY_POINT)) result = false;
+            if ((ctrl.Require.HasFlag(TRANSFORM_TARGET.BBOX)) && (BoundingBox == null)) result = false;
+            if ((ctrl.Require.HasFlag(TRANSFORM_TARGET.KEY_POINT)) && (KeyPoints == null)) result = false;
 
             return result;
         }
@@ -649,6 +649,7 @@ namespace AlbumentationsCSharp
                                     Color = CMap.Get(color_index),
                                     ShowLable = true,
                                     LabelFill = true,
+                                    Visible = CbShowResultBBox.Checked,
                                 };
                                 PbResultImage.AddShape(shape);
                                 color_index = (color_index + 64) & 0x0FF;
@@ -675,7 +676,8 @@ namespace AlbumentationsCSharp
                                     Text = pts[i].Name,
                                     Point = pts[i].Point,
                                     Color = CMap.Get(color_index),
-                                    ShowLable = (string.IsNullOrEmpty(pts[i].Name) == false),
+                                    ShowLable = ((string.IsNullOrEmpty(pts[i].Name) == false) & (CbResultShowKeyPointsLabel.Checked)),
+                                    Visible = CbShowResultKeyPoints.Checked,
                                     LabelFill = true,
                                     MarkerType = BaseShape.MARKER_TYPE.CROSS,
                                     LineWidth = 2.0F
@@ -1071,6 +1073,15 @@ namespace AlbumentationsCSharp
         private void CbShowResultImage_CheckedChanged(object sender, EventArgs e)
         {
             PbResultImage.ShowImage = CbShowResultImage.Checked;
+        }
+        /// <summary>
+        /// メニューから終了
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemFileExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

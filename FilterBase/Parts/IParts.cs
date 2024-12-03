@@ -60,5 +60,16 @@ namespace FilterBase.Parts
         /// <param name="tip"></param>
         void SetToolTip(ToolTip tip);
 
+        /// <summary>
+        /// パラメータの設定
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        bool SetParameter(string text);
+        /// <summary>
+        /// 無効設定
+        /// </summary>
+        /// <returns></returns>
+        bool SetInvalid();
     }
 }
