@@ -833,6 +833,7 @@ namespace AlbumentationsCSharp
                             Color = CMap.Get(color_index),
                             ShowLable = true,
                             LabelFill = true,
+                            Visible = CbShowBBox.Checked,
                         };
                         PbOrigImage.AddShape(shape);
                         color_index = (color_index + 64) & 0x0FF;
@@ -918,10 +919,11 @@ namespace AlbumentationsCSharp
                             Text = pts[i].Name,
                             Point = pts[i].Point,
                             Color = CMap.Get(color_index),
-                            ShowLable = (string.IsNullOrEmpty(pts[i].Name) == false),
+                            ShowLable = ((string.IsNullOrEmpty(pts[i].Name) == false) & (CbShowKeyPointLabel.Checked)),
                             LabelFill = true,
                             MarkerType = BaseShape.MARKER_TYPE.CROSS,
-                            LineWidth = 2.0F
+                            LineWidth = 2.0F,
+                            Visible = CbShowKeyPoints.Checked,
                         };
                         PbOrigImage.AddShape(shape);
                         color_index = (color_index + 64) & 0x0FF;
@@ -998,7 +1000,8 @@ namespace AlbumentationsCSharp
                 if ((root.SourceControl != null) &&
                     (root.SourceControl is ZoomPictureBox pictBox))
                 {
-                    pictBox.ToClipBoard();
+                    bool drawMask = (pictBox.Equals(PbOrigImage)) ? CbShowMask.Checked : CbShowResultMask.Checked;
+                    pictBox.ToClipBoard(true,drawMask);
                 }
             }
 		}
