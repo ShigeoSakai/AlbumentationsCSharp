@@ -645,7 +645,7 @@ namespace AlbumentationsCSharp
                             {
                                 RectangleShape shape = new RectangleShape(string.Format("bbox_{0}", i), rects[i].Rectangle)
                                 {
-                                    Text = rects[i].Name,
+                                    Text = BoundingBox.GetJapanese(rects[i].Name),
                                     Color = CMap.Get(color_index),
                                     ShowLable = true,
                                     LabelFill = true,
@@ -673,7 +673,7 @@ namespace AlbumentationsCSharp
                             {
                                 PointShape shape = new PointShape(string.Format("kpt_{0}", i))
                                 {
-                                    Text = pts[i].Name,
+                                    Text = KeyPoints.GetJapanese(pts[i].Name),
                                     Point = pts[i].Point,
                                     Color = CMap.Get(color_index),
                                     ShowLable = ((string.IsNullOrEmpty(pts[i].Name) == false) & (CbResultShowKeyPointsLabel.Checked)),
@@ -829,7 +829,7 @@ namespace AlbumentationsCSharp
                     {
                         RectangleShape shape = new RectangleShape(string.Format("bbox_{0}", i), rects[i].Rectangle)
                         {
-                            Text = rects[i].Name,
+                            Text = BoundingBox.GetJapanese(rects[i].Name),
                             Color = CMap.Get(color_index),
                             ShowLable = true,
                             LabelFill = true,
@@ -916,7 +916,7 @@ namespace AlbumentationsCSharp
                     {
                         PointShape shape = new PointShape(string.Format("kpt_{0}", i))
                         {
-                            Text = pts[i].Name,
+                            Text = KeyPoints.GetJapanese(pts[i].Name),
                             Point = pts[i].Point,
                             Color = CMap.Get(color_index),
                             ShowLable = ((string.IsNullOrEmpty(pts[i].Name) == false) & (CbShowKeyPointLabel.Checked)),

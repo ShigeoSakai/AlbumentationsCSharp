@@ -375,6 +375,18 @@ namespace AlbumentationsCSharp
                 "right_knee", "left_ankle", "right_ankle" } }
         };
         /// <summary>
+        /// 日本語化辞書
+        /// </summary>
+        private static Dictionary<string, string> JapaneseDict = new Dictionary<string, string>()
+        {
+            { "nose","鼻" },{ "left_eye","左目" }, { "right_eye","右目" },{ "left_ear","左耳" },
+            { "right_ear","右耳" },{ "left_shoulder","左肩" },{ "right_shoulder","右肩" },
+            { "left_elbow","左肘" },{ "right_elbow","右肘" },{ "left_wrist","左手首" },{ "right_wrist","右手首" },
+            { "left_hip","左腰" },{ "right_hip","右腰" },{ "left_knee","左膝" },{ "right_knee","右膝" },
+            { "left_ankle","左足首" },{ "right_ankle","右足首" }
+        };
+
+        /// <summary>
         /// コンボボックス/ファイル変換用キーポイントデータタイプ定義
         /// </summary>
         public class KeyPointsTypeDef
@@ -734,5 +746,18 @@ namespace AlbumentationsCSharp
             }
             return null;
         }
+        /// <summary>
+        /// 日本語変換
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string GetJapanese(string text)
+        {
+            if ((string.IsNullOrEmpty(text) == false) &&
+                (JapaneseDict.ContainsKey(text)))
+                return JapaneseDict[text];
+            return text;
+        }
+
     }
 }

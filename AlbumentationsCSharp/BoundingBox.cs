@@ -188,6 +188,32 @@ namespace AlbumentationsCSharp
         public List<BoundingBoxDetail> BBoxes { get;private set; } = new List<BoundingBoxDetail>();
 
         /// <summary>
+        /// 日本語辞書
+        /// </summary>
+        private static Dictionary<string, string> JapaneseDict = new Dictionary<string, string>()
+        {
+            { "person","人" },{ "bicycle","自転車" },{ "car","車" },{ "motorcycle","バイク" },{ "airplane","飛行機" },
+            { "bus","バス" },{ "train","電車" },{ "truck","トラック" },{ "boat","船" },{ "traffic light","信号機" },
+            { "fire hydrant","消火栓" },{ "stop sign","停止標識" },{ "parking meter","パーキングメータ" },
+            { "bench","ベンチ" },{ "bird","鳥" },{ "cat","猫" },{ "dog","犬" },{ "horse","馬" },{ "sheep","羊" },
+            { "cow","牛" },{ "elephant","象" },{ "bear","熊" },{ "zebra","シマウマ" },{ "giraffe","キリン" },
+            { "backpack","リュックサック" },{ "umbrella","傘" },{ "handbag","ハンドバッグ" },{ "tie","ネクタイ" },
+            { "suitcase","スーツケース" },{ "frisbee","フリスビー" },{ "skis","スキー" },{ "snowboard","スノーボード" },
+            { "sports ball","スポーツボール" },{ "kite","凧" },{ "baseball bat","バット" },{ "baseball glove","グローブ" },
+            { "skateboard","スケートボード" },{ "surfboard","サーフボード" },{ "tennis racket","ラケット" },
+            { "bottle","ビン" },{ "wine glass","ワイングラス" },{ "cup","コップ" },{ "fork","フォーク" },{ "knife","ナイフ" },
+            { "spoon","スプーン" },{ "bowl","ボウル" },{ "banana","バナナ" },{ "apple","リンゴ" },
+            { "sandwich","サンドウィッチ" },{ "orange","オレンジ" },{ "broccoli","ブロッコリー" },{ "carrot","ニンジン" },
+            { "hot dog","ホットドッグ" },{ "pizza","ピザ" },{ "donut","ドーナツ" },{ "cake","ケーキ" },{ "chair","椅子" },
+            { "couch","ソファー" },{ "potted plant","鉢植え" },{ "bed","ベッド" },{ "dining table","机" },
+            { "toilet","トイレ" },{ "tv","TV" },{ "laptop","ノートパソコン" },{ "mouse","マウス" },
+            { "remote","リモコン" },{ "keyboard","キーボード" },{ "cell phone","携帯電話" },{ "microwave","電子レンジ" },
+            { "oven","オーブン" },{ "toaster","トースター" },{ "sink","流し台" },{ "refrigerator","冷蔵庫" },
+            { "book","本" },{ "clock","時計" },{ "vase","花瓶" },{ "scissors","はさみ" },
+            { "teddy bear","テディベア" },{ "hair drier","ドライヤー" },{ "toothbrush","歯ブラシ" },
+        };
+
+        /// <summary>
         /// デフォルトコンストラクタ
         /// </summary>
         public BoundingBox() { }
@@ -347,5 +373,18 @@ namespace AlbumentationsCSharp
             return result;
 
         }
+        /// <summary>
+        /// 日本語変換
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string GetJapanese(string text)
+        {
+            if ((string.IsNullOrEmpty(text) == false) &&
+                (JapaneseDict.ContainsKey(text)))
+                return JapaneseDict[text];
+            return text;
+        }
+
     }
 }
