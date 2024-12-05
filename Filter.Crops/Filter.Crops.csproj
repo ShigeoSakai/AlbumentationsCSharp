@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,12 @@
     </Compile>
     <Compile Include="CenterCrop.Designer.cs">
       <DependentUpon>CenterCrop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crop.Designer.cs">
+      <DependentUpon>Crop.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomCrop.cs">
@@ -97,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CenterCrop.resx">
       <DependentUpon>CenterCrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crop.resx">
+      <DependentUpon>Crop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RandomCrop.resx">
       <DependentUpon>RandomCrop.cs</DependentUpon>

@@ -52,9 +52,9 @@
             this.FLPParam.Controls.Add(this.ParaInterpolation);
             this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Location = new System.Drawing.Point(0, 24);
             this.FLPParam.Name = "FLPParam";
-            this.FLPParam.Size = new System.Drawing.Size(128, 181);
+            this.FLPParam.Size = new System.Drawing.Size(128, 197);
             this.FLPParam.TabIndex = 5;
             // 
             // ParaPReplace
@@ -69,6 +69,7 @@
             0,
             0,
             65536});
+            this.ParaPReplace.InvalidValue = "";
             this.ParaPReplace.Location = new System.Drawing.Point(3, 3);
             this.ParaPReplace.MaxValue = new decimal(new int[] {
             1,
@@ -85,9 +86,12 @@
             this.ParaPReplace.MinVersion = null;
             this.ParaPReplace.Name = "ParaPReplace";
             this.ParaPReplace.Required = false;
-            this.ParaPReplace.Size = new System.Drawing.Size(124, 42);
+            this.ParaPReplace.Size = new System.Drawing.Size(124, 39);
             this.ParaPReplace.TabIndex = 0;
             this.ParaPReplace.Title = "置き換え確率範囲";
+            this.ParaPReplace.UseLargeValue = false;
+            this.ParaPReplace.UseValid = false;
+            this.ParaPReplace.Valid = true;
             this.ParaPReplace.Value = "(0.1,0.3)";
             this.ParaPReplace.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_FLOAT;
             this.ParaPReplace.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -106,7 +110,8 @@
             0,
             0,
             0});
-            this.ParaNSegments.Location = new System.Drawing.Point(3, 51);
+            this.ParaNSegments.InvalidValue = "";
+            this.ParaNSegments.Location = new System.Drawing.Point(3, 48);
             this.ParaNSegments.MaxValue = new decimal(new int[] {
             10000,
             0,
@@ -122,9 +127,12 @@
             this.ParaNSegments.MinVersion = null;
             this.ParaNSegments.Name = "ParaNSegments";
             this.ParaNSegments.Required = false;
-            this.ParaNSegments.Size = new System.Drawing.Size(124, 42);
+            this.ParaNSegments.Size = new System.Drawing.Size(124, 39);
             this.ParaNSegments.TabIndex = 1;
             this.ParaNSegments.Title = "離散区間";
+            this.ParaNSegments.UseLargeValue = false;
+            this.ParaNSegments.UseValid = false;
+            this.ParaNSegments.Valid = true;
             this.ParaNSegments.Value = "(15,120)";
             this.ParaNSegments.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_INT;
             this.ParaNSegments.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -142,7 +150,8 @@
             0,
             0,
             0});
-            this.ParaMaxSize.Location = new System.Drawing.Point(3, 99);
+            this.ParaMaxSize.InvalidValue = "";
+            this.ParaMaxSize.Location = new System.Drawing.Point(3, 93);
             this.ParaMaxSize.MaxValue = new decimal(new int[] {
             10000,
             0,
@@ -158,10 +167,12 @@
             this.ParaMaxSize.MinVersion = null;
             this.ParaMaxSize.Name = "ParaMaxSize";
             this.ParaMaxSize.Required = false;
-            this.ParaMaxSize.Size = new System.Drawing.Size(124, 35);
+            this.ParaMaxSize.Size = new System.Drawing.Size(124, 57);
             this.ParaMaxSize.TabIndex = 2;
             this.ParaMaxSize.Title = "最大画像サイズ";
             this.ParaMaxSize.Unit = "";
+            this.ParaMaxSize.UseValid = true;
+            this.ParaMaxSize.Valid = true;
             this.ParaMaxSize.Value = new decimal(new int[] {
             128,
             0,
@@ -178,8 +189,9 @@
             this.ParaInterpolation.DefaultValue = "LINEAR";
             this.ParaInterpolation.Description = "補間アルゴリズムを指定するために使用されるフラグ。次のいずれかになります:\r\ncv2.INTER_NEAREST、cv2.INTER_LINEAR、cv2.INT" +
     "ER_CUBIC、cv2.INTER_AREA、cv2.INTER_LANCZOS4。\r\n　　デフォルト: cv2.INTER_LINEAR。";
+            this.ParaInterpolation.InvalidValue = "";
             this.ParaInterpolation.ItemType = "InterpolationFlags";
-            this.ParaInterpolation.Location = new System.Drawing.Point(3, 140);
+            this.ParaInterpolation.Location = new System.Drawing.Point(3, 156);
             this.ParaInterpolation.MaxVersion = null;
             this.ParaInterpolation.MinimumSize = new System.Drawing.Size(124, 21);
             this.ParaInterpolation.MinVersion = null;
@@ -188,17 +200,18 @@
             this.ParaInterpolation.Size = new System.Drawing.Size(124, 38);
             this.ParaInterpolation.TabIndex = 3;
             this.ParaInterpolation.Title = "補間方法";
+            this.ParaInterpolation.UseValid = false;
+            this.ParaInterpolation.Valid = true;
             this.ParaInterpolation.Value = null;
             this.ParaInterpolation.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
             // Superpixels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.FLPParam);
             this.Name = "Superpixels";
-            this.Size = new System.Drawing.Size(128, 231);
+            this.Size = new System.Drawing.Size(128, 246);
             this.Target = FilterBase.BaseFilterControl.TRANSFORM_TARGET.IMAGE;
             this.Controls.SetChildIndex(this.FLPParam, 0);
             this.FLPParam.ResumeLayout(false);

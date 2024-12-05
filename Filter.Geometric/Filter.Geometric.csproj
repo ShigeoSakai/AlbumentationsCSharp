@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -120,6 +121,12 @@
     <Compile Include="ShiftScaleRotate.Designer.cs">
       <DependentUpon>ShiftScaleRotate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transpose.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Transpose.Designer.cs">
+      <DependentUpon>Transpose.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerticalFlip.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShiftScaleRotate.resx">
       <DependentUpon>ShiftScaleRotate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transpose.resx">
+      <DependentUpon>Transpose.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerticalFlip.resx">
       <DependentUpon>VerticalFlip.cs</DependentUpon>

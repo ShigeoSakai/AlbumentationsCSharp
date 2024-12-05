@@ -51,7 +51,7 @@
             this.FLPParam.Controls.Add(this.ParaMaskDropValue);
             this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Location = new System.Drawing.Point(0, 24);
             this.FLPParam.Name = "FLPParam";
             this.FLPParam.Size = new System.Drawing.Size(128, 236);
             this.FLPParam.TabIndex = 5;
@@ -216,11 +216,10 @@
             // PixelDropout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.FLPParam);
             this.Name = "PixelDropout";
-            this.Size = new System.Drawing.Size(128, 286);
+            this.Size = new System.Drawing.Size(128, 285);
             this.Controls.SetChildIndex(this.FLPParam, 0);
             this.FLPParam.ResumeLayout(false);
             this.FLPParam.PerformLayout();

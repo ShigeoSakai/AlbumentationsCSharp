@@ -67,9 +67,9 @@
             this.FLPParam.Controls.Add(this.ParaNoiseDistribution);
             this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Location = new System.Drawing.Point(0, 24);
             this.FLPParam.Name = "FLPParam";
-            this.FLPParam.Size = new System.Drawing.Size(128, 426);
+            this.FLPParam.Size = new System.Drawing.Size(128, 462);
             this.FLPParam.TabIndex = 5;
             // 
             // ParaAlpha
@@ -85,6 +85,7 @@
             0,
             0,
             65536});
+            this.ParaAlpha.InvalidValue = "";
             this.ParaAlpha.Location = new System.Drawing.Point(3, 3);
             this.ParaAlpha.MaxValue = new decimal(new int[] {
             100,
@@ -105,6 +106,8 @@
             this.ParaAlpha.TabIndex = 0;
             this.ParaAlpha.Title = "α";
             this.ParaAlpha.Unit = "";
+            this.ParaAlpha.UseValid = false;
+            this.ParaAlpha.Valid = true;
             this.ParaAlpha.Value = new decimal(new int[] {
             1,
             0,
@@ -126,6 +129,7 @@
             0,
             0,
             65536});
+            this.ParaSigma.InvalidValue = "";
             this.ParaSigma.Location = new System.Drawing.Point(3, 30);
             this.ParaSigma.MaxValue = new decimal(new int[] {
             100,
@@ -146,6 +150,8 @@
             this.ParaSigma.TabIndex = 1;
             this.ParaSigma.Title = "Σ";
             this.ParaSigma.Unit = "";
+            this.ParaSigma.UseValid = false;
+            this.ParaSigma.Valid = true;
             this.ParaSigma.Value = new decimal(new int[] {
             50,
             0,
@@ -161,6 +167,7 @@
             this.ParaInterpolation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ParaInterpolation.DefaultValue = "LINEAR";
             this.ParaInterpolation.Description = "画像変換に使用する補間方法。\r\nOpenCV 補間タイプの 1 つである必要があります。\r\nデフォルト: cv2.INTER_LINEAR";
+            this.ParaInterpolation.InvalidValue = "";
             this.ParaInterpolation.ItemType = "InterpolationFlags";
             this.ParaInterpolation.Location = new System.Drawing.Point(3, 57);
             this.ParaInterpolation.MaxVersion = null;
@@ -171,6 +178,8 @@
             this.ParaInterpolation.Size = new System.Drawing.Size(124, 38);
             this.ParaInterpolation.TabIndex = 6;
             this.ParaInterpolation.Title = "補間方法";
+            this.ParaInterpolation.UseValid = false;
+            this.ParaInterpolation.Valid = true;
             this.ParaInterpolation.Value = null;
             this.ParaInterpolation.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
@@ -183,6 +192,7 @@
             this.ParaBorderMode.Description = "ピクセル外挿方法を指定するために使用されるフラグ。次のいずれかになります:\r\ncv2.BORDER_CONSTANT、cv2.BORDER_REPLICATE、c" +
     "v2.BORDER_REFLECT、cv2.BORDER_WRAP、cv2.BORDER_REFLECT_101。\r\nデフォルト: cv2.BORDER_REF" +
     "LECT_101";
+            this.ParaBorderMode.InvalidValue = "";
             this.ParaBorderMode.ItemType = "BorderTypes";
             this.ParaBorderMode.Location = new System.Drawing.Point(3, 101);
             this.ParaBorderMode.MaxVersion = null;
@@ -193,6 +203,8 @@
             this.ParaBorderMode.Size = new System.Drawing.Size(124, 38);
             this.ParaBorderMode.TabIndex = 8;
             this.ParaBorderMode.Title = "ピクセル外挿方法";
+            this.ParaBorderMode.UseValid = false;
+            this.ParaBorderMode.Valid = true;
             this.ParaBorderMode.Value = null;
             this.ParaBorderMode.SelectedIndexChanged += new FilterBase.Parts.ComboBoxWithLabelParts.ComboBoxSelectEventHandler(this.ParaBorderMode_SelectedIndexChanged);
             this.ParaBorderMode.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -204,6 +216,7 @@
             this.ParaValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ParaValue.Color = System.Drawing.Color.Black;
             this.ParaValue.Description = "border_mode が cv2.BORDER_CONSTANT の場合のパディング値。";
+            this.ParaValue.InvalidValue = "";
             this.ParaValue.IsColor = true;
             this.ParaValue.Location = new System.Drawing.Point(3, 145);
             this.ParaValue.MaxVersion = null;
@@ -211,9 +224,11 @@
             this.ParaValue.MinVersion = null;
             this.ParaValue.Name = "ParaValue";
             this.ParaValue.Required = false;
-            this.ParaValue.Size = new System.Drawing.Size(124, 48);
+            this.ParaValue.Size = new System.Drawing.Size(124, 66);
             this.ParaValue.TabIndex = 9;
             this.ParaValue.Title = "パディング色";
+            this.ParaValue.UseValid = true;
+            this.ParaValue.Valid = false;
             this.ParaValue.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
             // ParaMaskValue
@@ -223,16 +238,19 @@
             this.ParaMaskValue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ParaMaskValue.Color = System.Drawing.Color.Black;
             this.ParaMaskValue.Description = "border_mode が cv2.BORDER_CONSTANT の場合のパディング値がマスクに適用されます。";
+            this.ParaMaskValue.InvalidValue = "";
             this.ParaMaskValue.IsColor = true;
-            this.ParaMaskValue.Location = new System.Drawing.Point(3, 199);
+            this.ParaMaskValue.Location = new System.Drawing.Point(3, 217);
             this.ParaMaskValue.MaxVersion = null;
             this.ParaMaskValue.MinimumSize = new System.Drawing.Size(124, 21);
             this.ParaMaskValue.MinVersion = null;
             this.ParaMaskValue.Name = "ParaMaskValue";
             this.ParaMaskValue.Required = false;
-            this.ParaMaskValue.Size = new System.Drawing.Size(124, 48);
+            this.ParaMaskValue.Size = new System.Drawing.Size(124, 66);
             this.ParaMaskValue.TabIndex = 10;
             this.ParaMaskValue.Title = "Maskパディング色";
+            this.ParaMaskValue.UseValid = true;
+            this.ParaMaskValue.Valid = false;
             this.ParaMaskValue.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
             // ParaApproximate
@@ -242,7 +260,7 @@
             this.ParaApproximate.Description = "弾性変換の近似バージョンを使用するかどうか。\r\nTrue の場合、ガウス平滑化に固定カーネル サイズを使用します。\r\n　　これは高速ですが、シグマ値が大きい場合は" +
     "精度が低下する可能性があります。\r\nデフォルト: False";
             this.ParaApproximate.IndeterminateValue = "";
-            this.ParaApproximate.Location = new System.Drawing.Point(3, 253);
+            this.ParaApproximate.Location = new System.Drawing.Point(3, 289);
             this.ParaApproximate.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.ParaApproximate.MaxVersion = null;
             this.ParaApproximate.MinimumSize = new System.Drawing.Size(122, 21);
@@ -265,7 +283,7 @@
             this.ParaSameDxdy.CheckedValue = "";
             this.ParaSameDxdy.Description = "x方向と y方向の両方に同じランダム変位フィールドを使用するかどうか。\r\n歪みの多様性は減りますが、変換を高速化できます。\r\nデフォルト: False";
             this.ParaSameDxdy.IndeterminateValue = "";
-            this.ParaSameDxdy.Location = new System.Drawing.Point(3, 294);
+            this.ParaSameDxdy.Location = new System.Drawing.Point(3, 330);
             this.ParaSameDxdy.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.ParaSameDxdy.MaxVersion = null;
             this.ParaSameDxdy.MinimumSize = new System.Drawing.Size(122, 21);
@@ -290,8 +308,9 @@
             this.ParaMaskInterpolation.Description = "マスクの補間アルゴリズムを指定するために使用されるフラグ。\r\n次のいずれかである必要があります: cv2.INTER_NEAREST、cv2.INTER_LINE" +
     "AR、cv2.INTER_CUBIC、cv2.INTER_AREA、cv2.INTER_LANCZOS4。\r\nデフォルト: cv2.INTER_NEAREST。" +
     "";
+            this.ParaMaskInterpolation.InvalidValue = "";
             this.ParaMaskInterpolation.ItemType = "InterpolationFlags";
-            this.ParaMaskInterpolation.Location = new System.Drawing.Point(3, 341);
+            this.ParaMaskInterpolation.Location = new System.Drawing.Point(3, 377);
             this.ParaMaskInterpolation.MaxVersion = null;
             this.ParaMaskInterpolation.MinimumSize = new System.Drawing.Size(124, 21);
             this.ParaMaskInterpolation.MinVersion = null;
@@ -300,6 +319,8 @@
             this.ParaMaskInterpolation.Size = new System.Drawing.Size(124, 38);
             this.ParaMaskInterpolation.TabIndex = 7;
             this.ParaMaskInterpolation.Title = "マスク補間方法";
+            this.ParaMaskInterpolation.UseValid = false;
+            this.ParaMaskInterpolation.Valid = true;
             this.ParaMaskInterpolation.Value = null;
             this.ParaMaskInterpolation.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
@@ -311,8 +332,9 @@
             this.ParaNoiseDistribution.DefaultValue = "";
             this.ParaNoiseDistribution.Description = "変位フィールドを生成するために使用される分布。\r\n「ガウス」は正規分布を使用してフィールドを生成します（より自然な変形）。\r\n「均一」は均一分布を使用してフィール" +
     "ドを生成します（より機械的な変形）。\r\nデフォルト: 「ガウス」。";
+            this.ParaNoiseDistribution.InvalidValue = "";
             this.ParaNoiseDistribution.ItemType = "System.String";
-            this.ParaNoiseDistribution.Location = new System.Drawing.Point(3, 385);
+            this.ParaNoiseDistribution.Location = new System.Drawing.Point(3, 421);
             this.ParaNoiseDistribution.MaxVersion = null;
             this.ParaNoiseDistribution.MinimumSize = new System.Drawing.Size(124, 21);
             this.ParaNoiseDistribution.MinVersion = "1.4.22";
@@ -321,17 +343,18 @@
             this.ParaNoiseDistribution.Size = new System.Drawing.Size(124, 38);
             this.ParaNoiseDistribution.TabIndex = 13;
             this.ParaNoiseDistribution.Title = "ノイズ分布";
+            this.ParaNoiseDistribution.UseValid = false;
+            this.ParaNoiseDistribution.Valid = true;
             this.ParaNoiseDistribution.Value = null;
             this.ParaNoiseDistribution.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
             // ElasticTransform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.FLPParam);
             this.Name = "ElasticTransform";
-            this.Size = new System.Drawing.Size(128, 476);
+            this.Size = new System.Drawing.Size(128, 511);
             this.Controls.SetChildIndex(this.FLPParam, 0);
             this.FLPParam.ResumeLayout(false);
             this.FLPParam.PerformLayout();

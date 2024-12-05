@@ -49,9 +49,9 @@
             this.FLPParam.Controls.Add(this.ParaSamplingMethod);
             this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Location = new System.Drawing.Point(0, 24);
             this.FLPParam.Name = "FLPParam";
-            this.FLPParam.Size = new System.Drawing.Size(128, 136);
+            this.FLPParam.Size = new System.Drawing.Size(128, 155);
             this.FLPParam.TabIndex = 5;
             // 
             // ParaMode
@@ -62,6 +62,7 @@
             this.ParaMode.DefaultValue = "";
             this.ParaMode.Description = "変換のモード。\r\n- \"blackbody\": 黒体放射の色の変化をシミュレートします。\r\n- \"cied\": 色温度のシミュレーションに CIE D 光源シリー" +
     "ズを使用します。\r\n　　デフォルト: \"blackbody\"";
+            this.ParaMode.InvalidValue = "";
             this.ParaMode.ItemType = "System.String";
             this.ParaMode.Location = new System.Drawing.Point(3, 3);
             this.ParaMode.MaxVersion = null;
@@ -72,6 +73,8 @@
             this.ParaMode.Size = new System.Drawing.Size(124, 38);
             this.ParaMode.TabIndex = 0;
             this.ParaMode.Title = "モデル";
+            this.ParaMode.UseValid = false;
+            this.ParaMode.Valid = true;
             this.ParaMode.Value = null;
             this.ParaMode.SelectedIndexChanged += new FilterBase.Parts.ComboBoxWithLabelParts.ComboBoxSelectEventHandler(this.ParaMode_SelectedIndexChanged);
             this.ParaMode.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -88,6 +91,7 @@
             0,
             0,
             0});
+            this.ParaTemperatureLimit.InvalidValue = "";
             this.ParaTemperatureLimit.Location = new System.Drawing.Point(3, 47);
             this.ParaTemperatureLimit.MaxValue = null;
             this.ParaTemperatureLimit.MaxVersion = null;
@@ -96,9 +100,12 @@
             this.ParaTemperatureLimit.MinVersion = null;
             this.ParaTemperatureLimit.Name = "ParaTemperatureLimit";
             this.ParaTemperatureLimit.Required = false;
-            this.ParaTemperatureLimit.Size = new System.Drawing.Size(124, 42);
+            this.ParaTemperatureLimit.Size = new System.Drawing.Size(124, 61);
             this.ParaTemperatureLimit.TabIndex = 1;
             this.ParaTemperatureLimit.Title = "色温度の範囲 (K)";
+            this.ParaTemperatureLimit.UseLargeValue = false;
+            this.ParaTemperatureLimit.UseValid = true;
+            this.ParaTemperatureLimit.Valid = false;
             this.ParaTemperatureLimit.Value = "(0,0)";
             this.ParaTemperatureLimit.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_INT;
             this.ParaTemperatureLimit.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -111,8 +118,9 @@
             this.ParaSamplingMethod.DefaultValue = "";
             this.ParaSamplingMethod.Description = "温度をサンプリングする方法。\r\n- \"uniform\": 指定された範囲にわたって均一にサンプリングします。\r\n- \"gaussian\": 6500K (おおよそ" +
     "の日光) を中心としたガウス分布からサンプリングします。\r\n　　　デフォルト: \"uniform\"";
+            this.ParaSamplingMethod.InvalidValue = "";
             this.ParaSamplingMethod.ItemType = "System.String";
-            this.ParaSamplingMethod.Location = new System.Drawing.Point(3, 95);
+            this.ParaSamplingMethod.Location = new System.Drawing.Point(3, 114);
             this.ParaSamplingMethod.MaxVersion = null;
             this.ParaSamplingMethod.MinimumSize = new System.Drawing.Size(124, 21);
             this.ParaSamplingMethod.MinVersion = null;
@@ -121,18 +129,19 @@
             this.ParaSamplingMethod.Size = new System.Drawing.Size(124, 38);
             this.ParaSamplingMethod.TabIndex = 2;
             this.ParaSamplingMethod.Title = "温度サンプリング方法";
+            this.ParaSamplingMethod.UseValid = false;
+            this.ParaSamplingMethod.Valid = true;
             this.ParaSamplingMethod.Value = null;
             this.ParaSamplingMethod.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
             // 
             // PlanckianJitter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.FLPParam);
             this.MinVersion = "1.4.9";
             this.Name = "PlanckianJitter";
-            this.Size = new System.Drawing.Size(128, 186);
+            this.Size = new System.Drawing.Size(128, 204);
             this.Target = FilterBase.BaseFilterControl.TRANSFORM_TARGET.IMAGE;
             this.Controls.SetChildIndex(this.FLPParam, 0);
             this.FLPParam.ResumeLayout(false);
