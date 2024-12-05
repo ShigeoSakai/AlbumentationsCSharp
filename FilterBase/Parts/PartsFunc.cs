@@ -149,11 +149,27 @@ namespace FilterBase.Parts
                 return true;    // 違う
             return false;       // 違わない
         }
+		/// <summary>
+		/// Tuple同士に差があるか？
+		/// </summary>
+		/// <param name="a"></param>
+		/// <param name="b"></param>
+		/// <returns></returns>
+		public static bool TupleDiff(Tuple<decimal, decimal, decimal> a, Tuple<decimal, decimal,decimal> b)
+		{
+			if ((a == null) && (b == null))
+				return false;   // 違わない
+			if ((a == null) || (b == null))
+				return true;    // 違う
+			if ((a.Item1 != b.Item1) || (a.Item2 != b.Item2) || (a.Item3 != b.Item3))
+				return true;    // 違う
+			return false;       // 違わない
+		}
 
-        /// <summary>
-        /// 値のタイプ
-        /// </summary>
-        public enum VALUE_TYPE
+		/// <summary>
+		/// 値のタイプ
+		/// </summary>
+		public enum VALUE_TYPE
         {
             TYPE_INT,       // 整数
             TYPE_INT_ODD,   // 奇数のみ
@@ -178,12 +194,30 @@ namespace FilterBase.Parts
             }
             return string.Empty;
         }
-        /// <summary>
-        /// 文字列からTupple<>に変換
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static Tuple<decimal, decimal> GetTuppleFromString(string value, VALUE_TYPE valueType)
+		/// <summary>
+		/// Tupple<Decimal, Decimal>を文字列変換
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static string GetTuppleToString(Tuple<decimal, decimal,decimal> value, VALUE_TYPE valueType, int decimalPlace)
+		{
+			if (value != null)
+			{
+				string num_format = "#0";
+				if (valueType == VALUE_TYPE.TYPE_FLOAT)
+					num_format += "." + new string('0', decimalPlace);
+
+				string fmt = "({0:" + num_format + "},{1:" + num_format + "},{2:" + num_format + "})";
+				return string.Format(fmt, value.Item1, value.Item2,value.Item3);
+			}
+			return string.Empty;
+		}
+		/// <summary>
+		/// 文字列からTupple<>に変換
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static Tuple<decimal, decimal> GetTuppleFromString(string value, VALUE_TYPE valueType)
         {
             if (value != null)
             {
@@ -243,14 +277,88 @@ namespace FilterBase.Parts
             }
             return null;
         }
-        /// <summary>
-        /// 偶数・奇数の補正をする
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="isEven">偶数か？</param>
-        /// <param name="isUp">切り上げか？</param>
-        /// <returns></returns>
-        public static decimal GetAdjustValue(decimal value, bool isEven, bool isUp)
+		/// <summary>
+		/// 文字列からTupple<>に変換
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public static Tuple<decimal, decimal,decimal> Get3TuppleFromString(string value, VALUE_TYPE valueType)
+		{
+			if (value != null)
+			{
+				string text = value.Trim();
+				if (text.Length > 0)
+				{
+					if ((text.StartsWith("(")) == (text.EndsWith(")")))
+					{
+						if (text.StartsWith("("))
+							text = text.Substring(1, text.Length - 2);
+
+						decimal? first = null;
+						decimal? second = null;
+                        decimal? third = null;
+						// 型のチェック
+						if (valueType != VALUE_TYPE.TYPE_FLOAT)
+						{
+							Match match = Regex.Match(text, @"([+-]?\d+)\s*\,\s*([+-]?\d+)\s*\,\s*([+-]?\d+)");
+							if (match.Success)
+							{
+								if (match.Groups.Count > 3)
+								{
+									if ((match.Groups[1].Success) && (match.Groups[1].Value != null) &&
+										(match.Groups[1].Value.Trim().Length > 0) &&
+										(int.TryParse(match.Groups[1].Value, out int v1)))
+										first = v1;
+									if ((match.Groups[2].Success) && (match.Groups[2].Value != null) &&
+										(match.Groups[2].Value.Trim().Length > 0) &&
+										(int.TryParse(match.Groups[2].Value, out int v2)))
+										second = v2;
+									if ((match.Groups[3].Success) && (match.Groups[3].Value != null) &&
+										(match.Groups[3].Value.Trim().Length > 0) &&
+										(int.TryParse(match.Groups[3].Value, out int v3)))
+										third = v3;
+								}
+							}
+						}
+						else
+						{
+							Match match = Regex.Match(text, @"([+-]?\d+\.?\d*)\s*\,\s*([+-]?\d+\.?\d*)\s*,\s*([+-]?\d+\.?\d*)");
+							if (match.Success)
+							{
+								if (match.Groups.Count > 3)
+								{
+									if ((match.Groups[1].Success) && (match.Groups[1].Value != null) &&
+										(match.Groups[1].Value.Trim().Length > 0) &&
+										(float.TryParse(match.Groups[1].Value, out float v1)))
+										first = (decimal)v1;
+									if ((match.Groups[2].Success) && (match.Groups[2].Value != null) &&
+										(match.Groups[2].Value.Trim().Length > 0) &&
+										(float.TryParse(match.Groups[2].Value, out float v2)))
+										second = (decimal)v2;
+									if ((match.Groups[3].Success) && (match.Groups[3].Value != null) &&
+										(match.Groups[3].Value.Trim().Length > 0) &&
+										(float.TryParse(match.Groups[3].Value, out float v3)))
+										third = (decimal)v3;
+								}
+							}
+						}
+						if ((first.HasValue) && (second.HasValue) && (third.HasValue))
+						{
+							return new Tuple<decimal, decimal,decimal>(first.Value, second.Value,third.Value);
+						}
+					}
+				}
+			}
+			return null;
+		}
+		/// <summary>
+		/// 偶数・奇数の補正をする
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="isEven">偶数か？</param>
+		/// <param name="isUp">切り上げか？</param>
+		/// <returns></returns>
+		public static decimal GetAdjustValue(decimal value, bool isEven, bool isUp)
         {
             int adjust_value = (isUp) ? +1 : -1;
             int check_value = (isEven) ? 0 : 1;

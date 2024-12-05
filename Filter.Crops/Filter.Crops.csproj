@@ -80,6 +80,12 @@
     <Compile Include="RandomResizedCrop.Designer.cs">
       <DependentUpon>RandomResizedCrop.cs</DependentUpon>
     </Compile>
+    <Compile Include="RandomSizedBBoxSafeCrop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RandomSizedBBoxSafeCrop.Designer.cs">
+      <DependentUpon>RandomSizedBBoxSafeCrop.cs</DependentUpon>
+    </Compile>
     <Compile Include="RandomSizedCrop.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RandomResizedCrop.resx">
       <DependentUpon>RandomResizedCrop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RandomSizedBBoxSafeCrop.resx">
+      <DependentUpon>RandomSizedBBoxSafeCrop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RandomSizedCrop.resx">
       <DependentUpon>RandomSizedCrop.cs</DependentUpon>

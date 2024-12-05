@@ -54,6 +54,12 @@
     <Compile Include="Enums\InterpolationFlags.cs" />
     <Compile Include="FilterAttributes.cs" />
     <Compile Include="IComboBox.cs" />
+    <Compile Include="Parts\Input3Tuple.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Parts\Input3Tuple.Designer.cs">
+      <DependentUpon>Input3Tuple.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parts\InputMaxMinWithType.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Parts\CustomColorDialog.resx">
       <DependentUpon>CustomColorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parts\Input3Tuple.resx">
+      <DependentUpon>Input3Tuple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Parts\InputKernelSize.resx">
       <DependentUpon>InputKernelSize.cs</DependentUpon>

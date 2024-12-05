@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="MultiplicativeNoise.Designer.cs">
       <DependentUpon>MultiplicativeNoise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Normalize.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Normalize.Designer.cs">
+      <DependentUpon>Normalize.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanckianJitter.cs">
       <SubType>UserControl</SubType>
@@ -243,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultiplicativeNoise.resx">
       <DependentUpon>MultiplicativeNoise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Normalize.resx">
+      <DependentUpon>Normalize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanckianJitter.resx">
       <DependentUpon>PlanckianJitter.cs</DependentUpon>
