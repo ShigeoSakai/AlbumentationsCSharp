@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.BasicTransform
 {
-    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("RandomBrightnessContrast"), Description("入力画像の明るさとコントラストをランダムに変更します。\r\n\r\n" +
+    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("Random Brightness Contrast"), Description("入力画像の明るさとコントラストをランダムに変更します。\r\n\r\n" +
         "この変換は、画像の明るさとコントラストを同時に調整し、幅広い照明とコントラストの変化を可能にします。" +
         "これは、コンピューター ビジョン タスクのデータ拡張に特に役立ち、モデルがさまざまな照明条件に対してより堅牢になるのに役立ちます。")]
 

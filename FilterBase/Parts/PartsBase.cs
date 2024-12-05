@@ -39,6 +39,25 @@ namespace FilterBase.Parts
             }
         }
         /// <summary>
+        /// 有効・無効
+        /// </summary>
+        [Category("値入力"), Description("有効・無効のチェックボックスを表示するかどうか")]
+        public bool Valid
+        {
+            get 
+            {
+                if (_useValid)
+                    return CbValid.Checked;
+                return true; ; 
+            }
+            set 
+            {
+                if (_useValid)
+                    CbValid.Checked = value;
+            }
+        }
+
+        /// <summary>
         /// 無効時の値文字列
         /// </summary>
         [Category("値入力"), Description("無効時の値文字列。ブランクの場合は引数を生成しない")]

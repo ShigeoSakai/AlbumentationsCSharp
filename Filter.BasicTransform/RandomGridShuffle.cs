@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.BasicTransform
 {
-    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("RandomGridShuffle"), Description("画像、マスク、またはキーポイント上のグリッドのセルをランダムにシャッフルし、画像内のパッチを効果的に再配置します。\r\n\r\n"+
+    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("Random GridShuffle"), Description("画像、マスク、またはキーポイント上のグリッドのセルをランダムにシャッフルし、画像内のパッチを効果的に再配置します。\r\n\r\n"+
                 "この変換は、画像をグリッドに分割し、ランダム マッピングに基づいてこれらのグリッド セルを並べ替えます。")]
     public partial class RandomGridShuffle : BaseFilterControl
     {

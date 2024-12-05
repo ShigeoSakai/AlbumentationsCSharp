@@ -482,5 +482,19 @@ namespace FilterBase
             }
             return result;
         }
+        /// <summary>
+        /// ラベルのサイズが変わった
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LbTitle_SizeChanged(object sender, EventArgs e)
+        {
+            PanelTitle.Size = new Size(
+                this.MinimumSize.Width,
+                LbTitle.Margin.Vertical + LbTitle.Height + LbLine.Margin.Vertical + LbLine.Height);
+            LbTitle.Location = new Point(LbTitle.Margin.Left, LbTitle.Margin.Top);
+            LbLine.Location = new Point(LbLine.Margin.Left,
+                LbTitle.Location.Y + LbTitle.Height + LbTitle.Margin.Bottom + LbLine.Margin.Top);
+        }
     }
 }

@@ -1,22 +1,32 @@
-﻿using System;
+﻿using FilterBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using FilterBase;
 
-namespace Filter.Crops
+namespace Filter.DropOut
 {
-    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("Random SizedCrop"), Description("入力のランダムな部分を切り取り、特定のサイズに再スケールします。\r\n\r\n" +
-        "この変換は、最初に入力のランダムな部分を切り取り、次に指定されたサイズにサイズ変更します。\r\n" +
-        "ランダム切り取りのサイズは、「min_max_height」パラメータによって制御されます。")]
-    public partial class RandomSizedCrop : FilterBase.BaseFilterControl
+    [ModuleCategory("dropout", "ドロップアウト"), Index(0), DisplayName("グリッド"), Description("GridDropout 拡張を画像、マスク、境界ボックス、およびキーポイントに適用します。\r\n\r\n" +
+        "GridDropout は、画像の長方形領域とそれに対応するマスクをグリッド形式でドロップします。\r\n\r\n" +
+        "この手法は、ネットワークが特定のローカル機能ではなくより広いコンテキストに依存するように強制することで、モデルの堅牢性を向上させるのに役立ちます。")]
+
+    public partial class GridDropout : FilterBase.BaseFilterControl
     {
-        public RandomSizedCrop():base()
+        public GridDropout() : base()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// ランダムオフセットのチェックが変更になった
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ParaRandomOffset_CheckedChanged(object sender, EventArgs e)
+        {
+            ParaShiftXy.Enabled = !ParaRandomOffset.Checked;
         }
         /// <summary>
         /// バージョンの設定
@@ -72,5 +82,6 @@ namespace Filter.Crops
             // イベント発行
             OnParameterChange(name, value);
         }
+
     }
 }

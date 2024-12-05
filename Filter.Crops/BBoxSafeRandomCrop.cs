@@ -9,7 +9,7 @@ using FilterBase;
 
 namespace Filter.Crops
 {
-    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("BBoxSafeRandomCrop"), Description("境界ボックスを失うことなく、入力のランダムな部分を切り取ります。\r\n\r\n" +
+    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("BBoxSafe RandomCrop"), Description("境界ボックスを失うことなく、入力のランダムな部分を切り取ります。\r\n\r\n" +
         "この変換は、すべての境界ボックスが切り取られた領域内に残るようにしながら、入力画像をランダムに切り取ります。" +
         "これは、画像内のすべてのオブジェクトを保持することが重要なオブジェクト検出タスクに特に役立ちます。")]
     public partial class BBoxSafeRandomCrop : BaseFilterControl

@@ -9,7 +9,7 @@ using FilterBase;
 
 namespace Filter.Blur
 {
-    [ModuleCategory("blur", "ぼかし"), Index(0), DisplayName("AdvancedBlur"), Description("ランダムに選択されたパラメータを持つ一般化法線フィルタを使用して入力画像をぼかします。\r\n" +
+    [ModuleCategory("blur", "ぼかし"), Index(0), DisplayName("Advanced Blur"), Description("ランダムに選択されたパラメータを持つ一般化法線フィルタを使用して入力画像をぼかします。\r\n" +
                 "この変換では、畳み込み前に生成されたカーネルに乗法ノイズも追加されます。")]
     public partial class AdvancedBlur : BaseFilterControl
     {

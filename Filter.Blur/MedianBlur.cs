@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.Blur
 {
-    [ModuleCategory("blur", "ぼかし"), Index(1), DisplayName("MedianBlur"), Description("入力画像にメディアンブラーを適用します。\r\n\r\n" +
+    [ModuleCategory("blur", "ぼかし"), Index(1), DisplayName("Median Blur"), Description("入力画像にメディアンブラーを適用します。\r\n\r\n" +
         "この変換では、メディアンフィルターを使用して入力画像をぼかします。\r\n" +
         "メディアンフィルタリングは、エッジを保持しながらごま塩ノイズを除去するのに特に効果的であるため、\r\n" +
         "画像処理におけるノイズ低減によく使用されます。")]

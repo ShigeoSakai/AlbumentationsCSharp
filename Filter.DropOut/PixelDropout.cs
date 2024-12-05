@@ -1,20 +1,20 @@
-﻿using System;
+﻿using FilterBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using FilterBase;
 
-namespace Filter.Crops
+namespace Filter.DropOut
 {
-    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("Random SizedCrop"), Description("入力のランダムな部分を切り取り、特定のサイズに再スケールします。\r\n\r\n" +
-        "この変換は、最初に入力のランダムな部分を切り取り、次に指定されたサイズにサイズ変更します。\r\n" +
-        "ランダム切り取りのサイズは、「min_max_height」パラメータによって制御されます。")]
-    public partial class RandomSizedCrop : FilterBase.BaseFilterControl
+    [ModuleCategory("dropout", "ドロップアウト"), Index(0), DisplayName("ピクセル"), Description("画像からランダムなピクセルを削除します。\r\n\r\n" +
+        "この変換は、画像内のピクセルを指定された値にランダムに設定し、それらのピクセルを実質的に「削除」します。\r\n" +
+        "これは、画像とそれに対応するマスクの両方に適用できます。")]
+    public partial class PixelDropout : FilterBase.BaseFilterControl
     {
-        public RandomSizedCrop():base()
+        public PixelDropout() : base()
         {
             InitializeComponent();
         }
@@ -71,6 +71,15 @@ namespace Filter.Crops
         {
             // イベント発行
             OnParameterChange(name, value);
+        }
+        /// <summary>
+        /// PerChannelのチェック変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ParaPerChannel_CheckedChanged(object sender, EventArgs e)
+        {
+            ParaMaskDropValue.Enabled = !ParaPerChannel.Checked;
         }
     }
 }

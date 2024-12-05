@@ -9,7 +9,7 @@ using FilterBase;
 
 namespace Filter.Crops
 {
-    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("RandomCropFromBorders"), Description("入力をサイズを変更せずに境界からランダムに切り取ります。\r\n\r\n" +
+    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("RandomCrop FromBorders"), Description("入力をサイズを変更せずに境界からランダムに切り取ります。\r\n\r\n" +
         "この変換は、入力の一部 (画像、マスク、境界ボックス、またはキーポイント) を各境界からランダムに切り取ります。" +
         "切り取り量は、各辺の入力の寸法の割合として個別に指定されます。")]
     public partial class RandomCropFromBorders : FilterBase.BaseFilterControl

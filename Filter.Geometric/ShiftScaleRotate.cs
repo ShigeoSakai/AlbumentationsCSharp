@@ -9,7 +9,7 @@ using FilterBase.Enums;
 using FilterBase;
 namespace Filter.Geometric
 {
-    [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("ShiftScaleRotate"), Description("アフィン変換をランダムに適用します。入力を平行移動、拡大縮小、回転します。")]
+    [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("ShiftScale Rotate"), Description("アフィン変換をランダムに適用します。入力を平行移動、拡大縮小、回転します。")]
     public partial class ShiftScaleRotate : BaseFilterControl
     {
         /// <summary>

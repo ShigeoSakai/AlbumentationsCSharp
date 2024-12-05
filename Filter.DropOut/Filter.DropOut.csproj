@@ -55,6 +55,18 @@
     <Compile Include="CoarseDropout.Designer.cs">
       <DependentUpon>CoarseDropout.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridDropout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GridDropout.Designer.cs">
+      <DependentUpon>GridDropout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PixelDropout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PixelDropout.Designer.cs">
+      <DependentUpon>PixelDropout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -64,6 +76,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CoarseDropout.resx">
       <DependentUpon>CoarseDropout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridDropout.resx">
+      <DependentUpon>GridDropout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PixelDropout.resx">
+      <DependentUpon>PixelDropout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

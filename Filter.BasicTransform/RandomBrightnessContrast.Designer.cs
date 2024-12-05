@@ -47,9 +47,9 @@
             this.FLPParam.Controls.Add(this.ParaBrightnessByMax);
             this.FLPParam.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FLPParam.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.FLPParam.Location = new System.Drawing.Point(0, 25);
+            this.FLPParam.Location = new System.Drawing.Point(0, 24);
             this.FLPParam.Name = "FLPParam";
-            this.FLPParam.Size = new System.Drawing.Size(128, 123);
+            this.FLPParam.Size = new System.Drawing.Size(128, 117);
             this.FLPParam.TabIndex = 5;
             // 
             // ParaBrightnessLimit
@@ -65,6 +65,7 @@
             0,
             0,
             65536});
+            this.ParaBrightnessLimit.InvalidValue = "";
             this.ParaBrightnessLimit.Location = new System.Drawing.Point(3, 3);
             this.ParaBrightnessLimit.MaxValue = new decimal(new int[] {
             1,
@@ -81,9 +82,12 @@
             this.ParaBrightnessLimit.MinVersion = null;
             this.ParaBrightnessLimit.Name = "ParaBrightnessLimit";
             this.ParaBrightnessLimit.Required = false;
-            this.ParaBrightnessLimit.Size = new System.Drawing.Size(124, 42);
+            this.ParaBrightnessLimit.Size = new System.Drawing.Size(124, 39);
             this.ParaBrightnessLimit.TabIndex = 0;
             this.ParaBrightnessLimit.Title = "明るさ係数範囲";
+            this.ParaBrightnessLimit.UseLargeValue = false;
+            this.ParaBrightnessLimit.UseValid = false;
+            this.ParaBrightnessLimit.Valid = true;
             this.ParaBrightnessLimit.Value = "(-0.2,0.2)";
             this.ParaBrightnessLimit.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_FLOAT;
             this.ParaBrightnessLimit.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -101,7 +105,8 @@
             0,
             0,
             65536});
-            this.ParaContrastLimit.Location = new System.Drawing.Point(3, 51);
+            this.ParaContrastLimit.InvalidValue = "";
+            this.ParaContrastLimit.Location = new System.Drawing.Point(3, 48);
             this.ParaContrastLimit.MaxValue = new decimal(new int[] {
             1,
             0,
@@ -117,9 +122,12 @@
             this.ParaContrastLimit.MinVersion = null;
             this.ParaContrastLimit.Name = "ParaContrastLimit";
             this.ParaContrastLimit.Required = false;
-            this.ParaContrastLimit.Size = new System.Drawing.Size(124, 42);
+            this.ParaContrastLimit.Size = new System.Drawing.Size(124, 39);
             this.ParaContrastLimit.TabIndex = 1;
             this.ParaContrastLimit.Title = "コントラスト係数範囲";
+            this.ParaContrastLimit.UseLargeValue = false;
+            this.ParaContrastLimit.UseValid = false;
+            this.ParaContrastLimit.Valid = true;
             this.ParaContrastLimit.Value = "(-0.2,0.2)";
             this.ParaContrastLimit.ValueType = FilterBase.Parts.PartsFunc.VALUE_TYPE.TYPE_FLOAT;
             this.ParaContrastLimit.ParameterChange += new FilterBase.Parts.ParameterChangeEventHandler(this.Param_ParameterChange);
@@ -128,11 +136,13 @@
             // 
             this.ParaBrightnessByMax.ArgumentName = "brightness_by_max";
             this.ParaBrightnessByMax.AutoSize = true;
+            this.ParaBrightnessByMax.Checked = true;
             this.ParaBrightnessByMax.CheckedValue = "";
+            this.ParaBrightnessByMax.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ParaBrightnessByMax.Description = "True の場合、ピクセル値を画像の dtype の最大値まで拡大して明るさを調整します。\r\nFalse の場合、調整には平均ピクセル値を使用します。\r\n　　デフ" +
     "ォルト: True。";
             this.ParaBrightnessByMax.IndeterminateValue = "";
-            this.ParaBrightnessByMax.Location = new System.Drawing.Point(3, 99);
+            this.ParaBrightnessByMax.Location = new System.Drawing.Point(3, 93);
             this.ParaBrightnessByMax.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
             this.ParaBrightnessByMax.MaxVersion = null;
             this.ParaBrightnessByMax.MinimumSize = new System.Drawing.Size(122, 21);
@@ -156,7 +166,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.FLPParam);
             this.Name = "RandomBrightnessContrast";
-            this.Size = new System.Drawing.Size(128, 173);
+            this.Size = new System.Drawing.Size(128, 166);
             this.Target = FilterBase.BaseFilterControl.TRANSFORM_TARGET.IMAGE;
             this.Controls.SetChildIndex(this.FLPParam, 0);
             this.FLPParam.ResumeLayout(false);

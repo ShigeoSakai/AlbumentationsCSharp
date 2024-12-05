@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.Geometric
 {
-    [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("GridElasticDeform"), Description("グリッドベースのアプローチを使用して、画像、マスク、境界ボックス、およびキーポイントに弾性変形を適用します。\r\n\r\n" +
+    [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("GridElastic Deform"), Description("グリッドベースのアプローチを使用して、画像、マスク、境界ボックス、およびキーポイントに弾性変形を適用します。\r\n\r\n" +
         "この変換は、入力にグリッドを重ね、グリッド ポイントにランダムな変位を適用して、局所的な弾性変形を生成します。" +
         "歪みの粒度と強度は、重ね合わせた歪みグリッドの寸法と大きさのパラメーターを使用して制御できます。")]
     public partial class GridElasticDeform : BaseFilterControl

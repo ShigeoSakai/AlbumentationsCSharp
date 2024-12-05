@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace FilterCrops
 {
-    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("RandomResizedCrop"), Description("入力のランダムな部分を切り取り、指定されたサイズに再スケールします。\r\n\r\n" +
+    [ModuleCategory("crops", "切り抜き"), Index(0), DisplayName("Random ResizedCrop"), Description("入力のランダムな部分を切り取り、指定されたサイズに再スケールします。\r\n\r\n" +
         "この変換は、最初に入力画像 (またはマスク、境界ボックス、キーポイント) のランダムな部分を切り取り、次に切り取った部分を指定されたサイズに変更します。" +
         "これは、さまざまなサイズとアスペクト比の画像でニューラル ネットワークをトレーニングする場合に特に便利です。")]
     public partial class RandomResizedCrop : FilterBase.BaseFilterControl

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.BasicTransform
 {
-    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("RingingOvershoot"), Description("2D sincフィルターを使用して画像を畳み込むことで、リンギングまたはオーバーシュートアーティファクトを作成します。\r\n\r\n" +
+    [ModuleCategory("transform", "基本変換"), Index(0), DisplayName("Ringing Overshoot"), Description("2D sincフィルターを使用して画像を畳み込むことで、リンギングまたはオーバーシュートアーティファクトを作成します。\r\n\r\n" +
         "この変換は、デジタル画像処理、特にシャープ化またはエッジ強調操作後に発生する可能性のあるリンギングアーティファクトをシミュレートします。" +
         "画像内の急激な変化の近くで振動またはオーバーシュートを作成します。")]
     public partial class RingingOvershoot : BaseFilterControl

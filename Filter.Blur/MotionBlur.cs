@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using FilterBase;
 namespace Filter.Blur
 {
-    [ModuleCategory("blur", "ぼかし"), Index(3), DisplayName("MotionBlur"), Description("ランダムサイズのカーネルを使用して、入力画像にモーションブラーを適用します。\r\n\r\n" +
+    [ModuleCategory("blur", "ぼかし"), Index(3), DisplayName("Motion Blur"), Description("ランダムサイズのカーネルを使用して、入力画像にモーションブラーを適用します。\r\n\r\n" +
         "この変換は、画像キャプチャ中のカメラまたはオブジェクトの動きの効果をシミュレートし、方向性のあるブラーを作成します。\r\n" +
         "この効果を実現するために、ランダムな方向の線状のカーネルを使用します。\r\n")]
     public partial class MotionBlur : BaseFilterControl
