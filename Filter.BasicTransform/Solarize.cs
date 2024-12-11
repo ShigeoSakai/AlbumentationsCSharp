@@ -14,10 +14,31 @@ namespace Filter.BasicTransform
         "暗い領域が明るく見えたり、明るい領域が暗く見えたりします。\r\n\r\nこの実装では、しきい値を超えるすべてのピクセル値が反転されます。")]
     public partial class Solarize : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public Solarize():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public Solarize(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public Solarize(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

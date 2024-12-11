@@ -14,10 +14,31 @@ namespace Filter.DropOut
         "この変換はCutOutとRandomErasingの進化形であり、サイズ、ドロップアウト領域の数、および塗りつぶし値の柔軟性が向上しています。")]
     public partial class CoarseDropout : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public CoarseDropout():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public CoarseDropout(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public CoarseDropout(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

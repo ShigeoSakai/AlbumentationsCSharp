@@ -14,9 +14,30 @@ namespace Filter.Geometric
         "これは、90 度回転してから水平反転するのと同じです。")]
     public partial class Transpose : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public Transpose():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public Transpose(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public Transpose(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
     }
 }

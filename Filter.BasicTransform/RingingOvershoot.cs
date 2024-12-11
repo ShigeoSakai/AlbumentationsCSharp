@@ -13,10 +13,31 @@ namespace Filter.BasicTransform
         "画像内の急激な変化の近くで振動またはオーバーシュートを作成します。")]
     public partial class RingingOvershoot : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public RingingOvershoot(): base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RingingOvershoot(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RingingOvershoot(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

@@ -13,10 +13,31 @@ namespace Filter.BasicTransform
         "この変換では、ガウスぼかしを適用して画像のぼかしバージョンを作成し、これを使用してマスクを作成し、元の画像と組み合わせてエッジと細かいディテールを強調します。")]
     public partial class UnsharpMask : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public UnsharpMask():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public UnsharpMask(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public UnsharpMask(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

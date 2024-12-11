@@ -14,10 +14,31 @@ namespace Filter.DropOut
         "これは、画像とそれに対応するマスクの両方に適用できます。")]
     public partial class PixelDropout : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public PixelDropout() : base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public PixelDropout(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public PixelDropout(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

@@ -13,10 +13,31 @@ namespace FilterCrops
         "これは、さまざまなサイズとアスペクト比の画像でニューラル ネットワークをトレーニングする場合に特に便利です。")]
     public partial class RandomResizedCrop : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public RandomResizedCrop():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RandomResizedCrop(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RandomResizedCrop(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

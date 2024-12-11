@@ -14,10 +14,31 @@ namespace Filter.Crops
         "これは、画像内のすべてのオブジェクトを保持することが重要なオブジェクト検出タスクに特に役立ちます。")]
     public partial class BBoxSafeRandomCrop : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public BBoxSafeRandomCrop():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public BBoxSafeRandomCrop(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public BBoxSafeRandomCrop(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

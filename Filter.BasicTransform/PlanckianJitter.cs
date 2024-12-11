@@ -146,6 +146,24 @@ namespace Filter.BasicTransform
 
         }
         /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public PlanckianJitter(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public PlanckianJitter(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
         /// バージョンの設定
         /// </summary>
         /// <param name="version"></param>

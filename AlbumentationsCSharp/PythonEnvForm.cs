@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlbumentationsCSharp.Composition;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -334,6 +335,12 @@ namespace AlbumentationsCSharp
             string text = CbvEnvName.Text;
             //　コンボボックス作成
             MakeVEnvComboBox(CbvEnvName, TbvEnvPath.Text, text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CompositionForm form = new CompositionForm();
+            form.ShowDialog();
         }
     }
 }

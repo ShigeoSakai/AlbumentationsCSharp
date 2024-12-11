@@ -1,4 +1,5 @@
-﻿using FilterBase;
+﻿using AlbumentationsCSharp.Composition;
+using FilterBase;
 using SSTools;
 using SSTools.Shape;
 using System;
@@ -198,6 +199,10 @@ namespace AlbumentationsCSharp
                         CmdExec.ExecCommand("MASK:" + MaskFilePath, ">");
                         CmdExec.ExecCommand("MASK!");
                     }
+                    // BBOXを送信
+                    SendBBox();
+                    // キーポイントを送信
+                    SendKeyPoints();
                 }
             }
         }
@@ -284,6 +289,11 @@ namespace AlbumentationsCSharp
             // 待ち表示ダイアログを閉じる
             if (WaitDialog != null)
                 WaitDialog.SetResult(true);
+
+#if DEBUG
+            // デバッグモードにする
+            CmdExec.ExecCommand("DBG:ON", ">");
+#endif
             return true;
         }
 
@@ -362,6 +372,50 @@ namespace AlbumentationsCSharp
         };
 
         /// <summary>
+        /// グレースケール変換
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private Bitmap ToGrayscale(Image img)
+        {
+            if (img != null)
+            {
+                //グレースケールの描画先となるImageオブジェクトを作成
+                Bitmap newImg = new Bitmap(img.Width, img.Height);
+                //newImgのGraphicsオブジェクトを取得
+                Graphics g = Graphics.FromImage(newImg);
+
+                //ColorMatrixオブジェクトの作成
+                //グレースケールに変換するための行列を指定する
+                System.Drawing.Imaging.ColorMatrix cm =
+                    new System.Drawing.Imaging.ColorMatrix(
+                        new float[][]{
+                            new float[]{0.3086f, 0.3086f, 0.3086f, 0 ,0},
+                            new float[]{0.6094f, 0.6094f, 0.6094f, 0, 0},
+                            new float[]{0.0820f, 0.0820f, 0.0820f, 0, 0},
+                            new float[]{0, 0, 0, 1, 0},
+                            new float[]{0, 0, 0, 0, 1}
+                        });
+                //ImageAttributesオブジェクトの作成
+                System.Drawing.Imaging.ImageAttributes ia =
+                    new System.Drawing.Imaging.ImageAttributes();
+                //ColorMatrixを設定する
+                ia.SetColorMatrix(cm);
+
+                //ImageAttributesを使用してグレースケールを描画
+                g.DrawImage(img,
+                    new Rectangle(0, 0, img.Width, img.Height),
+                    0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+
+                //リソースを解放する
+                g.Dispose();
+
+                return newImg;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// 画像ファイルを開く
         /// </summary>
         /// <param name="sender"></param>
@@ -380,18 +434,39 @@ namespace AlbumentationsCSharp
                     // 解像度を96DPIにする
                     bmp.SetResolution(96.0F, 96.0F);
 
+                    if (RbGray.Checked)
+                    {   // グレースケール変換
+                        Bitmap gray =ToGrayscale(bmp);
+                        bmp.Dispose();
+                        bmp = null;
+                        bmp = gray;
+                    }
+
                     // 図形をクリア
                     PbOrigImage.ClearShape();
                     // マスクをクリア
                     PbOrigImage.MaskImage = null;
                     OrigImage = bmp;
                     PbOrigImage.Image = bmp;
+
+                    // 画像読み込みフラグ
+                    string read_mode = "";
+                    if ((RbFloat.Checked) || (RbGray.Checked))
+                    {
+                        if (RbFloat.Checked)
+                            read_mode += "float" + "|";
+                        if (RbGray.Checked)
+                            read_mode += "gray" + "|";
+                    }
+
                     // コマンド送信
                     if (CmdExec != null)
                     {
                         CmdExec.ExecCommand("", ">");  // 空行を送信
-                        CmdExec.ExecCommand("IMG:" + ImageFilePath, ">");
+                        CmdExec.ExecCommand("IMG:" + read_mode + ImageFilePath, ">");
+#if DEBUG
                         CmdExec.ExecCommand("IMG!");
+#endif
                         CmdExec.ExecCommand("", ">");  // 空行を送信
                         CmdExec.ExecCommand("MASK:");   // マスク画像を消去
 
@@ -466,7 +541,9 @@ namespace AlbumentationsCSharp
                     {
                         CmdExec.ExecCommand("", ">");  // 空行を送信
                         CmdExec.ExecCommand("MASK:" + MaskFilePath, ">");
+#if DEBUG
                         CmdExec.ExecCommand("MASK!");
+#endif
                     }
                 }
             }
@@ -513,7 +590,7 @@ namespace AlbumentationsCSharp
         private bool ExecFilter(bool always_applay = false)
         {
             BaseFilterControl ctrl = GetPanelFilterControl();
-            if (ctrl != null)
+            if ((ctrl != null) && (CmdExec != null))
             {
                 if (CheckControlTarget(ctrl))
                 {
@@ -784,19 +861,23 @@ namespace AlbumentationsCSharp
             {
                 string bbox = BoundingBox.GetBoundingBox();
                 string bbox_label = BoundingBox.GetClassName();
-                if (string.IsNullOrEmpty(bbox) == false)
+                if ((string.IsNullOrEmpty(bbox) == false) && (CmdExec != null))
                 {
                     // コマンドを発行
                     CmdExec.ExecCommand("", ">");  // 空行を送信
                     CmdExec.ExecCommand("BBOX:" + bbox, ">");
+#if DEBUG
                     CmdExec.ExecCommand("BBOX!", ">");
+#endif
 
                     if (string.IsNullOrEmpty(bbox_label) == false)
                     {
                         // コマンドを発行
                         CmdExec.ExecCommand("", ">");  // 空行を送信
                         CmdExec.ExecCommand("LBOX:" + bbox_label, ">");
+#if DEBUG
                         CmdExec.ExecCommand("LBOX!", ">");
+#endif
                     }
                 }
             }
@@ -941,19 +1022,23 @@ namespace AlbumentationsCSharp
             {
                 string keypoints = KeyPoints.GetKeyPoints();
                 string keypoints_label = KeyPoints.GetLabels();
-                if (string.IsNullOrEmpty(keypoints) == false)
+                if ((string.IsNullOrEmpty(keypoints) == false) && (CmdExec != null))
                 {
                     // コマンドを発行
                     CmdExec.ExecCommand("", ">");  // 空行を送信
                     CmdExec.ExecCommand("KP:" + keypoints, ">");
+#if DEBUG
                     CmdExec.ExecCommand("KP!", ">");
+#endif
 
                     if (string.IsNullOrEmpty(keypoints_label) == false)
                     {
                         // コマンドを発行
                         CmdExec.ExecCommand("", ">");  // 空行を送信
                         CmdExec.ExecCommand("LKP:" + keypoints_label, ">");
+#if DEBUG
                         CmdExec.ExecCommand("LKP!", ">");
+#endif
                     }
                 }
             }
@@ -1085,6 +1170,12 @@ namespace AlbumentationsCSharp
         private void ToolStripMenuItemFileExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CompositionForm form = new CompositionForm();
+            form.ShowDialog();
         }
     }
 }

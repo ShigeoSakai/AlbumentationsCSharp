@@ -14,12 +14,33 @@ namespace Filter.Geometric
         "これは、カメラ レンズ効果が関係するコンピューター ビジョン タスクでデータを拡張する場合に特に便利です。")]
     public partial class OpticalDistortion : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public OpticalDistortion():base()
         {
             InitializeComponent();
             // ボーダーモードの変更
             BorderModeChange(ParaBorderMode.Value);
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public OpticalDistortion(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public OpticalDistortion(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

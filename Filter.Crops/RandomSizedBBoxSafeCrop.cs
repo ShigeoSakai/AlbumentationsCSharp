@@ -14,15 +14,36 @@ namespace Filter.Crops
 		"これは、画像内のすべてのオブジェクトを保持しながら画像サイズを標準化することが重要なオブジェクト検出タスクに特に役立ちます。")]
 	public partial class RandomSizedBBoxSafeCrop : FilterBase.BaseFilterControl
 	{
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
 		public RandomSizedBBoxSafeCrop():base()
 		{
 			InitializeComponent();
 		}
-		/// <summary>
-		/// バージョンの設定
-		/// </summary>
-		/// <param name="version"></param>
-		protected override void SetVersion(VersionInfo version)
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RandomSizedBBoxSafeCrop(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RandomSizedBBoxSafeCrop(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
+        /// バージョンの設定
+        /// </summary>
+        /// <param name="version"></param>
+        protected override void SetVersion(VersionInfo version)
 		{
 			base.SetVersion(version);
 			// バージョンの設定

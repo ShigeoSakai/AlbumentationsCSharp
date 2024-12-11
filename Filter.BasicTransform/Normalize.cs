@@ -84,11 +84,29 @@ namespace Filter.BasicTransform
 			ParaNormalization.ItemType = typeof(NormalizeMethod).ToString();
 
 		}
-		/// <summary>
-		/// バージョンの設定
-		/// </summary>
-		/// <param name="version"></param>
-		protected override void SetVersion(VersionInfo version)
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public Normalize(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public Normalize(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
+        /// バージョンの設定
+        /// </summary>
+        /// <param name="version"></param>
+        protected override void SetVersion(VersionInfo version)
 		{
 			base.SetVersion(version);
 			// バージョンの設定

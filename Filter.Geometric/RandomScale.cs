@@ -11,10 +11,31 @@ namespace Filter.Geometric
     [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("RandomScale"), Description("入力のサイズをランダムに変更します。出力画像のサイズは入力画像のサイズと異なります。")]
     public partial class RandomScale : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public RandomScale():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RandomScale(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RandomScale(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

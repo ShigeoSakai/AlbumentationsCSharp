@@ -14,10 +14,31 @@ namespace Filter.Crops
         "切り取り量は、各辺の入力の寸法の割合として個別に指定されます。")]
     public partial class RandomCropFromBorders : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public RandomCropFromBorders():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RandomCropFromBorders(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RandomCropFromBorders(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

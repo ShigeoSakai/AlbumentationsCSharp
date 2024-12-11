@@ -62,6 +62,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PbResultImage = new SSTools.ZoomPictureBox();
             this.PanelFile = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RbGray = new System.Windows.Forms.RadioButton();
+            this.RbColor = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RbFloat = new System.Windows.Forms.RadioButton();
+            this.Rb8Bit = new System.Windows.Forms.RadioButton();
             this.CbKeyPointType = new System.Windows.Forms.ComboBox();
             this.BtNewKeyPoint = new System.Windows.Forms.Button();
             this.BtNewBox = new System.Windows.Forms.Button();
@@ -89,12 +95,15 @@
             this.CbShowResultBBox = new System.Windows.Forms.CheckBox();
             this.PanelOrigControl = new System.Windows.Forms.Panel();
             this.CbShowImage = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuStripMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbOrigImage)).BeginInit();
             this.PictBoxMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbResultImage)).BeginInit();
             this.PanelFile.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.PanelExec.SuspendLayout();
             this.TBLMain.SuspendLayout();
             this.PanelResultControl.SuspendLayout();
@@ -191,10 +200,10 @@
             // 
             this.PanelParam.AutoScroll = true;
             this.PanelParam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelParam.Location = new System.Drawing.Point(398, 160);
+            this.PanelParam.Location = new System.Drawing.Point(398, 188);
             this.PanelParam.Margin = new System.Windows.Forms.Padding(0);
             this.PanelParam.Name = "PanelParam";
-            this.PanelParam.Size = new System.Drawing.Size(145, 319);
+            this.PanelParam.Size = new System.Drawing.Size(145, 291);
             this.PanelParam.TabIndex = 1;
             // 
             // CbCategory
@@ -223,7 +232,7 @@
             this.panel1.Controls.Add(this.CbCategory);
             this.panel1.Controls.Add(this.CbAlbumentations);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(398, 105);
+            this.panel1.Location = new System.Drawing.Point(398, 133);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.TBLMain.SetRowSpan(this.panel1, 2);
@@ -249,7 +258,7 @@
             this.PbOrigImage.ContextMenuStrip = this.PictBoxMenuStrip;
             this.PbOrigImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PbOrigImage.Image = null;
-            this.PbOrigImage.Location = new System.Drawing.Point(0, 146);
+            this.PbOrigImage.Location = new System.Drawing.Point(0, 174);
             this.PbOrigImage.Margin = new System.Windows.Forms.Padding(0);
             this.PbOrigImage.MaskAlfa = 0.5F;
             this.PbOrigImage.MaskImage = null;
@@ -259,7 +268,7 @@
             this.TBLMain.SetRowSpan(this.PbOrigImage, 3);
             this.PbOrigImage.ShapeShow = true;
             this.PbOrigImage.ShowImage = true;
-            this.PbOrigImage.Size = new System.Drawing.Size(398, 413);
+            this.PbOrigImage.Size = new System.Drawing.Size(398, 385);
             this.PbOrigImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbOrigImage.TabIndex = 1;
             this.PbOrigImage.TabStop = false;
@@ -316,7 +325,7 @@
             // 
             // BtMaskImageOpen
             // 
-            this.BtMaskImageOpen.Location = new System.Drawing.Point(828, 33);
+            this.BtMaskImageOpen.Location = new System.Drawing.Point(828, 61);
             this.BtMaskImageOpen.Name = "BtMaskImageOpen";
             this.BtMaskImageOpen.Size = new System.Drawing.Size(66, 23);
             this.BtMaskImageOpen.TabIndex = 5;
@@ -331,7 +340,7 @@
     "PNGファイル|*.png|JPEGファイル|*.jpg;*.jpeg|TIFFファイル|*.tif;*.tiff|GIFファイル|*.gif|SVGファイル|" +
     "*.svg|WebPファイル|*.webp|全てのファイル|*.*";
             this.BtMaskImageSelect.LinkControl = this.TbMaskImage;
-            this.BtMaskImageSelect.Location = new System.Drawing.Point(790, 33);
+            this.BtMaskImageSelect.Location = new System.Drawing.Point(790, 61);
             this.BtMaskImageSelect.Name = "BtMaskImageSelect";
             this.BtMaskImageSelect.Preset = SSTools.FileSelectButton.FILTER_PRESET.NONE;
             this.BtMaskImageSelect.SendClickControl = this.BtMaskImageOpen;
@@ -346,14 +355,14 @@
             // 
             // TbMaskImage
             // 
-            this.TbMaskImage.Location = new System.Drawing.Point(94, 35);
+            this.TbMaskImage.Location = new System.Drawing.Point(94, 63);
             this.TbMaskImage.Name = "TbMaskImage";
             this.TbMaskImage.Size = new System.Drawing.Size(690, 19);
             this.TbMaskImage.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(3, 33);
+            this.label2.Location = new System.Drawing.Point(3, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 23);
             this.label2.TabIndex = 4;
@@ -362,7 +371,7 @@
             // 
             // BtImageOpen
             // 
-            this.BtImageOpen.Location = new System.Drawing.Point(828, 9);
+            this.BtImageOpen.Location = new System.Drawing.Point(718, 24);
             this.BtImageOpen.Name = "BtImageOpen";
             this.BtImageOpen.Size = new System.Drawing.Size(66, 23);
             this.BtImageOpen.TabIndex = 2;
@@ -377,7 +386,7 @@
     "PNGファイル|*.png|JPEGファイル|*.jpg;*.jpeg|TIFFファイル|*.tif;*.tiff|GIFファイル|*.gif|SVGファイル|" +
     "*.svg|WebPファイル|*.webp|全てのファイル|*.*";
             this.BtImageFileSelect.LinkControl = this.TbImageFile;
-            this.BtImageFileSelect.Location = new System.Drawing.Point(790, 9);
+            this.BtImageFileSelect.Location = new System.Drawing.Point(680, 24);
             this.BtImageFileSelect.Name = "BtImageFileSelect";
             this.BtImageFileSelect.Preset = SSTools.FileSelectButton.FILTER_PRESET.NONE;
             this.BtImageFileSelect.SendClickControl = this.BtImageOpen;
@@ -392,14 +401,14 @@
             // 
             // TbImageFile
             // 
-            this.TbImageFile.Location = new System.Drawing.Point(94, 11);
+            this.TbImageFile.Location = new System.Drawing.Point(94, 26);
             this.TbImageFile.Name = "TbImageFile";
-            this.TbImageFile.Size = new System.Drawing.Size(690, 19);
+            this.TbImageFile.Size = new System.Drawing.Size(580, 19);
             this.TbImageFile.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 23);
             this.label1.TabIndex = 0;
@@ -414,7 +423,7 @@
             this.PbResultImage.ContextMenuStrip = this.PictBoxMenuStrip;
             this.PbResultImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PbResultImage.Image = null;
-            this.PbResultImage.Location = new System.Drawing.Point(543, 146);
+            this.PbResultImage.Location = new System.Drawing.Point(543, 174);
             this.PbResultImage.Margin = new System.Windows.Forms.Padding(0);
             this.PbResultImage.MaskAlfa = 0.5F;
             this.PbResultImage.MaskImage = null;
@@ -424,7 +433,7 @@
             this.TBLMain.SetRowSpan(this.PbResultImage, 3);
             this.PbResultImage.ShapeShow = true;
             this.PbResultImage.ShowImage = true;
-            this.PbResultImage.Size = new System.Drawing.Size(398, 413);
+            this.PbResultImage.Size = new System.Drawing.Size(398, 385);
             this.PbResultImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbResultImage.TabIndex = 2;
             this.PbResultImage.TabStop = false;
@@ -435,6 +444,9 @@
             // 
             this.PanelFile.AutoSize = true;
             this.TBLMain.SetColumnSpan(this.PanelFile, 4);
+            this.PanelFile.Controls.Add(this.button1);
+            this.PanelFile.Controls.Add(this.groupBox2);
+            this.PanelFile.Controls.Add(this.groupBox1);
             this.PanelFile.Controls.Add(this.CbKeyPointType);
             this.PanelFile.Controls.Add(this.BtNewKeyPoint);
             this.PanelFile.Controls.Add(this.BtNewBox);
@@ -461,20 +473,96 @@
             this.PanelFile.Location = new System.Drawing.Point(0, 0);
             this.PanelFile.Margin = new System.Windows.Forms.Padding(0);
             this.PanelFile.Name = "PanelFile";
-            this.PanelFile.Size = new System.Drawing.Size(1072, 105);
+            this.PanelFile.Size = new System.Drawing.Size(1072, 133);
             this.PanelFile.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox2.Controls.Add(this.RbGray);
+            this.groupBox2.Controls.Add(this.RbColor);
+            this.groupBox2.Location = new System.Drawing.Point(896, 11);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(1, 3, 1, 0);
+            this.groupBox2.Size = new System.Drawing.Size(109, 46);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "色";
+            // 
+            // RbGray
+            // 
+            this.RbGray.AutoSize = true;
+            this.RbGray.Location = new System.Drawing.Point(60, 18);
+            this.RbGray.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.RbGray.Name = "RbGray";
+            this.RbGray.Size = new System.Drawing.Size(47, 16);
+            this.RbGray.TabIndex = 1;
+            this.RbGray.Text = "Gray";
+            this.RbGray.UseVisualStyleBackColor = true;
+            // 
+            // RbColor
+            // 
+            this.RbColor.AutoSize = true;
+            this.RbColor.Checked = true;
+            this.RbColor.Location = new System.Drawing.Point(4, 18);
+            this.RbColor.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.RbColor.Name = "RbColor";
+            this.RbColor.Size = new System.Drawing.Size(50, 16);
+            this.RbColor.TabIndex = 0;
+            this.RbColor.TabStop = true;
+            this.RbColor.Text = "Color";
+            this.RbColor.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.RbFloat);
+            this.groupBox1.Controls.Add(this.Rb8Bit);
+            this.groupBox1.Location = new System.Drawing.Point(790, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(1, 3, 1, 0);
+            this.groupBox1.Size = new System.Drawing.Size(100, 46);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "データ形式";
+            // 
+            // RbFloat
+            // 
+            this.RbFloat.AutoSize = true;
+            this.RbFloat.Location = new System.Drawing.Point(52, 18);
+            this.RbFloat.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.RbFloat.Name = "RbFloat";
+            this.RbFloat.Size = new System.Drawing.Size(46, 16);
+            this.RbFloat.TabIndex = 1;
+            this.RbFloat.Text = "float";
+            this.RbFloat.UseVisualStyleBackColor = true;
+            // 
+            // Rb8Bit
+            // 
+            this.Rb8Bit.AutoSize = true;
+            this.Rb8Bit.Checked = true;
+            this.Rb8Bit.Location = new System.Drawing.Point(4, 18);
+            this.Rb8Bit.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.Rb8Bit.Name = "Rb8Bit";
+            this.Rb8Bit.Size = new System.Drawing.Size(42, 16);
+            this.Rb8Bit.TabIndex = 0;
+            this.Rb8Bit.TabStop = true;
+            this.Rb8Bit.Text = "8bit";
+            this.Rb8Bit.UseVisualStyleBackColor = true;
             // 
             // CbKeyPointType
             // 
             this.CbKeyPointType.FormattingEnabled = true;
-            this.CbKeyPointType.Location = new System.Drawing.Point(94, 81);
+            this.CbKeyPointType.Location = new System.Drawing.Point(94, 109);
             this.CbKeyPointType.Name = "CbKeyPointType";
             this.CbKeyPointType.Size = new System.Drawing.Size(113, 20);
             this.CbKeyPointType.TabIndex = 12;
             // 
             // BtNewKeyPoint
             // 
-            this.BtNewKeyPoint.Location = new System.Drawing.Point(857, 79);
+            this.BtNewKeyPoint.Location = new System.Drawing.Point(857, 107);
             this.BtNewKeyPoint.Name = "BtNewKeyPoint";
             this.BtNewKeyPoint.Size = new System.Drawing.Size(64, 23);
             this.BtNewKeyPoint.TabIndex = 17;
@@ -483,7 +571,7 @@
             // 
             // BtNewBox
             // 
-            this.BtNewBox.Location = new System.Drawing.Point(857, 56);
+            this.BtNewBox.Location = new System.Drawing.Point(857, 84);
             this.BtNewBox.Name = "BtNewBox";
             this.BtNewBox.Size = new System.Drawing.Size(64, 23);
             this.BtNewBox.TabIndex = 11;
@@ -493,7 +581,7 @@
             // 
             // BtKeyPointEdit
             // 
-            this.BtKeyPointEdit.Location = new System.Drawing.Point(790, 79);
+            this.BtKeyPointEdit.Location = new System.Drawing.Point(790, 107);
             this.BtKeyPointEdit.Name = "BtKeyPointEdit";
             this.BtKeyPointEdit.Size = new System.Drawing.Size(64, 23);
             this.BtKeyPointEdit.TabIndex = 16;
@@ -502,7 +590,7 @@
             // 
             // BtKeyPointOpen
             // 
-            this.BtKeyPointOpen.Location = new System.Drawing.Point(718, 79);
+            this.BtKeyPointOpen.Location = new System.Drawing.Point(718, 107);
             this.BtKeyPointOpen.Name = "BtKeyPointOpen";
             this.BtKeyPointOpen.Size = new System.Drawing.Size(66, 23);
             this.BtKeyPointOpen.TabIndex = 15;
@@ -516,7 +604,7 @@
             this.BtKeyPointSelect.Filter = "テキストファイル|*.txt;*.csv;*.log;*.ini|プレーンテキストファイル|*.txt|CSVファイル|*.csv|ログファイル|*.log|IN" +
     "Iファイル|*.ini|全てのファイル|*.*";
             this.BtKeyPointSelect.LinkControl = this.TbKeyPoint;
-            this.BtKeyPointSelect.Location = new System.Drawing.Point(680, 79);
+            this.BtKeyPointSelect.Location = new System.Drawing.Point(680, 107);
             this.BtKeyPointSelect.Name = "BtKeyPointSelect";
             this.BtKeyPointSelect.Preset = SSTools.FileSelectButton.FILTER_PRESET.NONE;
             this.BtKeyPointSelect.SendClickControl = this.BtKeyPointOpen;
@@ -531,14 +619,14 @@
             // 
             // TbKeyPoint
             // 
-            this.TbKeyPoint.Location = new System.Drawing.Point(213, 81);
+            this.TbKeyPoint.Location = new System.Drawing.Point(213, 109);
             this.TbKeyPoint.Name = "TbKeyPoint";
             this.TbKeyPoint.Size = new System.Drawing.Size(461, 19);
             this.TbKeyPoint.TabIndex = 13;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(3, 79);
+            this.label4.Location = new System.Drawing.Point(3, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 23);
             this.label4.TabIndex = 16;
@@ -547,7 +635,7 @@
             // 
             // BtBBoxEdit
             // 
-            this.BtBBoxEdit.Location = new System.Drawing.Point(790, 56);
+            this.BtBBoxEdit.Location = new System.Drawing.Point(790, 84);
             this.BtBBoxEdit.Name = "BtBBoxEdit";
             this.BtBBoxEdit.Size = new System.Drawing.Size(64, 23);
             this.BtBBoxEdit.TabIndex = 10;
@@ -558,14 +646,14 @@
             // CbBBoxType
             // 
             this.CbBBoxType.FormattingEnabled = true;
-            this.CbBBoxType.Location = new System.Drawing.Point(94, 58);
+            this.CbBBoxType.Location = new System.Drawing.Point(94, 86);
             this.CbBBoxType.Name = "CbBBoxType";
             this.CbBBoxType.Size = new System.Drawing.Size(113, 20);
             this.CbBBoxType.TabIndex = 6;
             // 
             // BtBBoxFileOpen
             // 
-            this.BtBBoxFileOpen.Location = new System.Drawing.Point(718, 56);
+            this.BtBBoxFileOpen.Location = new System.Drawing.Point(718, 84);
             this.BtBBoxFileOpen.Name = "BtBBoxFileOpen";
             this.BtBBoxFileOpen.Size = new System.Drawing.Size(66, 23);
             this.BtBBoxFileOpen.TabIndex = 9;
@@ -579,7 +667,7 @@
             this.BtBBoxFileSelect.Filter = "テキストファイル|*.txt;*.csv;*.log;*.ini|プレーンテキストファイル|*.txt|CSVファイル|*.csv|ログファイル|*.log|IN" +
     "Iファイル|*.ini|全てのファイル|*.*";
             this.BtBBoxFileSelect.LinkControl = this.TbBBoxFile;
-            this.BtBBoxFileSelect.Location = new System.Drawing.Point(680, 56);
+            this.BtBBoxFileSelect.Location = new System.Drawing.Point(680, 84);
             this.BtBBoxFileSelect.Name = "BtBBoxFileSelect";
             this.BtBBoxFileSelect.Preset = SSTools.FileSelectButton.FILTER_PRESET.NONE;
             this.BtBBoxFileSelect.SendClickControl = this.BtBBoxFileOpen;
@@ -594,14 +682,14 @@
             // 
             // TbBBoxFile
             // 
-            this.TbBBoxFile.Location = new System.Drawing.Point(213, 58);
+            this.TbBBoxFile.Location = new System.Drawing.Point(213, 86);
             this.TbBBoxFile.Name = "TbBBoxFile";
             this.TbBBoxFile.Size = new System.Drawing.Size(461, 19);
             this.TbBBoxFile.TabIndex = 7;
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(3, 56);
+            this.label3.Location = new System.Drawing.Point(3, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 23);
             this.label3.TabIndex = 9;
@@ -702,7 +790,7 @@
             this.PanelResultControl.Controls.Add(this.CbShowResultKeyPoints);
             this.PanelResultControl.Controls.Add(this.CbShowResultBBox);
             this.PanelResultControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelResultControl.Location = new System.Drawing.Point(543, 105);
+            this.PanelResultControl.Location = new System.Drawing.Point(543, 133);
             this.PanelResultControl.Margin = new System.Windows.Forms.Padding(0);
             this.PanelResultControl.Name = "PanelResultControl";
             this.PanelResultControl.Size = new System.Drawing.Size(398, 41);
@@ -793,7 +881,7 @@
             this.PanelOrigControl.Controls.Add(this.CbShowKeyPoints);
             this.PanelOrigControl.Controls.Add(this.CbShowBBox);
             this.PanelOrigControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelOrigControl.Location = new System.Drawing.Point(0, 105);
+            this.PanelOrigControl.Location = new System.Drawing.Point(0, 133);
             this.PanelOrigControl.Margin = new System.Windows.Forms.Padding(0);
             this.PanelOrigControl.Name = "PanelOrigControl";
             this.PanelOrigControl.Size = new System.Drawing.Size(398, 41);
@@ -814,6 +902,16 @@
             this.CbShowImage.UseVisualStyleBackColor = true;
             this.CbShowImage.CheckedChanged += new System.EventHandler(this.CbShowImage_CheckedChanged);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(976, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -831,6 +929,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PbResultImage)).EndInit();
             this.PanelFile.ResumeLayout(false);
             this.PanelFile.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.PanelExec.ResumeLayout(false);
             this.TBLMain.ResumeLayout(false);
             this.TBLMain.PerformLayout();
@@ -903,6 +1005,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemShowPythonCommand;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemSetFromPythonCommand;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton RbFloat;
+        private System.Windows.Forms.RadioButton Rb8Bit;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton RbGray;
+        private System.Windows.Forms.RadioButton RbColor;
+        private System.Windows.Forms.Button button1;
     }
 }
 

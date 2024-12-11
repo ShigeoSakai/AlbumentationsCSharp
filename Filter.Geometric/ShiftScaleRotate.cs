@@ -80,6 +80,24 @@ namespace Filter.Geometric
             ChangeBorder(ParaBorderMode.Value);
         }
         /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public ShiftScaleRotate(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public ShiftScaleRotate(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
         /// バージョンの設定
         /// </summary>
         /// <param name="version"></param>

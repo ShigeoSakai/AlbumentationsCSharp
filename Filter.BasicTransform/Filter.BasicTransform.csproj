@@ -193,6 +193,12 @@
     <Compile Include="Superpixels.Designer.cs">
       <DependentUpon>Superpixels.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToFloat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ToFloat.Designer.cs">
+      <DependentUpon>ToFloat.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToGray.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Superpixels.resx">
       <DependentUpon>Superpixels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToFloat.resx">
+      <DependentUpon>ToFloat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToGray.resx">
       <DependentUpon>ToGray.cs</DependentUpon>

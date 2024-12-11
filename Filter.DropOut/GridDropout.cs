@@ -15,10 +15,31 @@ namespace Filter.DropOut
 
     public partial class GridDropout : FilterBase.BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public GridDropout() : base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public GridDropout(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public GridDropout(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// ランダムオフセットのチェックが変更になった
         /// </summary>

@@ -1,14 +1,15 @@
-﻿import numpy as np
+﻿import warnings
+# 警告を表示しない
+warnings.simplefilter('ignore')
+
+import numpy as np
 import albumentations as A
 import cv2
 import os
 import sys
 from copy import deepcopy
-import warnings
 
-# 警告を表示しない
-warnings.simplefilter('ignore')
-
+DebugMode = False
 #
 # 日本語対応imread
 #
@@ -127,7 +128,13 @@ def trans_exec(
 				if key == 'image' :
 					# 結果画像を保存
 					if (results['image'] is not None) and (img_filename is not None):
-						imwrite(img_filename,Rgb2Bgr(results['image']))
+						result_img = results['image']
+						if DebugMode :
+							print('result:',result_img.shape,result_img.dtype)
+						if result_img.dtype == np.float32 or result_img.dtype == np.float64:
+						    # 結果がfloat32/64
+							result_img = (result_img * 255).astype(np.uint8)
+						imwrite(img_filename,Rgb2Bgr(result_img))
 				elif key == 'mask':
 					# 結果マスク画像を保存
 					if (results['mask'] is not None) and (mask_filename is not None):
@@ -204,6 +211,19 @@ while True:
 	if text.upper().startswith("QUIT") :
 		break;
 
+	# デバッグモード
+	if text.upper().startswith("DBG:") :
+		if len(text) == 4:
+			# 現在のモード
+			print("DebugMode:",DebugMode)
+		else :
+			dbg_mode = text[4:]
+			if dbg_mode.upper() == 'OFF' or dbg_mode.upper() == 'FALSE' or dbg_mode == '0' :
+				DebugMode = False
+			elif dbg_mode.upper() == 'ON' or dbg_mode.upper() == 'TRUE' or dbg_mode > '0' : 
+				DebugMode = True
+			print("DebugMode is ","ON" if DebugMode else "OFF" )
+
 	# 画像ファイル読み込み
 	if text.upper().startswith("IMG:") :
 		if len(text) == 4:
@@ -211,9 +231,31 @@ while True:
 			img = None
 		else :
 			# 画像の読み込み
-			img_filename = text[4:]
-			if os.path.isfile(img_filename) :
-				img = Bgr2Rgb(imread(img_filename))
+			img_text = text[4:]
+			# '|'で分割
+			img_param = img_text.split('|')
+			if len(img_param) >= 1:
+				# 最後はファイル名
+				img_filename = img_param[len(img_param)-1]
+				# デフォルトは8bit,Color
+				is8bit = True
+				isColor = True
+				for index in range(len(img_param)-1):
+					if img_param[index].lower() == 'float' :
+						# float
+						is8bit = False
+					if img_param[index].lower() == 'gray' :
+						# gray
+						isColor = False
+				if os.path.isfile(img_filename) :
+					# 読み込みフラグ
+					flags = cv2.IMREAD_COLOR if isColor else cv2.IMREAD_GRAYSCALE
+					img = Bgr2Rgb(imread(img_filename,flags))
+					# データ変換
+					if is8bit == False:
+						img = img.astype(np.float32)/255
+					if DebugMode:
+						print('img ...',is8bit,isColor,img.shape,img.dtype)
 
 	if text.upper().startswith("IMG!") :
 		if img is not None :

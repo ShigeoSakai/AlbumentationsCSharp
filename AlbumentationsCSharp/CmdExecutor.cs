@@ -336,13 +336,16 @@ namespace AlbumentationsCSharp
                     (string.IsNullOrEmpty(command.Response)) ||
                     (e.Data.StartsWith(command.Response)))
                 {   // 応答が一致したので先頭を取り除く
-                    Commands.TryDequeue(out COMMAND_AND_RESPONSE ok_cmd);
+                    
                     bool cmd_resp_result = true;
                     // コールバックを呼び出す
-                    if (ok_cmd.CompleteCallback != null)
+                    if (command.CompleteCallback != null)
                     {
-                        cmd_resp_result = ok_cmd.CompleteCallback(this, ok_cmd.Command,e.Data, true);
+                        cmd_resp_result = command.CompleteCallback(this, command.Command,e.Data, true);
                     }
+
+                    // 先頭を取り除く
+                    Commands.TryDequeue(out _);
                     if (cmd_resp_result)
                     {
                         Console.WriteLine("Next Command Send");

@@ -76,6 +76,24 @@ namespace Filter.Crops
             ChangeParaPadMod();
         }
         /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public CenterCrop(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public CenterCrop(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
         /// バージョンの設定
         /// </summary>
         /// <param name="version"></param>

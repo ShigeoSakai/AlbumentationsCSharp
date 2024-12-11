@@ -14,12 +14,33 @@ namespace Filter.Geometric
         "これは、医療画像分析、OCR、および局所的な幾何学的変化が意味を持つその他のドメインなどのタスクでのデータ拡張に特に役立ちます。")]
     public partial class GridDistortion : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public GridDistortion():base()
         {
             InitializeComponent();
             // ボーダーモードの変更
             BorderModeChange(ParaBorderMode.Value);
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public GridDistortion(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public GridDistortion(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

@@ -22,9 +22,30 @@ namespace Filter.Geometric
         "変換を適用する確率 (`p`) が 1 に設定されている場合でも、恒等変換 'e' が発生する可能性があり、これは 8 ケースのうち 1 ケースでは入力が変更されないことを意味します。")]
     public partial class D4 : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public D4():base()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public D4(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public D4(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
     }
 }

@@ -78,6 +78,24 @@ namespace Filter.BasicTransform
             ParaMethod.ItemType = typeof(SnowMethod).ToString();
         }
         /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public RandomSnow(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public RandomSnow(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
+        /// <summary>
         /// バージョンの設定
         /// </summary>
         /// <param name="version"></param>

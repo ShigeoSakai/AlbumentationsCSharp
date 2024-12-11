@@ -12,12 +12,33 @@ namespace Filter.Geometric
     [ModuleCategory("geometric", "幾何学変換"), Index(0), DisplayName("透視変換"), Description("入力にランダムな 4 点透視変換を適用します。")]
     public partial class Perspective : BaseFilterControl
     {
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public Perspective():base()
         {
             InitializeComponent();
             // ボーダーモードの変更
             BorderModeChange(ParaPadMode.Value);
         }
+        /// <summary>
+        /// コンストラクタ（パラメータ指定）
+        /// </summary>
+        /// <param name="parameters">パラメータ</param>
+        public Perspective(Dictionary<string, string> parameters) : this()
+        {
+            // パラメータ設定
+            SetParameters(parameters);
+        }
+        /// <summary>
+        /// バージョン指定コンストラクタ
+        /// </summary>
+        /// <param name="version">バージョン</param>
+        public Perspective(VersionInfo version) : this()
+        {
+            Version = version;
+        }
+
         /// <summary>
         /// バージョンの設定
         /// </summary>

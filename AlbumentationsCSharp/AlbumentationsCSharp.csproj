@@ -49,16 +49,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfig.cs" />
-    <Compile Include="BBoxForm.cs">
+    <Compile Include="BBox\BBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BBoxForm.Designer.cs">
+    <Compile Include="BBox\BBoxForm.Designer.cs">
       <DependentUpon>BBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BBoxFormat.cs" />
-    <Compile Include="BoundingBox.cs" />
+    <Compile Include="BBox\BBoxFormat.cs" />
+    <Compile Include="BBox\BoundingBox.cs" />
     <Compile Include="CmdExecutor.cs" />
-    <Compile Include="KeyPoints.cs" />
+    <Compile Include="Composition\CompositionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Composition\CompositionControl.Designer.cs">
+      <DependentUpon>CompositionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Composition\CompositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Composition\CompositionForm.Designer.cs">
+      <DependentUpon>CompositionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Composition\CompositionNode.cs" />
+    <Compile Include="Composition\TextInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Composition\TextInputForm.Designer.cs">
+      <DependentUpon>TextInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Composition\TransformParser.cs" />
+    <Compile Include="KeyPoint\KeyPoints.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,8 +100,17 @@
     <Compile Include="WaitDialog.Designer.cs">
       <DependentUpon>WaitDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BBoxForm.resx">
+    <EmbeddedResource Include="BBox\BBoxForm.resx">
       <DependentUpon>BBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Composition\CompositionControl.resx">
+      <DependentUpon>CompositionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Composition\CompositionForm.resx">
+      <DependentUpon>CompositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Composition\TextInputForm.resx">
+      <DependentUpon>TextInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

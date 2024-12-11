@@ -55,6 +55,7 @@
             this.BtvEnvPathSelect = new SSTools.FolderSelectButton();
             this.TbvEnvPath = new System.Windows.Forms.TextBox();
             this.CbvEnvName = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.GbAnaconda.SuspendLayout();
             this.GbDirect.SuspendLayout();
@@ -247,6 +248,7 @@
             this.tableLayoutPanel1.Controls.Add(this.BtCancel, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.FLPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -369,6 +371,16 @@
             this.CbvEnvName.Size = new System.Drawing.Size(160, 20);
             this.CbvEnvName.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(175, 335);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PythonEnvForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -425,5 +437,6 @@
         private System.Windows.Forms.ComboBox CbvEnvName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox CbPythonSelect;
+        private System.Windows.Forms.Button button1;
     }
 }
